@@ -34,4 +34,8 @@ class SubProductService
     {
         return $sub_products->delete($sub_products);
     }
+    public function getActiveSubProducts()
+    {
+        return SubProduct::orderBy('created_at')->where('status', 1)->get();
+    }
 }

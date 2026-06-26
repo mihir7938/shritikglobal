@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Services\UploadImageService;
 use App\Services\EmailService;
+use App\Models\Customer;
 use Symfony\Component\HttpFoundation\Exception\BadRequestException;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,5 +25,11 @@ class PageController extends Controller
     public function index(Request $request)
     {
         return view('index');
+    }
+
+    public function checkMobile(Request $request)
+    {
+        $exists = Customer::where('mobile', $request->mobile)->exists();
+        return response()->json(!$exists);
     }
 }

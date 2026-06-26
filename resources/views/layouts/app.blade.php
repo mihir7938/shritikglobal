@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="{{asset('adminlte/css/select2.min.css')}}">
     <link rel="stylesheet" href="{{asset('adminlte/css/select2-bootstrap4.min.css')}}">
     <link rel="stylesheet" href="{{asset('adminlte/css/ekko-lightbox.css')}}">
+    <link rel="stylesheet" href="{{asset('adminlte/css/toastr.min.css')}}">
 	@yield('header')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -178,6 +179,7 @@
     <script src="{{asset('adminlte/js/jquery.overlayScrollbars.min.js')}}"></script>
     <script src="{{asset('adminlte/js/adminlte.js')}}"></script>
     <script src="{{asset('adminlte/js/ekko-lightbox.min.js')}}"></script>
+    <script src="{{asset('adminlte/js/toastr.min.js')}}"></script>
      <script type="text/javascript">
         $(document).ready(function() {
             $('#dataTable').DataTable();

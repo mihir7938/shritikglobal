@@ -22,6 +22,7 @@ Route::post('/login', [AuthController::class, 'login'])->name('authenticate');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 Route::get('/users/change/{id}', [AuthController::class, 'changePassword'])->name('users.change')->middleware('auth');
 Route::post('/users/change-password', [AuthController::class, 'updateChangePassword'])->name('users.password.change')->middleware('auth');
+Route::post('/check-mobile', [PageController::class, 'checkMobile'])->name('check-mobile');
 
 Route::group(['prefix' => 'password'], function () {
     Route::get('/forget', [AuthController::class, 'forgetPassword'])->name('forget_password');
@@ -57,4 +58,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::post('/customers/save', [AdminController::class, 'saveCustomer'])->name('admin.customers.add.save');
     Route::get('/customers/edit/{id}', [AdminController::class, 'editCustomer'])->name('admin.customers.edit');
     Route::post('/customers/update', [AdminController::class, 'updateCustomer'])->name('admin.customers.update.save');
+    Route::get('/customers/delete/{id}', [AdminController::class, 'deleteCustomer'])->name('admin.customers.delete');
+    Route::get('/customer/{id}/details', [AdminController::class, 'getCustomerDetails'])
+    ->name('admin.customers.details');
+    Route::post('/customer/update-status', [AdminController::class, 'updateStatus'])->name('admin.customers.update.status');
+    Route::post('/customer/update-bank', [AdminController::class, 'updateBank'])->name('admin.customers.update.bank');
 });

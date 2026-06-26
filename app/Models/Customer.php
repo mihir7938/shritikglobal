@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Customer extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $table = 'customers';
     public $timestamps = true;
@@ -33,6 +35,7 @@ class Customer extends Model
         'phone',
         'email',
         'profession_type',
+        'job_type',
         'profession_details',
         'marital',
         'alt_mobile',
@@ -51,6 +54,7 @@ class Customer extends Model
         'co_dob',
         'co_mobile',
         'co_profession_type',
+        'co_job_type',
         'co_profession_details',
         'aadhar',
         'pan',

@@ -13,8 +13,9 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <form method="POST" action="{{route('admin.customers.add.save')}}" class="form" id="add-customers-form" enctype="multipart/form-data">
+                    <form method="POST" action="{{route('admin.customers.update.save')}}" class="form" id="edit-customers-form" enctype="multipart/form-data">
                         @csrf
+                        <input type="hidden" name="id" value="{{$customer->id}}" />
                         @include('shared.alert')
                         @if (count($errors) > 0)
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -28,7 +29,7 @@
                         @endif
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title">Add Customer</h3>
+                                <h3 class="card-title">Edit Customer</h3>
                             </div>
                             <div class="card-body">
                                 <div class="row">
@@ -38,7 +39,7 @@
                                             <select id="productId" name="productId" class="form-control">
                                                 <option value="">Select</option>
                                                 @foreach($products as $product)
-                                                    <option value="{{$product->id}}">{{$product->name}}</option>
+                                                    <option value="{{$product->id}}" @if($customer->productId == $product->id) selected @endif>{{$product->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -49,7 +50,7 @@
                                             <select id="subProductId" name="subProductId" class="form-control select2">
                                                 <option value="">Select</option>
                                                 @foreach($sub_products as $sub_product)
-                                                    <option value="{{$sub_product->id}}">{{$sub_product->name}}</option>
+                                                    <option value="{{$sub_product->id}}" @if($customer->subProductId == $sub_product->id) selected @endif>{{$sub_product->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -57,7 +58,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="loanAmount">Expt Loan Amount*</label>
-                                            <input type="text" class="form-control" id="loanAmount" name="loanAmount" placeholder="Expt Loan Amount">
+                                            <input type="text" class="form-control" id="loanAmount" name="loanAmount" placeholder="Expt Loan Amount" value="{{$customer->loanAmount}}">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -66,7 +67,7 @@
                                             <select id="associateId" name="associateId" class="form-control select2">
                                                 <option value="">Select</option>
                                                 @foreach($associates as $associate)
-                                                    <option value="{{$associate->username}}">{{$associate->name}}</option>
+                                                    <option value="{{$associate->username}}" @if($customer->associateId == $associate->username) selected @endif>{{$associate->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -77,7 +78,7 @@
                                             <select id="telecallerId" name="telecallerId" class="form-control select2">
                                                 <option value="">Select</option>
                                                 @foreach($telecallers as $telecaller)
-                                                    <option value="{{$telecaller->username}}">{{$telecaller->name}}</option>
+                                                    <option value="{{$telecaller->username}}" @if($customer->telecallerId == $telecaller->username) selected @endif>{{$telecaller->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -92,7 +93,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="fullName">Applicant Full Name*</label>
-                                            <input type="text" class="form-control" id="fullName" name="fullName" placeholder="Applicant Full Name">
+                                            <input type="text" class="form-control" id="fullName" name="fullName" placeholder="Applicant Full Name" value="{{$customer->fullName}}">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -104,64 +105,69 @@
                                                     <label class="custom-file-label" for="customerImage">Choose file</label>
                                                 </div>              
                                             </div>
+                                            @if($customer->customerImage)
+                                                <a href="{{asset('assets/'.$customer->customerImage)}}" data-toggle="lightbox" data-gallery="gallery1">
+                                                    <img src="{{asset('assets/'.$customer->customerImage)}}" class="mt-2 d-block" width="150px" />
+                                                </a>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="surName">Father/Husband Name</label>
-                                            <input type="text" class="form-control" id="surName" name="surName" placeholder="Father/Husband Name">
+                                            <input type="text" class="form-control" id="surName" name="surName" placeholder="Father/Husband Name" value="{{$customer->surName}}">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="motherName">Mother Name</label>
-                                            <input type="text" class="form-control" id="motherName" name="motherName" placeholder="Mother Name">
+                                            <input type="text" class="form-control" id="motherName" name="motherName" placeholder="Mother Name" value="{{$customer->motherName}}">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="mobile">Mobile*</label>
-                                            <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile">
+                                            <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile" value="{{$customer->mobile}}" readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="phone">Phone</label>
-                                            <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone">
+                                            <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone" value="{{$customer->phone}}">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="email">Email</label>
-                                            <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                                            <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{$customer->email}}">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="alt_mobile">Alternate Mobile</label>
-                                            <input type="text" class="form-control" id="alt_mobile" name="alt_mobile" placeholder="Alternate Mobile">
+                                            <input type="text" class="form-control" id="alt_mobile" name="alt_mobile" placeholder="Alternate Mobile" value="{{$customer->alt_mobile}}">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Date of Joining</label>
-                                            <input type="text" class="form-control" id="doj" name="doj" placeholder="Date of Joining">
+                                            <input type="text" class="form-control" id="doj" name="doj" placeholder="Date of Joining" value="{{ $customer->doj ? Carbon\Carbon::parse($customer->doj)->format('d/m/Y') : '' }}">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Date of Birth</label>
-                                            <input type="text" class="form-control" id="dob" name="dob" placeholder="Date of Birth">
+                                            <input type="text" class="form-control" id="dob" name="dob" placeholder="Date of Birth" value="{{ $customer->dob ? Carbon\Carbon::parse($customer->dob)->format('d/m/Y') : '' }}">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="gender">Gender</label>
                                             <div class="group">
-                                                <input type="radio" id="male" name="gender" value="Male" checked>
+                                                <input type="radio" id="male" name="gender" value="Male" @if($customer->gender == 'Male') checked @endif>
                                                 <label for="male">Male</label>
                                                 <span class="mx-2"></span>
-                                                <input type="radio" id="female" name="gender" value="Female">
+                                                <input type="radio" id="female" name="gender" value="Female" @if($customer->gender == 'Female') checked @endif>
                                                 <label for="female">Female</label>
                                             </div>
                                         </div>
@@ -170,10 +176,10 @@
                                         <div class="form-group">
                                             <label for="marital">Marital Status</label>
                                             <div class="group">
-                                                <input type="radio" id="married" name="marital" value="Married" checked>
+                                                <input type="radio" id="married" name="marital" value="Married" @if($customer->marital == 'Married') checked @endif>
                                                 <label for="married">Married</label>
                                                 <span class="mx-2"></span>
-                                                <input type="radio" id="unmarried" name="marital" value="Unmarried">
+                                                <input type="radio" id="unmarried" name="marital" value="Unmarried" @if($customer->marital == 'Unmarried') checked @endif>
                                                 <label for="unmarried">Unmarried</label>
                                             </div>
                                         </div>
@@ -181,7 +187,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="noOfDependent">No of Dependent</label>
-                                            <input type="text" class="form-control" id="noOfDependent" name="noOfDependent" placeholder="No of Dependent">
+                                            <input type="text" class="form-control" id="noOfDependent" name="noOfDependent" placeholder="No of Dependent" value="{{$customer->noOfDependent}}">
                                         </div>
                                     </div>
                                 </div>
@@ -194,17 +200,17 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="customerBankName">Bank Name</label>
-                                            <input type="text" class="form-control" id="customerBankName" name="customerBankName" placeholder="Bank Name">
+                                            <input type="text" class="form-control" id="customerBankName" name="customerBankName" placeholder="Bank Name" value="{{$customer->customerBankName}}">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="isSavingsAccount">Account Type</label>
                                             <div class="group">
-                                                <input type="radio" id="savings" name="isSavingsAccount" value="1">
+                                                <input type="radio" id="savings" name="isSavingsAccount" value="1" @if($customer->isSavingsAccount == '1') checked @endif>
                                                 <label for="savings">Savings</label>
                                                 <span class="mx-2"></span>
-                                                <input type="radio" id="current" name="isSavingsAccount" value="0">
+                                                <input type="radio" id="current" name="isSavingsAccount" value="0" @if($customer->isSavingsAccount == '0') checked @endif>
                                                 <label for="current">Current</label>
                                             </div>
                                         </div>
@@ -218,6 +224,14 @@
                                                     <label class="custom-file-label" for="bankDocumentPath">Choose file</label>
                                                 </div>              
                                             </div>
+                                            @if($customer->bankDocumentPath)
+                                                <div class="mt-3">
+                                                    <a href="{{asset('assets/'.$customer->bankDocumentPath)}}" target="_blank" class="btn btn-primary">
+                                                        <i class="fas fa-file-pdf mr-2"></i>
+                                                        View Uploaded PDF
+                                                    </a>
+                                                </div>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -231,22 +245,22 @@
                                         <div class="form-group">
                                             <label for="profession_type">Profession Type</label>
                                             <div class="group">
-                                                <input type="radio" id="job" name="profession_type" value="Job" checked>
+                                                <input type="radio" id="job" name="profession_type" value="Job" @if($customer->profession_type == 'Job') checked @endif>
                                                 <label for="job">Job</label>
                                                 <span class="mx-2"></span>
-                                                <input type="radio" id="business" name="profession_type" value="Business">
+                                                <input type="radio" id="business" name="profession_type" value="Business" @if($customer->profession_type == 'Business') checked @endif>
                                                 <label for="business">Business</label>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4" id="job_type_div">
+                                    <div class="col-md-4" id="job_type_div" @if($customer->profession_type == 'Job') style="display: block;" @else style="display: none;" @endif>
                                         <div class="form-group">
                                             <label for="job_type">Job Type</label>
                                             <div class="group">
-                                                <input type="radio" id="salary_account" name="job_type" value="Salary Account" checked>
+                                                <input type="radio" id="salary_account" name="job_type" value="Salary Account" @if($customer->job_type == 'Salary Account') checked @endif>
                                                 <label for="salary_account">Salary Account</label>
                                                 <span class="mx-2"></span>
-                                                <input type="radio" id="cash_account" name="job_type" value="Cash Account">
+                                                <input type="radio" id="cash_account" name="job_type" value="Cash Account" @if($customer->job_type == 'Cash Account') checked @endif>
                                                 <label for="cash_account">Cash Account</label>
                                             </div>
                                         </div>
@@ -254,7 +268,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="profession_details">Profession Details</label>
-                                            <textarea class="form-control" id="profession_details" name="profession_details" rows="4" cols="50" placeholder="Profession Details"></textarea>
+                                            <textarea class="form-control" id="profession_details" name="profession_details" rows="4" cols="50" placeholder="Profession Details">{{$customer->profession_details}}</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -267,41 +281,41 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="res_address">Postal Address</label>
-                                            <input type="text" class="form-control" id="res_address" name="res_address" placeholder="Postal Address">
+                                            <input type="text" class="form-control" id="res_address" name="res_address" placeholder="Postal Address" value="{{$customer->res_address}}">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="res_landmark">Landmark</label>
-                                            <input type="text" class="form-control" id="res_landmark" name="res_landmark" placeholder="Landmark">
+                                            <input type="text" class="form-control" id="res_landmark" name="res_landmark" placeholder="Landmark" value="{{$customer->res_landmark}}">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="res_city">City</label>
-                                            <input type="text" class="form-control" id="res_city" name="res_city" placeholder="City">
+                                            <input type="text" class="form-control" id="res_city" name="res_city" placeholder="City" value="{{$customer->res_city}}">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="res_state">State</label>
-                                            <input type="text" class="form-control" id="res_state" name="res_state" placeholder="State">
+                                            <input type="text" class="form-control" id="res_state" name="res_state" placeholder="State" value="{{$customer->res_state}}">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="res_pincode">Zip</label>
-                                            <input type="text" class="form-control" id="res_pincode" name="res_pincode" placeholder="Zip">
+                                            <input type="text" class="form-control" id="res_pincode" name="res_pincode" placeholder="Zip" value="{{$customer->res_pincode}}">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="isOwned">Property Type</label>
                                             <div class="group">
-                                                <input type="radio" id="owned" name="isOwned" value="true">
+                                                <input type="radio" id="owned" name="isOwned" value="true" @if($customer->isOwned == 'true') checked @endif>
                                                 <label for="owned">Owned</label>
                                                 <span class="mx-2"></span>
-                                                <input type="radio" id="rented" name="isOwned" value="false">
+                                                <input type="radio" id="rented" name="isOwned" value="false" @if($customer->isOwned == 'false') checked @endif>
                                                 <label for="rented">Rented</label>
                                             </div>
                                         </div>
@@ -315,6 +329,14 @@
                                                     <label class="custom-file-label" for="resPropertyTaxDoc">Choose file</label>
                                                 </div>              
                                             </div>
+                                            @if($customer->resPropertyTaxDoc)
+                                                <div class="mt-3">
+                                                    <a href="{{asset('assets/'.$customer->resPropertyTaxDoc)}}" target="_blank" class="btn btn-primary">
+                                                        <i class="fas fa-file mr-2"></i>
+                                                        View Property Tax
+                                                    </a>
+                                                </div>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -326,6 +348,14 @@
                                                     <label class="custom-file-label" for="resLightBillDoc">Choose file</label>
                                                 </div>              
                                             </div>
+                                            @if($customer->resLightBillDoc)
+                                                <div class="mt-3">
+                                                    <a href="{{asset('assets/'.$customer->resLightBillDoc)}}" target="_blank" class="btn btn-primary">
+                                                        <i class="fas fa-file mr-2"></i>
+                                                        View Light Bill
+                                                    </a>
+                                                </div>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -346,31 +376,31 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="prop_address">Postal Address</label>
-                                            <input type="text" class="form-control" id="prop_address" name="prop_address" placeholder="Postal Address">
+                                            <input type="text" class="form-control" id="prop_address" name="prop_address" placeholder="Postal Address" value="{{$customer->prop_address}}">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="prop_landmark">Landmark</label>
-                                            <input type="text" class="form-control" id="prop_landmark" name="prop_landmark" placeholder="Landmark">
+                                            <input type="text" class="form-control" id="prop_landmark" name="prop_landmark" placeholder="Landmark" value="{{$customer->prop_landmark}}">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="prop_city">City</label>
-                                            <input type="text" class="form-control" id="prop_city" name="prop_city" placeholder="City">
+                                            <input type="text" class="form-control" id="prop_city" name="prop_city" placeholder="City" value="{{$customer->prop_city}}">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="prop_state">State</label>
-                                            <input type="text" class="form-control" id="prop_state" name="prop_state" placeholder="State">
+                                            <input type="text" class="form-control" id="prop_state" name="prop_state" placeholder="State" value="{{$customer->prop_state}}">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="prop_pincode">Zip</label>
-                                            <input type="text" class="form-control" id="prop_pincode" name="prop_pincode" placeholder="Zip">
+                                            <input type="text" class="form-control" id="prop_pincode" name="prop_pincode" placeholder="Zip" value="{{$customer->prop_pincode}}">
                                         </div>
                                     </div>
                                 </div>
@@ -383,47 +413,47 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="co_fullname">Full Name</label>
-                                            <input type="text" class="form-control" id="co_fullname" name="co_fullname" placeholder="Full Name">
+                                            <input type="text" class="form-control" id="co_fullname" name="co_fullname" placeholder="Full Name" value="{{$customer->co_fullname}}">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="co_relation">Relation</label>
-                                            <input type="text" class="form-control" id="co_relation" name="co_relation" placeholder="Relation">
+                                            <input type="text" class="form-control" id="co_relation" name="co_relation" placeholder="Relation" value="{{$customer->co_relation}}">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="co_dob">Date of Birth</label>
-                                            <input type="text" class="form-control" id="co_dob" name="co_dob" placeholder="Date of Birth">
+                                            <input type="text" class="form-control" id="co_dob" name="co_dob" placeholder="Date of Birth" value="{{ $customer->co_dob ? Carbon\Carbon::parse($customer->co_dob)->format('d/m/Y') : '' }}">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="co_mobile">Mobile Number</label>
-                                            <input type="text" class="form-control" id="co_mobile" name="co_mobile" placeholder="Mobile Number">
+                                            <input type="text" class="form-control" id="co_mobile" name="co_mobile" placeholder="Mobile Number" value="{{$customer->co_mobile}}">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="co_profession_type">Profession Type</label>
                                             <div class="group">
-                                                <input type="radio" id="co_job" name="co_profession_type" value="Job" checked>
+                                                <input type="radio" id="co_job" name="co_profession_type" value="Job" @if($customer->co_profession_type == 'Job') checked @endif>
                                                 <label for="co_job">Job</label>
                                                 <span class="mx-2"></span>
-                                                <input type="radio" id="co_business" name="co_profession_type" value="Business">
+                                                <input type="radio" id="co_business" name="co_profession_type" value="Business" @if($customer->co_profession_type == 'Business') checked @endif>
                                                 <label for="co_business">Business</label>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4" id="co_job_type_div">
+                                    <div class="col-md-4" id="co_job_type_div" @if($customer->co_profession_type == 'Job') style="display: block;" @else style="display: none;" @endif>
                                         <div class="form-group">
                                             <label for="co_job_type">Job Type</label>
                                             <div class="group">
-                                                <input type="radio" id="co_salary_account" name="co_job_type" value="Salary Account" checked>
+                                                <input type="radio" id="co_salary_account" name="co_job_type" value="Salary Account" @if($customer->co_job_type == 'Salary Account') checked @endif>
                                                 <label for="co_salary_account">Salary Account</label>
                                                 <span class="mx-2"></span>
-                                                <input type="radio" id="co_cash_account" name="co_job_type" value="Cash Account">
+                                                <input type="radio" id="co_cash_account" name="co_job_type" value="Cash Account" @if($customer->co_job_type == 'Cash Account') checked @endif>
                                                 <label for="co_cash_account">Cash Account</label>
                                             </div>
                                         </div>
@@ -431,7 +461,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="co_profession_details">Profession Details</label>
-                                            <textarea class="form-control" id="co_profession_details" name="co_profession_details" rows="4" cols="50" placeholder="Profession Details"></textarea>
+                                            <textarea class="form-control" id="co_profession_details" name="co_profession_details" rows="4" cols="50" placeholder="Profession Details">{{$customer->co_profession_details}}</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -444,7 +474,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="aadhar">Aadhar</label>
-                                            <input type="text" class="form-control" id="aadhar" name="aadhar" placeholder="Aadhar">
+                                            <input type="text" class="form-control" id="aadhar" name="aadhar" placeholder="Aadhar" value="{{$customer->aadhar}}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -456,12 +486,17 @@
                                                     <label class="custom-file-label" for="aadharImage">Choose file</label>
                                                 </div>              
                                             </div>
+                                            @if($customer->aadharImage)
+                                                <a href="{{asset('assets/'.$customer->aadharImage)}}" data-toggle="lightbox" data-gallery="gallery1">
+                                                    <img src="{{asset('assets/'.$customer->aadharImage)}}" class="mt-2 d-block" width="150px" />
+                                                </a>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="pan">PAN Number</label>
-                                            <input type="text" class="form-control" id="pan" name="pan" placeholder="PAN Number">
+                                            <input type="text" class="form-control" id="pan" name="pan" placeholder="PAN Number" value="{{$customer->pan}}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -473,6 +508,11 @@
                                                     <label class="custom-file-label" for="panImage">Choose file</label>
                                                 </div>              
                                             </div>
+                                            @if($customer->panImage)
+                                                <a href="{{asset('assets/'.$customer->panImage)}}" data-toggle="lightbox" data-gallery="gallery1">
+                                                    <img src="{{asset('assets/'.$customer->panImage)}}" class="mt-2 d-block" width="150px" />
+                                                </a>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -534,7 +574,13 @@
                 $('#prop_address, #prop_landmark, #prop_city, #prop_state, #prop_pincode').val('');
             }
         });
-        $('#add-customers-form').validate({
+        $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+            event.preventDefault();
+            $(this).ekkoLightbox({
+                alwaysShowClose: true
+            });
+        });
+        $('#edit-customers-form').validate({
             rules:{
                 productId:{
                     required: true
@@ -552,22 +598,6 @@
                 customerImage:{
                     extension: "png|jpg|jpeg",
                     maxsize: 1000000,
-                },
-                mobile: {
-                    required: true,
-                    digits: true,
-                    minlength: 10,
-                    maxlength: 10,
-                    remote: {
-                        url: "{{ route('check-mobile') }}",
-                        type: "POST",
-                        data: {
-                            _token: "{{ csrf_token() }}",
-                            mobile: function() {
-                                return $('#mobile').val();
-                            }
-                        }
-                    }
                 },
                 phone: {
                     digits: true
@@ -621,10 +651,6 @@
                 customerImage: {
                     extension: "Please select valid image.",
                     maxsize: "File size must be less than 1MB."
-                },
-                mobile:{
-                    required: "Plese enter mobile number.",
-                    remote: "Customer mobile already exists."
                 },
                 email:{
                     email: "Please provide a valid email."

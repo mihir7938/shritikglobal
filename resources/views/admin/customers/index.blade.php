@@ -118,6 +118,7 @@
                                 <table class="table table-bordered" id="dataTableCustomer" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
+                                            <th></th>
                                             <th width="100">Action</th>
                                             <th>Name</th>
                                             <th>Mobile</th>
@@ -146,6 +147,106 @@
     </div>
 @endsection
 @section('footer')
+<div class="modal fade" id="statusModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content border-0 shadow-lg">
+            <form id="statusForm">
+                <div class="modal-header bg-primary text-white py-2 px-4">
+                    <h5 class="modal-title">Change Status</h5>
+                    <button type="button" class="close text-white" data-dismiss="modal"><span>&times;</span></button>
+                </div>
+                <div class="modal-body p-4">
+                    @csrf
+                    <input type="hidden" name="customer_id" id="customer_id">
+                    <div class="border border-primary d-inline-block px-2 py-1 mb-3"><span id="customer_name" class="mx-2"></span>-<span id="customer_mobile" class="mx-2"></span></div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Loan Status</label>
+                                <select id="modal_status" name="modal_status" class="form-control" required>
+                                    <option value="">Select Loan Status</option>
+                                    <option value="Office">Office</option>
+                                    <option value="Forward to Bank">Forward to Bank</option>
+                                    <option value="Login">Login</option>
+                                    <option value="PD/Visit">PD/Visit</option>
+                                    <option value="Sanction">Sanction</option>
+                                    <option value="Agreement">Agreement</option>
+                                    <option value="Disbursement">Disbursement</option>
+                                    <option value="Closed">Closed</option>
+                                    <option value="Reject">Reject</option>
+                                    <option value="Return">Return</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Remarks</label>
+                                <textarea name="loanStatusRemark" id="loanStatusRemark" class="form-control" rows="4"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer bg-primary py-1 px-4">
+                    <button type="submit" class="btn btn-success">Submit</button>
+                    <button class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="bankModal">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content border-0 shadow-lg">
+            <form id="bankForm">
+                <div class="modal-header bg-primary text-white py-2 px-4">
+                    <h5 class="modal-title">File Transfer To Bank</h5>
+                    <button type="button" class="close text-white" data-dismiss="modal"><span>&times;</span></button>
+                </div>
+                <div class="modal-body p-4">
+                    @csrf
+                    <input type="hidden" name="customer_id" id="bank_customer_id">
+                    <div class="border border-primary d-inline-block px-2 py-1 mb-3"><span id="bank_customer_name" class="mx-2"></span>-<span id="bank_customer_mobile" class="mx-2"></span></div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="bankName">Bank Name</label>
+                                <input type="text" class="form-control" id="bankName" name="bankName" placeholder="Bank Name">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="bankAssocName">Bank Associate Name</label>
+                                <input type="text" class="form-control" id="bankAssocName" name="bankAssocName" placeholder="Bank Associate Name">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="bankAssocMobile">Bank Associate Mobile</label>
+                                <input type="text" class="form-control" id="bankAssocMobile" name="bankAssocMobile" placeholder="Bank Associate Mobile">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="bankUpdateDate">Date</label>
+                                <input type="text" class="form-control" id="bankUpdateDate" name="bankUpdateDate" placeholder="Date">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Remarks</label>
+                                <textarea name="bankRemarks" id="bankRemarks" class="form-control" rows="4"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer bg-primary py-1 px-4">
+                    <button type="submit" class="btn btn-success">Submit</button>
+                    <button class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 <style>
     .form .select2-container--default .select2-selection--single {
         border: 1px solid #ced4da;
@@ -190,6 +291,10 @@
             $('#start_date').datepicker('setEndDate', maxDate);
             $(this).valid();
         });
+        $("#bankUpdateDate").datepicker({
+            format: 'dd/mm/yyyy',
+            autoclose: true
+        });
         var table = $('#dataTableCustomer').DataTable({
            serverSide: true,
            responsive: true,
@@ -232,7 +337,31 @@
                 }
            ],
            order: [[9, 'desc']],
+           responsive: {
+                details: {
+                    type: 'column',
+                    target: 0
+                }
+           },
+           columnDefs: [
+                {
+                    targets: 0,
+                    className: 'dtr-control',
+                    createdCell: function (td) {
+                        $(td).css('min-width', '30px');
+                    },
+                    orderable: false
+                },
+                {
+                    targets: 1,
+                    className: 'text-center',
+                    createdCell: function (td) {
+                        $(td).css('min-width', '30px');
+                    }
+                }
+           ],
            columns: [
+                { data: null, name: 'id', orderable: false, searchable: false, defaultContent: '' },
                 { data: 'action', orderable:false, searchable:false },
                 { data: 'fullName', name: 'fullName' },
                 { data: 'mobile', name: 'mobile' },
@@ -280,6 +409,108 @@
             },
             submitHandler: function (form) {
                 table.draw();
+            }
+        });
+        $(document).on('click','.openStatusModal',function(){
+            $('#statusForm')[0].reset();
+            if ($('#statusForm').data('validator')) {
+                $('#statusForm').validate().resetForm();
+            }
+            let customerId = $(this).data('id');
+            $('#customer_id').val(customerId);
+            $.ajax({
+                url: '/admin/customer/' + customerId + '/details',
+                type: 'GET',
+                success: function(response) {
+                    $('#customer_name').text(response.fullName);
+                    $('#customer_mobile').text(response.mobile);
+                    $('#modal_status').val(response.loanStatus);
+                    $('#statusModal').modal('show');
+                }
+            });
+        });
+        $('#statusForm').validate({
+            rules: {
+                modal_status: {
+                    required: true
+                }
+            },
+            messages: {
+                modal_status: {
+                    required: "Please select loan status"
+                }
+            },
+            submitHandler: function(form) {
+                $.ajax({
+                    url: "{{ route('admin.customers.update.status') }}",
+                    type: "POST",
+                    data: $(form).serialize(),
+                    success: function(response) {
+                        $('#statusModal').modal('hide');
+                        toastr.success('Status updated successfully');
+                        form.reset();
+                        $('#dataTableCustomer').DataTable().ajax.reload(null, false);
+                    },
+                    error: function(xhr) {
+                        toastr.error('Something went wrong');
+                    }
+                });
+                return false;
+            }
+        });
+        $(document).on('click','.openBankModal',function(){
+            $('#bankForm')[0].reset();
+            if ($('#bankForm').data('validator')) {
+                $('#bankForm').validate().resetForm();
+            }
+            let customerId = $(this).data('id');
+            $('#bank_customer_id').val(customerId);
+            $.ajax({
+                url: '/admin/customer/' + customerId + '/details',
+                type: 'GET',
+                success: function(response) {
+                    $('#bank_customer_name').text(response.fullName);
+                    $('#bank_customer_mobile').text(response.mobile);
+                    $('#bankModal').modal('show');
+                }
+            });
+        });
+        $('#bankForm').validate({
+            rules: {
+                bankName: {
+                    required: true
+                },
+                bankAssocMobile: {
+                    digits: true
+                },
+                bankUpdateDate: {
+                    required: true
+                }
+            },
+            messages: {
+                bankName: {
+                    required: "Please enter bank name"
+                },
+                bankUpdateDate: {
+                    required: "Please select date"
+                }
+            },
+            submitHandler: function(form) {
+                $.ajax({
+                    url: "{{ route('admin.customers.update.bank') }}",
+                    type: "POST",
+                    data: $(form).serialize(),
+                    success: function(response) {
+                        $('#bankModal').modal('hide');
+                        toastr.success('Bank Details Updated Successfully');
+                        form.reset();
+                        $('#dataTableCustomer').DataTable().ajax.reload(null, false);
+                    },
+                    error: function(xhr) {
+                        toastr.error('Something went wrong');
+                    }
+                });
+                return false;
             }
         });
     });
