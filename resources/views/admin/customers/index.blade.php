@@ -247,12 +247,53 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="statusLogModal">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content border-0 shadow-lg">
+            <div class="modal-header bg-primary text-white py-2 px-4">
+                <h5 class="modal-title">Status Logs</h5>
+                <button type="button" class="close text-white" data-dismiss="modal"><span>&times;</span></button>
+            </div>
+            <div class="modal-body p-4">
+                <div class="text-center py-5">
+                    <i class="fas fa-spinner fa-spin fa-2x text-primary"></i>
+                    <p class="mt-2 mb-0">Loading...</p>
+                </div>
+            </div>
+            <div class="modal-footer bg-primary py-1 px-4">
+                <button class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="bankLogModal">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+        <div class="modal-content border-0 shadow-lg">
+            <div class="modal-header bg-primary text-white py-2 px-4">
+                <h5 class="modal-title">Bank Logs</h5>
+                <button type="button" class="close text-white" data-dismiss="modal"><span>&times;</span></button>
+            </div>
+            <div class="modal-body p-4">
+                <div class="text-center py-5">
+                    <i class="fas fa-spinner fa-spin fa-2x text-primary"></i>
+                    <p class="mt-2 mb-0">Loading...</p>
+                </div>
+            </div>
+            <div class="modal-footer bg-primary py-1 px-4">
+                <button class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 <style>
     .form .select2-container--default .select2-selection--single {
         border: 1px solid #ced4da;
     }
     .dataTables_wrapper div.dt-buttons {
         margin-bottom: .5rem;
+    }
+    .table td {
+        padding: 8px;
     }
 </style>
 <script>
@@ -512,6 +553,24 @@
                 });
                 return false;
             }
+        });
+        $(document).on('click','.openStatusLogModal',function(){
+            let customerId = $(this).data('id');
+            $('#statusLogModal .modal-body').load(
+                '/admin/customer/' + customerId + '/status-logs',
+                function () {
+                    $('#statusLogModal').modal('show');
+                }
+            );
+        });
+        $(document).on('click','.openBankLogModal',function(){
+            let customerId = $(this).data('id');
+            $('#bankLogModal .modal-body').load(
+                '/admin/customer/' + customerId + '/bank-logs',
+                function () {
+                    $('#bankLogModal').modal('show');
+                }
+            );
         });
     });
 </script>

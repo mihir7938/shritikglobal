@@ -63,4 +63,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     ->name('admin.customers.details');
     Route::post('/customer/update-status', [AdminController::class, 'updateStatus'])->name('admin.customers.update.status');
     Route::post('/customer/update-bank', [AdminController::class, 'updateBank'])->name('admin.customers.update.bank');
+    Route::get('/customer/{id}/status-logs', [AdminController::class, 'getStatusLogs'])->name('admin.customers.status.logs');
+    Route::get('/customer/{id}/bank-logs', [AdminController::class, 'getBankLogs'])->name('admin.customers.bank.logs');
 });

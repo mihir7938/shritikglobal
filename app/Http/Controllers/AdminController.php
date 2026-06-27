@@ -13,6 +13,8 @@ use App\Services\CustomerBankService;
 use App\Models\User;
 use App\Models\Role;
 use App\Models\Customer;
+use App\Models\StatusRemark;
+use App\Models\CustomerBank;
 use DataTables;
 use Carbon;
 use Symfony\Component\HttpFoundation\Exception\BadRequestException;
@@ -349,8 +351,14 @@ class AdminController extends Controller {
                             <a href="javascript:void(0)" class="dropdown-item openStatusModal" data-id="'.$row->id.'">
                                 Change Status
                             </a>
+                            <a href="javascript:void(0)" class="dropdown-item openStatusLogModal" data-id="'.$row->id.'">
+                                View Status Logs
+                            </a>
                             <a href="javascript:void(0)" class="dropdown-item openBankModal" data-id="'.$row->id.'">
                                 File Transfer To Bank
+                            </a>
+                            <a href="javascript:void(0)" class="dropdown-item openBankLogModal" data-id="'.$row->id.'">
+                                Banks List
                             </a>
                         </div>
                     </div>';
@@ -707,5 +715,17 @@ class AdminController extends Controller {
         $data['bankRemarks'] = $request->bankRemarks;
         $this->customerBankService->create($data);
         return response()->json(['success' => true]);
+    }
+    public function getStatusLogs($id)
+    {
+        $customer = Customer::findOrFail($id);
+        $logs = StatusRemark::where('customer_id', $id)->orderBy('created_at', 'asc')->get();
+        return view('admin.customers.status_logs')->with('customer', $customer)->with('logs', $logs);
+    }
+    public function getBankLogs($id)
+    {
+        $customer = Customer::findOrFail($id);
+        $logs = CustomerBank::where('customer_id', $id)->orderBy('created_at', 'asc')->get();
+        return view('admin.customers.bank_logs')->with('customer', $customer)->with('logs', $logs);
     }
 }
