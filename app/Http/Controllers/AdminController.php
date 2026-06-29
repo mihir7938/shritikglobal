@@ -10,11 +10,17 @@ use App\Services\SubProductService;
 use App\Services\CustomerService;
 use App\Services\StatusRemarkService;
 use App\Services\CustomerBankService;
+use App\Services\TelecallerNewCallService;
+use App\Services\TelecallerFollowupService;
+use App\Services\TelecallerCloseCallService;
 use App\Models\User;
 use App\Models\Role;
 use App\Models\Customer;
 use App\Models\StatusRemark;
 use App\Models\CustomerBank;
+use App\Models\TelecallerNewCall;
+use App\Models\TelecallerFollowup;
+use App\Models\TelecallerCloseCall;
 use DataTables;
 use Carbon;
 use Symfony\Component\HttpFoundation\Exception\BadRequestException;
@@ -22,7 +28,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller {
 
-	private $imageService, $userService, $productService, $subProductService, $customerService, $statusRemarkService, $customerBankService;
+	private $imageService, $userService, $productService, $subProductService, $customerService, $statusRemarkService, $customerBankService, $telecallerNewCallService, $telecallerFollowupService, $telecallerCloseCallService;
 
     public function __construct(
         UploadImageService $imageService,
@@ -31,7 +37,10 @@ class AdminController extends Controller {
         SubProductService $subProductService,
         CustomerService $customerService,
         StatusRemarkService $statusRemarkService,
-        CustomerBankService $customerBankService
+        CustomerBankService $customerBankService,
+        TelecallerNewCallService $telecallerNewCallService,
+        TelecallerFollowupService $telecallerFollowupService,
+        TelecallerCloseCallService $telecallerCloseCallService
     )
     {
         $this->imageService = $imageService;
@@ -41,6 +50,9 @@ class AdminController extends Controller {
         $this->customerService = $customerService;
         $this->statusRemarkService = $statusRemarkService;
         $this->customerBankService = $customerBankService;
+        $this->telecallerNewCallService = $telecallerNewCallService;
+        $this->telecallerFollowupService = $telecallerFollowupService;
+        $this->telecallerCloseCallService = $telecallerCloseCallService;
     }
 
     public function index(Request $request)
@@ -727,5 +739,89 @@ class AdminController extends Controller {
         $customer = Customer::findOrFail($id);
         $logs = CustomerBank::where('customer_id', $id)->orderBy('created_at', 'asc')->get();
         return view('admin.customers.bank_logs')->with('customer', $customer)->with('logs', $logs);
+    }
+    private function followupQuery($request)
+    {
+         $query = TelecallerFollowup::with([
+            'telecallers'
+        ]);
+        if($request->status){
+            $query->where('status', $request->status);
+        }
+        if($request->telecaller){
+            $query->where('details_added_by', $request->telecaller);
+        }
+        return $query->orderBy('created_at', 'desc');
+    }
+    public function getFollowup(Request $request)
+    {
+        if($request->ajax()){
+            $data = $this->followupQuery($request);
+            return Datatables::of($data)
+                ->addColumn('telecaller_name', function($row){
+                    return optional($row->telecallers)->name;
+                })
+                ->addColumn('created_at', function($row){
+                    return $row->created_at ? Carbon\Carbon::parse($row->created_at)->format('d M, Y H:i') : '';
+                })
+                ->make(true);
+        }
+        $telecallers = $this->userService->getUsersByRole(Role::TELECALLER_ROLE_ID);
+        $followups = $this->telecallerFollowupService->getAllFollowups();
+        return view('admin.telecallers.followup')->with('telecallers', $telecallers)->with('followups', $followups);
+    }
+    public function exportFollowupsCsv(Request $request)
+    {
+        $data = $this->followupQuery($request)->get();
+        $filename = 'telecaller_followup_' . date('Ymd_His') . '.csv';
+        $headers = [
+            "Content-Type" => "text/csv",
+            "Content-Disposition" => "attachment; filename=$filename",
+        ];
+        $callback = function () use ($data) {
+            $file = fopen('php://output', 'w');
+            fputcsv($file, [
+                'Customer Name',
+                'Customer Mobile',
+                'Telecaller Name',
+                'Remarks',
+                'Status',
+                'Added On'
+            ]);
+            foreach ($data as $row) {
+                fputcsv($file, [
+                    $row->name,
+                    $row->mobile,
+                    optional($row->telecallers)->name,
+                    $row->remarks,
+                    $row->status,
+                    $row->created_at ? \Carbon\Carbon::parse($row->created_at)->format('d M, Y H:i') : ''
+                ]);
+            }
+            fclose($file);
+        };
+        return response()->stream($callback, 200, $headers);
+    }
+    public function addFollowup(Request $request)
+    {
+        return view('admin.telecallers.add-followup');
+    }
+    public function saveFollowup(Request $request)
+    {
+        $data = $request->all();
+        $data['name'] = $request->name;
+        $data['mobile'] = $request->mobile;
+        $data['status'] = $request->status;
+        $data['remarks'] = $request->remarks;
+        $data['details_added_by'] = Auth::user()->username;
+        $this->telecallerFollowupService->create($data);
+        $request->session()->put('message', 'Follow up added successfully.');
+        $request->session()->put('alert-type', 'alert-success');
+        return redirect()->route('admin.followup');
+    }
+    public function getFileStatus(Request $request)
+    {
+        $close_calls = $this->telecallerCloseCallService->getAllCloseCalls();
+        return view('admin.telecallers.close_call')->with('close_calls', $close_calls);
     }
 }

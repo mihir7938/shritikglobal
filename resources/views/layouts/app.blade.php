@@ -145,6 +145,26 @@
                                     </li>
                                 </ul>
                             </li>
+                            <li class="nav-item {{(Route::currentRouteName() == 'admin.followup') || (Route::currentRouteName() == 'admin.followup.add') || (Route::currentRouteName() == 'admin.filestatus') ? 'menu-open' : '' }}">
+                                <a href="#" class="nav-link {{(Route::currentRouteName() == 'admin.followup') || (Route::currentRouteName() == 'admin.followup.add') || (Route::currentRouteName() == 'admin.filestatus') ? 'active' : '' }}">
+                                    <i class="nav-icon fas fa-phone-alt"></i>
+                                    <p>Telecaller<i class="right fas fa-angle-left"></i></p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="{{route('admin.followup')}}" class="nav-link {{(Route::currentRouteName() == 'admin.followup') || (Route::currentRouteName() == 'admin.followup.add') ? 'active' : '' }}">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Follow Up Details</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{route('admin.filestatus')}}" class="nav-link {{(Route::currentRouteName() == 'admin.filestatus') ? 'active' : '' }}">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>File Status</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
                         @endif
                     </ul>
                 </nav>

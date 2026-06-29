@@ -65,4 +65,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::post('/customer/update-bank', [AdminController::class, 'updateBank'])->name('admin.customers.update.bank');
     Route::get('/customer/{id}/status-logs', [AdminController::class, 'getStatusLogs'])->name('admin.customers.status.logs');
     Route::get('/customer/{id}/bank-logs', [AdminController::class, 'getBankLogs'])->name('admin.customers.bank.logs');
+    Route::get('/telecaller/followup', [AdminController::class, 'getFollowup'])->name('admin.followup');
+    Route::get('/followup/export/csv', [AdminController::class, 'exportFollowupsCsv'])->name('admin.followup.export.csv');
+    Route::get('/telecaller/followup/add', [AdminController::class, 'addFollowup'])->name('admin.followup.add');
+    Route::post('/telecaller/followup/save', [AdminController::class, 'saveFollowup'])->name('admin.followup.add.save');
+    Route::get('/telecaller/filestatus', [AdminController::class, 'getFileStatus'])->name('admin.filestatus');
 });
