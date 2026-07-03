@@ -10,9 +10,9 @@ class TelecallerFollowupService
     public function getAllFollowups($per_page = -1)
     {
         if($per_page == -1){
-            return TelecallerFollowup::orderBy('created_at','desc')->get();    
+            return TelecallerFollowup::get();    
         }
-        return TelecallerFollowup::orderBy('created_at','desc')->paginate($per_page);
+        return TelecallerFollowup::paginate($per_page);
     }
 
     public function getFollowupById($id)

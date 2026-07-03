@@ -10,9 +10,9 @@ class TelecallerNewCallService
     public function getAllNewCalls($per_page = -1)
     {
         if($per_page == -1){
-            return TelecallerNewCall::orderBy('created_at')->get();    
+            return TelecallerNewCall::get();    
         }
-        return TelecallerNewCall::orderBy('created_at')->paginate($per_page);
+        return TelecallerNewCall::paginate($per_page);
     }
 
     public function getNewCallById($id)

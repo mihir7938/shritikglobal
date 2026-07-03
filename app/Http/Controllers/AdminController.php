@@ -13,6 +13,8 @@ use App\Services\CustomerBankService;
 use App\Services\TelecallerNewCallService;
 use App\Services\TelecallerFollowupService;
 use App\Services\TelecallerCloseCallService;
+use App\Services\TelecallerCallMasterService;
+use App\Services\TelecallerFollowupLogService;
 use App\Models\User;
 use App\Models\Role;
 use App\Models\Customer;
@@ -21,6 +23,8 @@ use App\Models\CustomerBank;
 use App\Models\TelecallerNewCall;
 use App\Models\TelecallerFollowup;
 use App\Models\TelecallerCloseCall;
+use App\Models\TelecallerCallMaster;
+use App\Models\TelecallerFollowupLog;
 use DataTables;
 use Carbon;
 use Symfony\Component\HttpFoundation\Exception\BadRequestException;
@@ -28,7 +32,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller {
 
-	private $imageService, $userService, $productService, $subProductService, $customerService, $statusRemarkService, $customerBankService, $telecallerNewCallService, $telecallerFollowupService, $telecallerCloseCallService;
+	private $imageService, $userService, $productService, $subProductService, $customerService, $statusRemarkService, $customerBankService, $telecallerNewCallService, $telecallerFollowupService, $telecallerCloseCallService, $telecallerCallMasterService, $telecallerFollowupLogService;
 
     public function __construct(
         UploadImageService $imageService,
@@ -40,7 +44,9 @@ class AdminController extends Controller {
         CustomerBankService $customerBankService,
         TelecallerNewCallService $telecallerNewCallService,
         TelecallerFollowupService $telecallerFollowupService,
-        TelecallerCloseCallService $telecallerCloseCallService
+        TelecallerCloseCallService $telecallerCloseCallService,
+        TelecallerCallMasterService $telecallerCallMasterService,
+        TelecallerFollowupLogService $telecallerFollowupLogService
     )
     {
         $this->imageService = $imageService;
@@ -53,6 +59,8 @@ class AdminController extends Controller {
         $this->telecallerNewCallService = $telecallerNewCallService;
         $this->telecallerFollowupService = $telecallerFollowupService;
         $this->telecallerCloseCallService = $telecallerCloseCallService;
+        $this->telecallerCallMasterService = $telecallerCallMasterService;
+        $this->telecallerFollowupLogService = $telecallerFollowupLogService;
     }
 
     public function index(Request $request)
@@ -740,40 +748,77 @@ class AdminController extends Controller {
         $logs = CustomerBank::where('customer_id', $id)->orderBy('created_at', 'asc')->get();
         return view('admin.customers.bank_logs')->with('customer', $customer)->with('logs', $logs);
     }
-    private function followupQuery($request)
+    private function callQuery($request)
     {
-         $query = TelecallerFollowup::with([
-            'telecallers'
+         $query = TelecallerCallMaster::with([
+            'subProducts'
         ]);
         if($request->status){
             $query->where('status', $request->status);
         }
-        if($request->telecaller){
-            $query->where('details_added_by', $request->telecaller);
+        if($request->sub_product){
+            $query->where('sub_product_id', $request->sub_product);
         }
-        return $query->orderBy('created_at', 'desc');
+        if($request->telecaller){
+            $query->where('created_by', $request->telecaller);
+        }
+        if ($request->start_date && $request->end_date) {
+            $start = \Carbon\Carbon::createFromFormat('d/m/Y', $request->start_date)->format('Y-m-d');
+            $end = \Carbon\Carbon::createFromFormat('d/m/Y', $request->end_date)->format('Y-m-d');
+            $query->whereBetween('last_followup_date', [$start, $end]);
+        }
+        return $query->orderBy('id', 'desc');
     }
-    public function getFollowup(Request $request)
+    public function getCalls(Request $request)
     {
         if($request->ajax()){
-            $data = $this->followupQuery($request);
+            $data = $this->callQuery($request);
             return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function ($row) {
+                    return '
+                    <div class="dropdown">
+                        <button class="btn btn-outline-primary" type="button" data-toggle="dropdown"><i class="fas fa-list"></i></button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="'.route('admin.calls.edit',$row->id).'">
+                                Edit
+                            </a>
+                            <a class="dropdown-item" href="'.route('admin.calls.delete',$row->id).'">
+                                Delete
+                            </a>
+                            <a href="javascript:void(0)" class="dropdown-item openFollowUpModal" data-id="'.$row->id.'">
+                                Add Follow Up
+                            </a>
+                            <a href="javascript:void(0)" class="dropdown-item openFollowUpLogModal" data-id="'.$row->id.'">
+                                View Follow Up Logs
+                            </a>
+                        </div>
+                    </div>';
+                })
+                ->addColumn('product_name', function($row){
+                    return optional($row->subProducts)->name;
+                })
                 ->addColumn('telecaller_name', function($row){
                     return optional($row->telecallers)->name;
                 })
-                ->addColumn('created_at', function($row){
-                    return $row->created_at ? Carbon\Carbon::parse($row->created_at)->format('d M, Y H:i') : '';
+                ->addColumn('last_followup_date', function($row){
+                    return $row->last_followup_date ? Carbon\Carbon::parse($row->last_followup_date)->format('d M, Y') : '';
                 })
+                ->addColumn('closing_date', function($row){
+                    return $row->closing_date ? Carbon\Carbon::parse($row->closing_date)->format('d M, Y h:i A') : '';
+                })
+                ->rawColumns(['action'])
                 ->make(true);
         }
         $telecallers = $this->userService->getUsersByRole(Role::TELECALLER_ROLE_ID);
-        $followups = $this->telecallerFollowupService->getAllFollowups();
-        return view('admin.telecallers.followup')->with('telecallers', $telecallers)->with('followups', $followups);
+        $sub_products = $this->subProductService->getAllSubProducts();
+        $calls = $this->telecallerCallMasterService->getAllCalls();
+        return view('admin.telecallers.index')->with('telecallers', $telecallers)->with('sub_products', $sub_products)->with('calls', $calls);
     }
-    public function exportFollowupsCsv(Request $request)
+    public function exportCallsCsv(Request $request)
     {
-        $data = $this->followupQuery($request)->get();
-        $filename = 'telecaller_followup_' . date('Ymd_His') . '.csv';
+        $data = $this->callQuery($request)->get();
+        $filename = 'calls_' . date('Ymd_His') . '.csv';
         $headers = [
             "Content-Type" => "text/csv",
             "Content-Disposition" => "attachment; filename=$filename",
@@ -783,41 +828,153 @@ class AdminController extends Controller {
             fputcsv($file, [
                 'Customer Name',
                 'Customer Mobile',
+                'Product Name',
+                'Loan Amount',
                 'Telecaller Name',
-                'Remarks',
+                'Followup Date',
+                'Followup Remarks',
                 'Status',
-                'Added On'
+                'Date of Closing',
+                'Remarks'
             ]);
             foreach ($data as $row) {
                 fputcsv($file, [
-                    $row->name,
-                    $row->mobile,
+                    $row->customer_name,
+                    $row->customer_mobile,
+                    optional($row->subProducts)->name,
+                    $row->loan_amount,
                     optional($row->telecallers)->name,
-                    $row->remarks,
+                    $row->last_followup_date ? \Carbon\Carbon::parse($row->last_followup_date)->format('d M, Y') : '',
+                    $row->last_followup_remarks,
                     $row->status,
-                    $row->created_at ? \Carbon\Carbon::parse($row->created_at)->format('d M, Y H:i') : ''
+                    "\t" . ($row->closing_date ? \Carbon\Carbon::parse($row->closing_date)->format('d M, Y h:i A') : ''),
+                    $row->remarks
                 ]);
             }
             fclose($file);
         };
         return response()->stream($callback, 200, $headers);
     }
-    public function addFollowup(Request $request)
+    public function addCall()
     {
-        return view('admin.telecallers.add-followup');
+        $products = $this->productService->getAllProducts();
+        $sub_products = $this->subProductService->getActiveSubProducts();
+        return view('admin.telecallers.add')->with('products', $products)->with('sub_products', $sub_products);
     }
-    public function saveFollowup(Request $request)
+    public function saveCall(Request $request)
     {
         $data = $request->all();
-        $data['name'] = $request->name;
-        $data['mobile'] = $request->mobile;
-        $data['status'] = $request->status;
+        $data['customer_name'] = $request->customer_name;
+        $data['customer_mobile'] = $request->customer_mobile;
+        $data['product_id'] = $request->product_id;
+        $data['sub_product_id'] = $request->sub_product_id;
+        $data['loan_amount'] = $request->loan_amount;
         $data['remarks'] = $request->remarks;
-        $data['details_added_by'] = Auth::user()->username;
-        $this->telecallerFollowupService->create($data);
-        $request->session()->put('message', 'Follow up added successfully.');
+        $data['status'] = 'Open';
+        $data['created_by'] = Auth::user()->id;
+        $this->telecallerCallMasterService->create($data);
+        $request->session()->put('message', 'New call added successfully.');
         $request->session()->put('alert-type', 'alert-success');
-        return redirect()->route('admin.followup');
+        return redirect()->route('admin.calls');
+    }
+    public function editCall(Request $request, $id)
+    {
+        try{
+            $call = $this->telecallerCallMasterService->getCallById($id);
+            if(!$call){
+                throw new BadRequestException('Invalid Request id');
+            }
+            $products = $this->productService->getAllProducts();
+            $sub_products = $this->subProductService->getActiveSubProducts();
+            return view('admin.telecallers.edit')->with('call', $call)->with('products', $products)->with('sub_products', $sub_products);
+        }catch(\Exception $e){
+            $request->session()->put('message', $e->getMessage());
+            $request->session()->put('alert-type', 'alert-warning');
+            return redirect()->route('admin.calls');
+        }
+    }
+    public function updateCall(Request $request)
+    {
+        try{
+            $call = $this->telecallerCallMasterService->getCallById($request->id);
+            if(!$call){
+                throw new BadRequestException('Invalid Request id');
+            }
+            $data['customer_name'] = $request->customer_name;
+            $data['customer_mobile'] = $request->customer_mobile;
+            $data['product_id'] = $request->product_id;
+            $data['sub_product_id'] = $request->sub_product_id;
+            $data['loan_amount'] = $request->loan_amount;
+            $data['remarks'] = $request->remarks;
+            $data['status'] = $request->status;
+            if($request->status == 'Closed') {
+                $data['closing_date'] = date('Y-m-d H:i:s');
+            } else {
+                $data['closing_date'] = NULL;
+            }
+            $this->telecallerCallMasterService->update($call, $data);
+            $request->session()->put('message', 'Call has been updated successfully.');
+            $request->session()->put('alert-type', 'alert-success');
+            return redirect()->route('admin.calls');
+        }catch(\Exception $e){
+            $request->session()->put('message', $e->getMessage());
+            $request->session()->put('alert-type', 'alert-warning');
+            return redirect()->route('admin.calls');
+        }
+    }
+    public function deleteCall(Request $request, $id)
+    {
+        try{
+            $call = $this->telecallerCallMasterService->getCallById($id);
+            if(!$call){
+                throw new BadRequestException('Invalid Request id');
+            }
+            $this->telecallerCallMasterService->delete($call);
+            $request->session()->put('message', 'Call has been deleted successfully.');
+            $request->session()->put('alert-type', 'alert-success');
+            return redirect()->route('admin.calls');
+        }catch(\Exception $e){
+            $request->session()->put('message', $e->getMessage());
+            $request->session()->put('alert-type', 'alert-warning');
+            return redirect()->route('admin.calls');
+        }
+    }
+    public function getCallDetails($id)
+    {
+        $call = TelecallerCallMaster::select(
+            'id',
+            'customer_name',
+            'customer_mobile'
+        )->findOrFail($id);
+        return response()->json($call);
+    }
+    public function updateFollowup(Request $request)
+    {
+        $call = TelecallerCallMaster::findOrFail($request->call_id);
+        $call->last_followup_date = date('Y-m-d', strtotime(strtr($request->followup_date, '/', '-')));
+        $call->last_followup_remarks = $request->followup_remarks;
+        $call->save();
+        $data['call_id'] = $request->call_id;
+        $data['followup_date'] = date('Y-m-d', strtotime(strtr($request->followup_date, '/', '-')));
+        $data['followup_remarks'] = $request->followup_remarks;
+        $this->telecallerFollowupLogService->create($data);
+        return response()->json(['success' => true]);
+    }
+    public function getFollowupLogs($id)
+    {
+        $call = TelecallerCallMaster::findOrFail($id);
+        $logs = TelecallerFollowupLog::where('call_id', $id)->orderBy('created_at', 'asc')->get();
+        return view('admin.telecallers.followup_logs')->with('call', $call)->with('logs', $logs);
+    }
+    public function getNewCall(Request $request)
+    {
+        $new_calls = $this->telecallerNewCallService->getAllNewCalls();
+        return view('admin.telecallers.new_call')->with('new_calls', $new_calls);
+    }
+    public function getFollowup(Request $request)
+    {
+        $followups = $this->telecallerFollowupService->getAllFollowups();
+        return view('admin.telecallers.followup')->with('followups', $followups);
     }
     public function getFileStatus(Request $request)
     {

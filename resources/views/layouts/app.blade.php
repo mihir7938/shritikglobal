@@ -145,14 +145,40 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="nav-item {{(Route::currentRouteName() == 'admin.followup') || (Route::currentRouteName() == 'admin.followup.add') || (Route::currentRouteName() == 'admin.filestatus') ? 'menu-open' : '' }}">
-                                <a href="#" class="nav-link {{(Route::currentRouteName() == 'admin.followup') || (Route::currentRouteName() == 'admin.followup.add') || (Route::currentRouteName() == 'admin.filestatus') ? 'active' : '' }}">
+                            <li class="nav-item {{(Route::currentRouteName() == 'admin.calls') || (Route::currentRouteName() == 'admin.calls.add') || (Route::currentRouteName() == 'admin.calls.edit') ? 'menu-open' : '' }}">
+                                <a href="#" class="nav-link {{(Route::currentRouteName() == 'admin.calls') || (Route::currentRouteName() == 'admin.calls.add') || (Route::currentRouteName() == 'admin.calls.edit') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-phone-alt"></i>
                                     <p>Telecaller<i class="right fas fa-angle-left"></i></p>
                                 </a>
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item">
-                                        <a href="{{route('admin.followup')}}" class="nav-link {{(Route::currentRouteName() == 'admin.followup') || (Route::currentRouteName() == 'admin.followup.add') ? 'active' : '' }}">
+                                        <a href="{{route('admin.calls')}}" class="nav-link {{(Route::currentRouteName() == 'admin.calls') ? 'active' : '' }}">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>All Calls</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{route('admin.calls.add')}}" class="nav-link {{(Route::currentRouteName() == 'admin.calls.add') ? 'active' : '' }}">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Add New Call</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item {{(Route::currentRouteName() == 'admin.newcall') || (Route::currentRouteName() == 'admin.followup') || (Route::currentRouteName() == 'admin.filestatus') ? 'menu-open' : '' }}">
+                                <a href="#" class="nav-link {{(Route::currentRouteName() == 'admin.newcall') || (Route::currentRouteName() == 'admin.followup') || (Route::currentRouteName() == 'admin.filestatus') ? 'active' : '' }}">
+                                    <i class="nav-icon fas fa-times"></i>
+                                    <p>Old Data Telecaller<i class="right fas fa-angle-left"></i></p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="{{route('admin.newcall')}}" class="nav-link {{(Route::currentRouteName() == 'admin.newcall') ? 'active' : '' }}">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>New Calls</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{route('admin.followup')}}" class="nav-link {{(Route::currentRouteName() == 'admin.followup') ? 'active' : '' }}">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>Follow Up Details</p>
                                         </a>

@@ -5,7 +5,7 @@
             <div class="row mb-2">
                 <div class="col-sm-12">
                     <div class="d-flex justify-content-between">
-                        <h1 class="m-0">File Status (Old)</h1>
+                        <h1 class="m-0">New Calls (Old)</h1>
                     </div>
                 </div>
             </div>
@@ -18,7 +18,7 @@
                     @include('shared.alert')
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">All Closing Call</h3>
+                            <h3 class="card-title">All New Call</h3>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -28,10 +28,9 @@
                                             <th>ID</th>
                                             <th>Customer Name</th>
                                             <th>Customer Mobile</th>
-                                            <th>Sub Product Name</th>
-                                            <th>Loan Amount</th>
                                             <th>Telecaller Name</th>
-                                            <th width="100">Date of Closing</th>
+                                            <th>Remarks</th>
+                                            <th width="100">Added On</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -39,22 +38,20 @@
                                             <th>ID</th>
                                             <th>Customer Name</th>
                                             <th>Customer Mobile</th>
-                                            <th>Sub Product Name</th>
-                                            <th>Loan Amount</th>
                                             <th>Telecaller Name</th>
-                                            <th width="100">Date of Closing</th>
+                                            <th>Remarks</th>
+                                            <th width="100">Added On</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        @foreach($close_calls as $close_call)
+                                        @foreach($new_calls as $new_call)
                                             <tr>
-                                                <td>{{$close_call->id}}</td>
-                                                <td>{{$close_call->customerName}}</td>
-                                                <td>{{$close_call->mobile}}</td>
-                                                <td>{{$close_call->subProductName}}</td>
-                                                <td>{{$close_call->loanAmount}}</td>
-                                                <td>{{optional($close_call->telecallers)->name}}</td>
-                                                <td>{{$close_call->created_at ? \Carbon\Carbon::parse($close_call->created_at)->format('d M, Y H:i') : ''}}</td>
+                                                <td>{{$new_call->id}}</td>
+                                                <td>{{$new_call->customerName}}</td>
+                                                <td>{{$new_call->mobile}}</td>
+                                                <td>{{optional($new_call->telecallers)->name}}</td>
+                                                <td>{{$new_call->remarks}}</td>
+                                                <td>{{$new_call->created_at ? \Carbon\Carbon::parse($new_call->created_at)->format('d M, Y H:i') : ''}}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>

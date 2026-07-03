@@ -65,9 +65,18 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::post('/customer/update-bank', [AdminController::class, 'updateBank'])->name('admin.customers.update.bank');
     Route::get('/customer/{id}/status-logs', [AdminController::class, 'getStatusLogs'])->name('admin.customers.status.logs');
     Route::get('/customer/{id}/bank-logs', [AdminController::class, 'getBankLogs'])->name('admin.customers.bank.logs');
-    Route::get('/telecaller/followup', [AdminController::class, 'getFollowup'])->name('admin.followup');
-    Route::get('/followup/export/csv', [AdminController::class, 'exportFollowupsCsv'])->name('admin.followup.export.csv');
-    Route::get('/telecaller/followup/add', [AdminController::class, 'addFollowup'])->name('admin.followup.add');
-    Route::post('/telecaller/followup/save', [AdminController::class, 'saveFollowup'])->name('admin.followup.add.save');
-    Route::get('/telecaller/filestatus', [AdminController::class, 'getFileStatus'])->name('admin.filestatus');
+    Route::get('/calls', [AdminController::class, 'getCalls'])->name('admin.calls');
+    Route::get('/calls/export/csv', [AdminController::class, 'exportCallsCsv'])->name('admin.calls.export.csv');
+    Route::get('/calls/add', [AdminController::class, 'addCall'])->name('admin.calls.add');
+    Route::post('/calls/save', [AdminController::class, 'saveCall'])->name('admin.calls.add.save');
+    Route::get('/calls/edit/{id}', [AdminController::class, 'editCall'])->name('admin.calls.edit');
+    Route::post('/calls/update', [AdminController::class, 'updateCall'])->name('admin.calls.update.save');
+    Route::get('/calls/delete/{id}', [AdminController::class, 'deleteCall'])->name('admin.calls.delete');
+    Route::get('/call/{id}/details', [AdminController::class, 'getCallDetails'])
+    ->name('admin.calls.details');
+    Route::post('/call/update-followup', [AdminController::class, 'updateFollowup'])->name('admin.calls.update.followup');
+    Route::get('/call/{id}/followup-logs', [AdminController::class, 'getFollowupLogs'])->name('admin.calls.followup.logs');
+    Route::get('/old-telecaller/newCall', [AdminController::class, 'getNewCall'])->name('admin.newcall');
+    Route::get('/old-telecaller/followup', [AdminController::class, 'getFollowup'])->name('admin.followup');
+    Route::get('/old-telecaller/filestatus', [AdminController::class, 'getFileStatus'])->name('admin.filestatus');
 });

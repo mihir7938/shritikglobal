@@ -10,9 +10,9 @@ class TelecallerCloseCallService
     public function getAllCloseCalls($per_page = -1)
     {
         if($per_page == -1){
-            return TelecallerCloseCall::orderBy('created_at','desc')->get();    
+            return TelecallerCloseCall::get();    
         }
-        return TelecallerCloseCall::orderBy('created_at','desc')->paginate($per_page);
+        return TelecallerCloseCall::paginate($per_page);
     }
 
     public function getCloseCallById($id)

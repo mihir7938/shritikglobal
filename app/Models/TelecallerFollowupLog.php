@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TelecallerNewCall extends Model
+class TelecallerFollowupLog extends Model
 {
     use HasFactory;
 
-    protected $table = 'telecaller_new_call';
+    protected $table = 'telecaller_followup_logs';
     public $timestamps = true;
 
     /**
@@ -18,14 +18,8 @@ class TelecallerNewCall extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'customerName',
-        'mobile',
-        'remarks',
-        'details_added_by',
+        'call_id',
+        'followup_date',
+        'followup_remarks',
     ];
-
-    public function telecallers()
-    {
-        return $this->belongsTo(User::class, 'details_added_by', 'username');
-    }
 }
