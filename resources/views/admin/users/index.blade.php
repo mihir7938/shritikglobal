@@ -50,10 +50,10 @@
                                             <label for="type">User Type</label>
                                             <select id="type" name="type" class="form-control">
                                                 <option value="">Select</option>
-                                                <option value="1">ADMIN</option>
-                                                <option value="2">TELECALLER</option>
-                                                <option value="3">ASSOCIATE</option>
-                                                <option value="4">CORDINATOR</option>
+                                                <option value="1" @if($selectedType == '1') selected @endif>ADMIN</option>
+                                                <option value="2" @if($selectedType == '2') selected @endif>TELECALLER</option>
+                                                <option value="3" @if($selectedType == '3') selected @endif>ASSOCIATE</option>
+                                                <option value="4" @if($selectedType == '4') selected @endif>CORDINATOR</option>
                                             </select>
                                         </div>
                                     </div>

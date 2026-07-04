@@ -4,7 +4,51 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-12">
-                    <div class="d-flex justify-content-between">
+                    <div class="d-block text-center border border-dark py-1 dashboard-heading mb-2">
+                        <h1 class="m-0">Users</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-primary">
+                        <div class="inner">
+                            <h3>{{ $total_telecallers }}</h3>
+                            <p>Total Telecallers</p>
+                        </div>
+                        <a href="{{route('admin.users')}}?type=2" class="small-box-footer py-3">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-secondary">
+                        <div class="inner">
+                            <h3>{{ $total_associates }}</h3>
+                            <p>Total Associates</p>
+                        </div>
+                        <a href="{{route('admin.users')}}?type=3" class="small-box-footer py-3">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-warning">
+                        <div class="inner">
+                            <h3>{{ $total_cordinators }}</h3>
+                            <p>Total Cordinators</p>
+                        </div>
+                        <a href="{{route('admin.users')}}?type=4" class="small-box-footer py-3">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="d-block text-center border border-dark py-1 dashboard-heading mb-2">
                         <h1 class="m-0">Loan Type</h1>
                     </div>
                 </div>
@@ -33,7 +77,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-6">
-                    <div class="small-box bg-primary">
+                    <div class="small-box bg-danger">
                         <div class="inner">
                             <h3>{{ $unsecureLoans }}</h3>
                             <p>Total UnSecure</p>
@@ -48,7 +92,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-12">
-                    <div class="d-flex justify-content-between">
+                    <div class="d-block text-center border border-dark py-1 dashboard-heading mb-2">
                         <h1 class="m-0">Loan Status</h1>
                     </div>
                 </div>

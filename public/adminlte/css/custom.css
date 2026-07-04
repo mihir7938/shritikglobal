@@ -180,6 +180,14 @@ label.error {
 .complain_products {
   display: none;
 }
+.dashboard-heading {
+  background-color: #e6e6e6;
+}
+.dashboard-heading h1 {
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
 
 /* Layout changes Admin Panel End */
 

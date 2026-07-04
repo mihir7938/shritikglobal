@@ -91,7 +91,10 @@ class AdminController extends Controller {
                 'count' => Customer::where('loanStatus', $status)->count()
             ];
         }
-        return view('admin.index')->with('all_customers', $all_customers)->with('secureLoans', $secureLoans)->with('unsecureLoans', $unsecureLoans)->with('statusCounts', $statusCounts);
+        $total_telecallers = User::where('role_id', Role::TELECALLER_ROLE_ID)->count();
+        $total_associates = User::where('role_id', Role::ASSOCIATE_ROLE_ID)->count();
+        $total_cordinators = User::where('role_id', Role::CORDINATOR_ROLE_ID)->count();
+        return view('admin.index')->with('all_customers', $all_customers)->with('secureLoans', $secureLoans)->with('unsecureLoans', $unsecureLoans)->with('statusCounts', $statusCounts)->with('total_telecallers', $total_telecallers)->with('total_associates', $total_associates)->with('total_cordinators', $total_cordinators);
     }
     public function products(Request $request)
     {
@@ -235,10 +238,14 @@ class AdminController extends Controller {
             return redirect()->route('admin.subproducts');
         }
     }
-    public function getUsers()
+    public function getUsers(Request $request)
     {
-        $users = $this->userService->getAllUsers();
-        return view('admin.users.index')->with('users', $users);
+        if ($request->filled('type')) {
+            $users = $this->userService->getUsersByFilter($request);
+        } else {
+            $users = $this->userService->getAllUsers();
+        }
+        return view('admin.users.index')->with('selectedType', $request->type)->with('users', $users);
     }
     public function fetchUsers(Request $request)
     {
