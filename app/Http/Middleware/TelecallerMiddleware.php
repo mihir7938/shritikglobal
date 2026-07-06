@@ -17,7 +17,7 @@ class TelecallerMiddleware
     public function handle($request, Closure $next)
     {
         $valid_request = false;
-        $url = url('/?url='.$request->url());
+        $url = url('/login?url='.$request->url());
         if (auth()->check() && auth()->user()->role_id == Role::TELECALLER_ROLE_ID) {
             $valid_request = true;
         }

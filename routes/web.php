@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\TelecallerController;
+use App\Http\Controllers\AssociateController;
+use App\Http\Controllers\CordinatorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -79,4 +82,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/old-telecaller/newCall', [AdminController::class, 'getNewCall'])->name('admin.newcall');
     Route::get('/old-telecaller/followup', [AdminController::class, 'getFollowup'])->name('admin.followup');
     Route::get('/old-telecaller/filestatus', [AdminController::class, 'getFileStatus'])->name('admin.filestatus');
+});
+Route::group(['prefix' => 'telecallers', 'middleware' => 'telecaller'], function () {
+    Route::get('/', [TelecallerController::class, 'index'])->name('telecallers.index');
+});
+Route::group(['prefix' => 'associates', 'middleware' => 'associate'], function () {
+    Route::get('/', [AssociateController::class, 'index'])->name('associates.index');
+});
+Route::group(['prefix' => 'cordinators', 'middleware' => 'cordinator'], function () {
+    Route::get('/', [CordinatorController::class, 'index'])->name('cordinators.index');
 });

@@ -31,11 +31,11 @@ class AuthController extends Controller
             return view('auth.login');
         }
         if (Auth::check() && Auth::user()->role_id == Role::ASSOCIATE_ROLE_ID) {
-            $url = url('/associate');
+            $url = url('/associates');
         } elseif (Auth::check() && Auth::user()->role_id == Role::TELECALLER_ROLE_ID) {
-            $url = url('/telecaller');
+            $url = url('/telecallers');
         } elseif (Auth::check() && Auth::user()->role_id == Role::CORDINATOR_ROLE_ID) {
-            $url = url('/cordinator');
+            $url = url('/cordinators');
         } elseif (Auth::check() && Auth::user()->role_id == Role::ADMIN_ROLE_ID) {
             $url = url('/admin');
         }
@@ -67,11 +67,11 @@ class AuthController extends Controller
                     if ($user->role_id == Role::ADMIN_ROLE_ID) {
                         $url = url('/admin');
                     } elseif ($user->role_id == Role::CORDINATOR_ROLE_ID) {
-                        $url = url('/cordinator');
+                        $url = url('/cordinators');
                     } elseif ($user->role_id == Role::TELECALLER_ROLE_ID) {
-                        $url = url('/telecaller');
+                        $url = url('/telecallers');
                     } elseif ($user->role_id == Role::ASSOCIATE_ROLE_ID) {
-                        $url = url('/associate');
+                        $url = url('/associates');
                     }
                     return redirect($url);
                 }
