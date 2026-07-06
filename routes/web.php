@@ -85,6 +85,17 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 });
 Route::group(['prefix' => 'telecallers', 'middleware' => 'telecaller'], function () {
     Route::get('/', [TelecallerController::class, 'index'])->name('telecallers.index');
+    Route::get('/calls', [TelecallerController::class, 'getCalls'])->name('telecallers.calls');
+    Route::get('/calls/export/csv', [TelecallerController::class, 'exportCallsCsv'])->name('telecallers.calls.export.csv');
+    Route::get('/calls/add', [TelecallerController::class, 'addCall'])->name('telecallers.calls.add');
+    Route::post('/calls/save', [TelecallerController::class, 'saveCall'])->name('telecallers.calls.add.save');
+    Route::get('/calls/edit/{id}', [TelecallerController::class, 'editCall'])->name('telecallers.calls.edit');
+    Route::post('/calls/update', [TelecallerController::class, 'updateCall'])->name('telecallers.calls.update.save');
+    Route::get('/calls/delete/{id}', [TelecallerController::class, 'deleteCall'])->name('telecallers.calls.delete');
+    Route::get('/call/{id}/details', [TelecallerController::class, 'getCallDetails'])
+    ->name('telecallers.calls.details');
+    Route::post('/call/update-followup', [TelecallerController::class, 'updateFollowup'])->name('telecallers.calls.update.followup');
+    Route::get('/call/{id}/followup-logs', [TelecallerController::class, 'getFollowupLogs'])->name('telecallers.calls.followup.logs');
 });
 Route::group(['prefix' => 'associates', 'middleware' => 'associate'], function () {
     Route::get('/', [AssociateController::class, 'index'])->name('associates.index');
