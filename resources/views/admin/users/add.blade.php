@@ -71,12 +71,12 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label></label>
-                                            <div class="group">
+                                            <div class="loan_group">
                                                 <input type="checkbox" class="mr-2" id="secure" name="secure" value="1">
-                                                <label for="secure">Secure Dashboard</label>
+                                                <label for="secure">Secure Loan</label>
                                                 <span class="mx-2"></span>
                                                 <input type="checkbox" class="mr-2" id="unsecure" name="unsecure" value="1">
-                                                <label for="unsecure">UnSecure Dashboard</label>
+                                                <label for="unsecure">UnSecure Loan</label>
                                             </div>
                                         </div>
                                     </div>
@@ -107,6 +107,9 @@
 @section('footer')
 <script>
     $(function () {
+        $.validator.addMethod("loanTypeRequired", function(value, element) {
+            return $('#secure').is(':checked') || $('#unsecure').is(':checked');
+        }, "Please select at least one option.");
         $('#add-users-form').validate({
             rules:{
                 name:{
@@ -123,6 +126,9 @@
                 },
                 type:{
                     required: true
+                },
+                secure: {
+                    loanTypeRequired: true
                 }
             },
             messages:{
@@ -137,8 +143,22 @@
                 },
                 type:{
                     required: "Plese select type.",
+                },
+                secure: {
+                    loanTypeRequired: "Please select at least one option."
+                }
+            },
+            errorPlacement: function(error, element) {
+                if (element.attr("name") == "secure") {
+                    error.insertAfter($('.loan_group'));
+                } else {
+                    error.insertAfter(element);
                 }
             }
+        });
+        $('#secure, #unsecure').on('change', function () {
+            $('#secure').valid();
+            $('#unsecure').valid();
         });
     });
 </script>

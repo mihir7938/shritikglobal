@@ -72,7 +72,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('telecallers.calls')}}" class="nav-link {{(Route::currentRouteName() == 'telecallers.calls') ? 'active' : '' }}">
+                                <a href="{{route('telecallers.calls')}}" class="nav-link {{(Route::currentRouteName() == 'telecallers.calls') || (Route::currentRouteName() == 'telecallers.calls.edit') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-phone-alt"></i>
                                     <p>All Calls</p>
                                 </a>

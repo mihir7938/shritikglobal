@@ -36,14 +36,52 @@ class TelecallerController extends Controller
 
     public function index(Request $request)
     {
-        return view('telecallers.index');
+        $user = Auth::user();
+        $baseQuery = TelecallerCallMaster::where('created_by', $user->id);
+        if ($user->canAccessSecure && !$user->canAccessUnSecure) {
+            $baseQuery->whereHas('subProducts', function ($q) {
+                $q->where('type', 1);
+            });
+        } elseif (!$user->canAccessSecure && $user->canAccessUnSecure) {
+            $baseQuery->whereHas('subProducts', function ($q) {
+                $q->where('type', 0);
+            });
+        } elseif (!$user->canAccessSecure && !$user->canAccessUnSecure) {
+            $baseQuery->whereNull('id');
+        }
+        $total_calls = (clone $baseQuery)->count();
+        $total_open_calls = (clone $baseQuery)->where('status', 'Open')->count();
+        $total_closed_calls = TelecallerCallMaster::where('created_by', Auth::user()->id)->where('status', 'Closed')->count();
+        $total_closed_calls = (clone $baseQuery)->where('status', 'Closed')->count();
+        $secureLoans = (clone $baseQuery)->whereHas('subProducts', function ($q) {
+            $q->where('type', 1);
+        })->count();
+        $unsecureLoans = (clone $baseQuery)->whereHas('subProducts', function ($q) {
+            $q->where('type', 0);
+        })->count();
+        return view('telecallers.index')->with('total_calls', $total_calls)->with('total_open_calls', $total_open_calls)->with('total_closed_calls', $total_closed_calls)->with('secureLoans', $secureLoans)->with('unsecureLoans', $unsecureLoans);
     }
 
     private function callQuery($request)
     {
-         $query = TelecallerCallMaster::with([
+        $user = Auth::user();
+        $query = TelecallerCallMaster::with([
             'subProducts'
         ]);
+        $query->whereHas('subProducts', function ($q) use ($user) {
+            if ($user->canAccessSecure && !$user->canAccessUnSecure) {
+                $q->where('type', 1);
+            } elseif (!$user->canAccessSecure && $user->canAccessUnSecure) {
+                $q->where('type', 0);
+            } elseif (!$user->canAccessSecure && !$user->canAccessUnSecure) {
+                $q->whereNull('id');
+            }
+        });
+        if ($request->type != '') {
+            $query->whereHas('subProducts', function ($q) use ($request) {
+                $q->where('type', $request->type);
+            });
+        }
         if($request->status){
             $query->where('status', $request->status);
         }

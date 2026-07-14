@@ -32,7 +32,16 @@
                         <div class="card card-primary">
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <select id="type" name="type" class="form-control" {{ (Auth::user()->canAccessSecure == 1 && Auth::user()->canAccessUnSecure == 1) ? '' : 'disabled' }}>
+                                                <option value="">Select Loan Type</option>
+                                                <option value="1" @if(Auth::user()->canAccessSecure == 1 && !Auth::user()->canAccessUnSecure) selected @endif>Secure</option>
+                                                <option value="0" @if(!Auth::user()->canAccessSecure && Auth::user()->canAccessUnSecure == 1) selected @endif>UnSecure</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <select id="sub_product" name="sub_product" class="form-control">
                                                 <option value="">Select Product</option>
@@ -42,7 +51,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <select id="status" name="status" class="form-control">
                                                 <option value="">Select Status</option>
@@ -169,6 +178,25 @@
 </style>
 <script>
     $(document).ready(function() {
+        let params = new URLSearchParams(window.location.search);
+        if(params.has('status')){
+            let status = params.get('status');
+            if ($('#status option[value="' + status + '"]').length) {
+                $('#status').val(status);
+            } else {
+                $('#status').val('');
+            }
+        }
+        @if(Auth::user()->canAccessSecure == 1 && Auth::user()->canAccessUnSecure == 1)
+            if(params.has('type')){
+                let type = params.get('type');
+                if ($('#type option[value="' + type + '"]').length) {
+                    $('#type').val(type);
+                } else {
+                    $('#type').val('');
+                }
+            }
+        @endif
         $('.select2').select2();
         $("#start_date").datepicker({
             'format': 'dd/mm/yyyy',
@@ -197,6 +225,7 @@
            ajax: {
                 url: '{{route("telecallers.calls")}}',
                 data: function (d) {
+                    d.type = $('#type').val();
                     d.status = $('#status').val();
                     d.sub_product = $('#sub_product').val();
                     d.start_date = $('#start_date').val();
@@ -216,6 +245,7 @@
                     text: 'CSV',
                     action: function (e, dt, node, config) {
                         var params = $.param({
+                            type: $('#type').val(),
                             status: $('#status').val(),
                             sub_product: $('#sub_product').val(),
                             start_date: $('#start_date').val(),
