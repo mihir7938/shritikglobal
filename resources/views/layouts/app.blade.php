@@ -85,9 +85,21 @@
                             </li>
                         @elseif(Auth::check() && Auth::user()->isCordinator())
                             <li class="nav-item">
-                                <a href="{{route('admin.index')}}" class="nav-link {{(Route::currentRouteName() == 'admin.index') ? 'active' : '' }}">
+                                <a href="{{route('cordinators.index')}}" class="nav-link {{(Route::currentRouteName() == 'cordinators.index') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-tachometer-alt"></i>
                                     <p>Dashboard</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('cordinators.customers')}}" class="nav-link {{(Route::currentRouteName() == 'cordinators.customers') || (Route::currentRouteName() == 'cordinators.customers.edit') ? 'active' : '' }}">
+                                    <i class="nav-icon fas fa-user"></i>
+                                    <p>All Customers</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('cordinators.customers.add')}}" class="nav-link {{(Route::currentRouteName() == 'cordinators.customers.add') ? 'active' : '' }}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Add New Customer</p>
                                 </a>
                             </li>
                         @elseif(Auth::check() && Auth::user()->isAdmin())
