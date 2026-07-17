@@ -59,9 +59,21 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         @if(Auth::check() && (Auth::user()->isAssociate()))
                             <li class="nav-item">
-                                <a href="{{route('admin.index')}}" class="nav-link {{(Route::currentRouteName() == 'admin.index') ? 'active' : '' }}">
+                                <a href="{{route('associates.index')}}" class="nav-link {{(Route::currentRouteName() == 'associates.index') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-tachometer-alt"></i>
                                     <p>Dashboard</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('associates.customers')}}" class="nav-link {{(Route::currentRouteName() == 'associates.customers') || (Route::currentRouteName() == 'associates.customers.edit') ? 'active' : '' }}">
+                                    <i class="nav-icon fas fa-user"></i>
+                                    <p>All Customers</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('associates.customers.add')}}" class="nav-link {{(Route::currentRouteName() == 'associates.customers.add') ? 'active' : '' }}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Add New Customer</p>
                                 </a>
                             </li>
                         @elseif(Auth::check() && Auth::user()->isTelecaller())

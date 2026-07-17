@@ -99,6 +99,19 @@ Route::group(['prefix' => 'telecallers', 'middleware' => 'telecaller'], function
 });
 Route::group(['prefix' => 'associates', 'middleware' => 'associate'], function () {
     Route::get('/', [AssociateController::class, 'index'])->name('associates.index');
+    Route::get('/customers', [AssociateController::class, 'getCustomers'])->name('associates.customers');
+    Route::get('/customers/export/csv', [AssociateController::class, 'exportCustomersCsv'])->name('associates.customers.export.csv');
+    Route::get('/customers/add', [AssociateController::class, 'addCustomer'])->name('associates.customers.add');
+    Route::post('/customers/save', [AssociateController::class, 'saveCustomer'])->name('associates.customers.add.save');
+    Route::get('/customers/edit/{id}', [AssociateController::class, 'editCustomer'])->name('associates.customers.edit');
+    Route::post('/customers/update', [AssociateController::class, 'updateCustomer'])->name('associates.customers.update.save');
+    Route::get('/customers/delete/{id}', [AssociateController::class, 'deleteCustomer'])->name('associates.customers.delete');
+    Route::get('/customer/{id}/details', [AssociateController::class, 'getCustomerDetails'])
+    ->name('associates.customers.details');
+    Route::post('/customer/update-status', [AssociateController::class, 'updateStatus'])->name('associates.customers.update.status');
+    Route::post('/customer/update-bank', [AssociateController::class, 'updateBank'])->name('associates.customers.update.bank');
+    Route::get('/customer/{id}/status-logs', [AssociateController::class, 'getStatusLogs'])->name('associates.customers.status.logs');
+    Route::get('/customer/{id}/bank-logs', [AssociateController::class, 'getBankLogs'])->name('associates.customers.bank.logs');
 });
 Route::group(['prefix' => 'cordinators', 'middleware' => 'cordinator'], function () {
     Route::get('/', [CordinatorController::class, 'index'])->name('cordinators.index');
