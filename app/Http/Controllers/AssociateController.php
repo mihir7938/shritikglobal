@@ -46,7 +46,7 @@ class AssociateController extends Controller
     public function index(Request $request)
     {
         $user = Auth::user();
-        $baseQuery = Customer::query();
+        $baseQuery = Customer::where('associateId', $user->username);
         if ($user->canAccessSecure && !$user->canAccessUnSecure) {
             $baseQuery->whereHas('subProducts', function ($q) {
                 $q->where('type', 1);
@@ -79,18 +79,6 @@ class AssociateController extends Controller
         ];
         $statusCounts = [];
         foreach ($loanStatuses as $status) {
-            $query = Customer::where('loanStatus', $status);
-            if ($user->canAccessSecure && !$user->canAccessUnSecure) {
-                $query->whereHas('subProducts', function ($q) {
-                    $q->where('type', 1);
-                });
-            } elseif (!$user->canAccessSecure && $user->canAccessUnSecure) {
-                $query->whereHas('subProducts', function ($q) {
-                    $q->where('type', 0);
-                });
-            } elseif (!$user->canAccessSecure && !$user->canAccessUnSecure) {
-                $query->whereNull('id');
-            }
             $statusCounts[] = [
                 'name' => $status,
                 'count' => (clone $baseQuery)->where('loanStatus', $status)->count()

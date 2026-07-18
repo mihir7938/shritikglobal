@@ -51,7 +51,6 @@ class TelecallerController extends Controller
         }
         $total_calls = (clone $baseQuery)->count();
         $total_open_calls = (clone $baseQuery)->where('status', 'Open')->count();
-        $total_closed_calls = TelecallerCallMaster::where('created_by', Auth::user()->id)->where('status', 'Closed')->count();
         $total_closed_calls = (clone $baseQuery)->where('status', 'Closed')->count();
         $secureLoans = (clone $baseQuery)->whereHas('subProducts', function ($q) {
             $q->where('type', 1);

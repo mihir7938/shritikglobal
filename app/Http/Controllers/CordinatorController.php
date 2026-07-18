@@ -79,18 +79,6 @@ class CordinatorController extends Controller
         ];
         $statusCounts = [];
         foreach ($loanStatuses as $status) {
-            $query = Customer::where('loanStatus', $status);
-            if ($user->canAccessSecure && !$user->canAccessUnSecure) {
-                $query->whereHas('subProducts', function ($q) {
-                    $q->where('type', 1);
-                });
-            } elseif (!$user->canAccessSecure && $user->canAccessUnSecure) {
-                $query->whereHas('subProducts', function ($q) {
-                    $q->where('type', 0);
-                });
-            } elseif (!$user->canAccessSecure && !$user->canAccessUnSecure) {
-                $query->whereNull('id');
-            }
             $statusCounts[] = [
                 'name' => $status,
                 'count' => (clone $baseQuery)->where('loanStatus', $status)->count()
