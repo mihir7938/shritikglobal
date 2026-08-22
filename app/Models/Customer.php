@@ -89,6 +89,10 @@ class Customer extends Model
     {
         return $this->hasMany(StatusRemark::class, 'customer_id');
     }
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'productId', 'id');
+    }
     public function subProducts()
     {
         return $this->belongsTo(SubProduct::class, 'subProductId', 'id');

@@ -60,6 +60,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/customers/add', [AdminController::class, 'addCustomer'])->name('admin.customers.add');
     Route::post('/customers/save', [AdminController::class, 'saveCustomer'])->name('admin.customers.add.save');
     Route::get('/customers/edit/{id}', [AdminController::class, 'editCustomer'])->name('admin.customers.edit');
+    Route::get('/customers/print/{id}', [AdminController::class, 'printCustomer'])->name('admin.customers.print');
     Route::post('/customers/update', [AdminController::class, 'updateCustomer'])->name('admin.customers.update.save');
     Route::get('/customers/delete/{id}', [AdminController::class, 'deleteCustomer'])->name('admin.customers.delete');
     Route::get('/customer/{id}/details', [AdminController::class, 'getCustomerDetails'])

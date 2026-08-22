@@ -375,6 +375,9 @@ class AdminController extends Controller {
                             <a class="dropdown-item" href="'.route('admin.customers.delete',$row->id).'">
                                 Delete
                             </a>
+                            <a href="javascript:void(0)" class="dropdown-item openPrintWindow" data-id="'.$row->id.'">
+                                Print
+                            </a>
                             <a href="javascript:void(0)" class="dropdown-item openStatusModal" data-id="'.$row->id.'">
                                 Change Status
                             </a>
@@ -699,6 +702,16 @@ class AdminController extends Controller {
             $request->session()->put('alert-type', 'alert-warning');
             return redirect()->route('admin.customers');
         }
+    }
+    public function printCustomer($id)
+    {
+        $customer = Customer::with([
+            'subProducts',
+            'telecallers',
+            'associates',
+            'product',
+        ])->findOrFail($id);
+        return view('admin.customers.print', compact('customer'));
     }
     public function getCustomerDetails($id)
     {
