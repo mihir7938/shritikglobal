@@ -10,6 +10,21 @@
     <style>
         @media print {
             .no-print { display: none !important; }
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+            }
+
+            .page-break-before {
+                page-break-before: always !important;
+                break-before: page !important;
+            }
+
+            .print-section {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
         }
         * {
             box-sizing: border-box;
@@ -77,19 +92,30 @@
             min-height: 60px;
         }
         .print-section {
-            border-top: 1px solid #007bff;
-            text-align: center;
-            margin: 22px 0 18px;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            margin: 22px 0 18px 0;
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .print-section::before,
+        .print-section::after {
+            content: "";
             height: 1px;
+            background: #007bff;
+            flex: 1;
         }
         .print-section span {
-            position: relative;
-            top: -11px;
+            display: inline-block;
             background: #fff;
             border: 1px solid #007bff;
             color: #007bff;
             padding: 5px 14px;
             font-size: 12px;
+            line-height: 1;
+            white-space: nowrap;
+            margin: 0 8px;
         }
         .print-radio {
             display: inline-block;
@@ -251,6 +277,226 @@
                 <div class="print-label">No of Dependent</div>
                 <div class="print-value">
                     {{ $customer->noOfDependent }}
+                </div>
+            </div>
+        </div>
+        <div class="print-section">
+            <span>BANK DETAILS</span>
+        </div>
+        <div class="print-row">
+            <div class="print-col-4">
+                <div class="print-label">Bank Name</div>
+                <div class="print-value">
+                    {{ $customer->customerBankName }}
+                </div>
+            </div>
+            <div class="print-col-4">
+                <div class="print-label">Account Type</div>
+                <div class="print-value">
+                    {{ $customer->isSavingsAccount === null ? '' : ($customer->isSavingsAccount == 1 ? 'Savings' : 'Current') }}
+                </div>
+            </div>
+            <div class="print-col-4">
+                <div class="print-label">Bank PDF</div>
+                <div class="print-value">
+                    @if($customer->bankDocumentPath)
+                        Uploaded
+                    @else
+                        Not Uploaded
+                    @endif
+                </div>
+            </div>
+        </div>
+        <div class="print-section">
+            <span>PROFESSION</span>
+        </div>
+        <div class="print-row">
+            <div class="print-col-4">
+                <div class="print-label">Profession Type</div>
+                <div class="print-value">
+                    {{ $customer->profession_type }}
+                </div>
+            </div>
+            @if($customer->profession_type == 'Job')
+                <div class="print-col-4">
+                    <div class="print-label">Job Type</div>
+                    <div class="print-value">
+                        {{ $customer->job_type }}
+                    </div>
+                </div>
+            @endif
+            <div class="print-col-4">
+                <div class="print-label">Profession Details</div>
+                <div class="print-value print-textarea">
+                    {!! nl2br(e($customer->profession_details)) !!}
+                </div>
+            </div>
+        </div>
+        <div class="page-break-before">
+            <div class="print-section">
+                <span>ADDRESS (RESIDENTIAL)</span>
+            </div>
+            <div class="print-row">
+                <div class="print-col-4">
+                    <div class="print-label">Postal Address</div>
+                    <div class="print-value">
+                        {{ $customer->res_address }}
+                    </div>
+                </div>
+                <div class="print-col-4">
+                    <div class="print-label">Landmark</div>
+                    <div class="print-value">
+                        {{ $customer->res_landmark }}
+                    </div>
+                </div>
+                <div class="print-col-4">
+                    <div class="print-label">City</div>
+                    <div class="print-value">
+                        {{ $customer->res_city }}
+                    </div>
+                </div>
+                <div class="print-col-4">
+                    <div class="print-label">State</div>
+                    <div class="print-value">
+                        {{ $customer->res_state }}
+                    </div>
+                </div>
+                <div class="print-col-4">
+                    <div class="print-label">Zip</div>
+                    <div class="print-value">
+                        {{ $customer->res_pincode }}
+                    </div>
+                </div>
+                <div class="print-col-4">
+                    <div class="print-label">Property Type</div>
+                    <div class="print-value">
+                        {{ $customer->isOwned == 'true' ? 'Owned' : ($customer->isOwned == 'false' ? 'Rented' : '') }}
+                    </div>
+                </div>
+                <div class="print-col-4">
+                    <div class="print-label">Property Tax</div>
+                    <div class="print-value">
+                        {{ $customer->resPropertyTaxDoc ? 'Uploaded' : 'Not Uploaded' }}
+                    </div>
+                </div>
+                <div class="print-col-4">
+                    <div class="print-label">Light Bill</div>
+                    <div class="print-value">
+                        {{ $customer->resLightBillDoc ? 'Uploaded' : 'Not Uploaded' }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="print-section">
+            <span>ADDRESS (PROPERTY)</span>
+        </div>
+        <div class="print-row">
+            <div class="print-col-4">
+                <div class="print-label">Postal Address</div>
+                <div class="print-value">
+                    {{ $customer->prop_address }}
+                </div>
+            </div>
+            <div class="print-col-4">
+                <div class="print-label">Landmark</div>
+                <div class="print-value">
+                    {{ $customer->prop_landmark }}
+                </div>
+            </div>
+            <div class="print-col-4">
+                <div class="print-label">City</div>
+                <div class="print-value">
+                    {{ $customer->prop_city }}
+                </div>
+            </div>
+            <div class="print-col-4">
+                <div class="print-label">State</div>
+                <div class="print-value">
+                    {{ $customer->prop_state }}
+                </div>
+            </div>
+            <div class="print-col-4">
+                <div class="print-label">Zip</div>
+                <div class="print-value">
+                    {{ $customer->prop_pincode }}
+                </div>
+            </div>
+        </div>
+        <div class="print-section">
+            <span>CO APPLICANT DETAILS</span>
+        </div>
+        <div class="print-row">
+            <div class="print-col-3">
+                <div class="print-label">Full Name</div>
+                <div class="print-value">
+                    {{ $customer->co_fullname }}
+                </div>
+            </div>
+            <div class="print-col-3">
+                <div class="print-label">Relation</div>
+                <div class="print-value">
+                    {{ $customer->co_relation }}
+                </div>
+            </div>
+            <div class="print-col-3">
+                <div class="print-label">Date of Birth</div>
+                <div class="print-value">
+                    {{ $customer->co_dob ? \Carbon\Carbon::parse($customer->co_dob)->format('d/m/Y') : '' }}
+                </div>
+            </div>
+            <div class="print-col-3">
+                <div class="print-label">Mobile Number</div>
+                <div class="print-value">
+                    {{ $customer->co_mobile }}
+                </div>
+            </div>
+            <div class="print-col-4">
+                <div class="print-label">Profession Type</div>
+                <div class="print-value">
+                    {{ $customer->co_profession_type }}
+                </div>
+            </div>
+            @if($customer->co_profession_type == 'Job')
+                <div class="print-col-4">
+                    <div class="print-label">Job Type</div>
+                    <div class="print-value">
+                        {{ $customer->co_job_type }}
+                    </div>
+                </div>
+            @endif
+            <div class="print-col-4">
+                <div class="print-label">Profession Details</div>
+                <div class="print-value print-textarea">
+                    {!! nl2br(e($customer->co_profession_details)) !!}
+                </div>
+            </div>
+        </div>
+        <div class="print-section">
+            <span>KYC DETAILS</span>
+        </div>
+        <div class="print-row">
+            <div class="print-col-6">
+                <div class="print-label">Aadhaar</div>
+                <div class="print-value">
+                    {{ $customer->aadhar }}
+                </div>
+            </div>
+            <div class="print-col-6">
+                <div class="print-label">Aadhaar Image</div>
+                <div class="print-value">
+                    {{ $customer->aadharImage ? 'Uploaded' : 'Not Uploaded' }}
+                </div>
+            </div>
+            <div class="print-col-6">
+                <div class="print-label">PAN Number</div>
+                <div class="print-value">
+                    {{ $customer->pan }}
+                </div>
+            </div>
+            <div class="print-col-6">
+                <div class="print-label">PAN Image</div>
+                <div class="print-value">
+                    {{ $customer->panImage ? 'Uploaded' : 'Not Uploaded' }}
                 </div>
             </div>
         </div>
