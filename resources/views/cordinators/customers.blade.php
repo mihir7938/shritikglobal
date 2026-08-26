@@ -454,6 +454,15 @@
                 table.draw();
             }
         });
+        $(document).on('click', '.openPrintWindow', function () {
+            let customerId = $(this).data('id');
+            let url = "{{ route('cordinators.customers.print', ':id') }}".replace(':id', customerId);
+            window.open(
+                url,
+                '_blank',
+                'width=1200,height=900'
+            );
+        });
         $(document).on('click','.openStatusModal',function(){
             $('#statusForm')[0].reset();
             if ($('#statusForm').data('validator')) {

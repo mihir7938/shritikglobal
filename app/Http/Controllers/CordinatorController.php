@@ -144,6 +144,9 @@ class CordinatorController extends Controller
                             <a class="dropdown-item" href="'.route('cordinators.customers.delete',$row->id).'">
                                 Delete
                             </a>
+                            <a href="javascript:void(0)" class="dropdown-item openPrintWindow" data-id="'.$row->id.'">
+                                Print
+                            </a>
                             <a href="javascript:void(0)" class="dropdown-item openStatusModal" data-id="'.$row->id.'">
                                 Change Status
                             </a>
@@ -468,6 +471,16 @@ class CordinatorController extends Controller
             $request->session()->put('alert-type', 'alert-warning');
             return redirect()->route('cordinators.customers');
         }
+    }
+    public function printCustomer($id)
+    {
+        $customer = Customer::with([
+            'subProducts',
+            'telecallers',
+            'associates',
+            'product',
+        ])->findOrFail($id);
+        return view('cordinators.print', compact('customer'));
     }
     public function getCustomerDetails($id)
     {

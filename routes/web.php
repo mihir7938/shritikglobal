@@ -60,9 +60,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/customers/add', [AdminController::class, 'addCustomer'])->name('admin.customers.add');
     Route::post('/customers/save', [AdminController::class, 'saveCustomer'])->name('admin.customers.add.save');
     Route::get('/customers/edit/{id}', [AdminController::class, 'editCustomer'])->name('admin.customers.edit');
-    Route::get('/customers/print/{id}', [AdminController::class, 'printCustomer'])->name('admin.customers.print');
     Route::post('/customers/update', [AdminController::class, 'updateCustomer'])->name('admin.customers.update.save');
     Route::get('/customers/delete/{id}', [AdminController::class, 'deleteCustomer'])->name('admin.customers.delete');
+    Route::get('/customers/print/{id}', [AdminController::class, 'printCustomer'])->name('admin.customers.print');
     Route::get('/customer/{id}/details', [AdminController::class, 'getCustomerDetails'])
     ->name('admin.customers.details');
     Route::post('/customer/update-status', [AdminController::class, 'updateStatus'])->name('admin.customers.update.status');
@@ -107,6 +107,7 @@ Route::group(['prefix' => 'associates', 'middleware' => 'associate'], function (
     Route::get('/customers/edit/{id}', [AssociateController::class, 'editCustomer'])->name('associates.customers.edit');
     Route::post('/customers/update', [AssociateController::class, 'updateCustomer'])->name('associates.customers.update.save');
     Route::get('/customers/delete/{id}', [AssociateController::class, 'deleteCustomer'])->name('associates.customers.delete');
+    Route::get('/customers/print/{id}', [AssociateController::class, 'printCustomer'])->name('associates.customers.print');
     Route::get('/customer/{id}/details', [AssociateController::class, 'getCustomerDetails'])
     ->name('associates.customers.details');
     Route::post('/customer/update-status', [AssociateController::class, 'updateStatus'])->name('associates.customers.update.status');
@@ -123,6 +124,7 @@ Route::group(['prefix' => 'cordinators', 'middleware' => 'cordinator'], function
     Route::get('/customers/edit/{id}', [CordinatorController::class, 'editCustomer'])->name('cordinators.customers.edit');
     Route::post('/customers/update', [CordinatorController::class, 'updateCustomer'])->name('cordinators.customers.update.save');
     Route::get('/customers/delete/{id}', [CordinatorController::class, 'deleteCustomer'])->name('cordinators.customers.delete');
+    Route::get('/customers/print/{id}', [CordinatorController::class, 'printCustomer'])->name('cordinators.customers.print');
     Route::get('/customer/{id}/details', [CordinatorController::class, 'getCustomerDetails'])
     ->name('cordinators.customers.details');
     Route::post('/customer/update-status', [CordinatorController::class, 'updateStatus'])->name('cordinators.customers.update.status');

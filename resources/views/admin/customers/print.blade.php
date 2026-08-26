@@ -293,7 +293,7 @@
             <div class="print-col-4">
                 <div class="print-label">Account Type</div>
                 <div class="print-value">
-                    {{ $customer->isSavingsAccount === null ? '' : ($customer->isSavingsAccount == 1 ? 'Savings' : 'Current') }}
+                    {{ ($customer->isSavingsAccount === null || $customer->isSavingsAccount === '') ? '' : ($customer->isSavingsAccount == 1 ? 'Savings' : 'Current') }}
                 </div>
             </div>
             <div class="print-col-4">

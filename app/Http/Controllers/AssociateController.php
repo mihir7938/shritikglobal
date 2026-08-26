@@ -136,6 +136,9 @@ class AssociateController extends Controller
                             <a class="dropdown-item" href="'.route('associates.customers.delete',$row->id).'">
                                 Delete
                             </a>
+                            <a href="javascript:void(0)" class="dropdown-item openPrintWindow" data-id="'.$row->id.'">
+                                Print
+                            </a>
                             <a href="javascript:void(0)" class="dropdown-item openStatusModal" data-id="'.$row->id.'">
                                 Change Status
                             </a>
@@ -435,6 +438,14 @@ class AssociateController extends Controller
             $request->session()->put('alert-type', 'alert-warning');
             return redirect()->route('associates.customers');
         }
+    }
+    public function printCustomer($id)
+    {
+        $customer = Customer::with([
+            'subProducts',
+            'product',
+        ])->findOrFail($id);
+        return view('associates.print', compact('customer'));
     }
     public function getCustomerDetails($id)
     {
