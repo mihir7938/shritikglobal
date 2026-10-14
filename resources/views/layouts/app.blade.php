@@ -114,6 +114,18 @@
                                     <p>Add New Customer</p>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{route('cordinators.users')}}" class="nav-link {{(Route::currentRouteName() == 'cordinators.users') || (Route::currentRouteName() == 'cordinators.users.edit') ? 'active' : '' }}">
+                                    <i class="nav-icon fas fa-user"></i>
+                                    <p>All Associates</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('cordinators.users.add')}}" class="nav-link {{(Route::currentRouteName() == 'cordinators.users.add') ? 'active' : '' }}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Add New Associate</p>
+                                </a>
+                            </li>
                         @elseif(Auth::check() && Auth::user()->isAdmin())
                             <li class="nav-item">
                                 <a href="{{route('admin.index')}}" class="nav-link {{(Route::currentRouteName() == 'admin.index') ? 'active' : '' }}">

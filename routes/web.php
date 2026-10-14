@@ -131,4 +131,9 @@ Route::group(['prefix' => 'cordinators', 'middleware' => 'cordinator'], function
     Route::post('/customer/update-bank', [CordinatorController::class, 'updateBank'])->name('cordinators.customers.update.bank');
     Route::get('/customer/{id}/status-logs', [CordinatorController::class, 'getStatusLogs'])->name('cordinators.customers.status.logs');
     Route::get('/customer/{id}/bank-logs', [CordinatorController::class, 'getBankLogs'])->name('cordinators.customers.bank.logs');
+    Route::get('/users', [CordinatorController::class, 'getUsers'])->name('cordinators.users');
+    Route::get('/users/add', [CordinatorController::class, 'addUser'])->name('cordinators.users.add');
+    Route::post('/users/save', [CordinatorController::class, 'saveUser'])->name('cordinators.users.add.save');
+    Route::get('/users/edit/{id}', [CordinatorController::class, 'editUser'])->name('cordinators.users.edit');
+    Route::post('/users/update', [CordinatorController::class, 'updateUser'])->name('cordinators.users.update.save');
 });

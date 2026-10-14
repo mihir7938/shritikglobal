@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\RegisterRequest;
 use App\Services\UploadImageService;
 use App\Services\UserService;
 use App\Services\ProductService;
@@ -47,6 +48,7 @@ class CordinatorController extends Controller
     {
         $user = Auth::user();
         $baseQuery = Customer::query();
+        $baseQuery->where('createdBy', $user->username);
         if ($user->canAccessSecure && !$user->canAccessUnSecure) {
             $baseQuery->whereHas('subProducts', function ($q) {
                 $q->where('type', 1);
@@ -125,7 +127,7 @@ class CordinatorController extends Controller
             $end = \Carbon\Carbon::createFromFormat('d/m/Y', $request->end_date)->format('Y-m-d');
             $query->whereBetween('doj', [$start, $end]);
         }
-        return $query->orderBy('doj', 'desc');
+        return $query->where('createdBy', $user->username)->orderBy('doj', 'desc');
     }
     public function getCustomers(Request $request)
     {
@@ -536,5 +538,57 @@ class CordinatorController extends Controller
         $customer = Customer::findOrFail($id);
         $logs = CustomerBank::where('customer_id', $id)->orderBy('created_at', 'asc')->get();
         return view('cordinators.bank_logs')->with('customer', $customer)->with('logs', $logs);
+    }
+    public function getUsers(Request $request)
+    {
+        $users = User::where('created_by', Auth::user()->id)->orderBy('created_at', 'desc')->get();
+        return view('cordinators.users')->with('users', $users);
+    }
+    public function addUser()
+    {
+        return view('cordinators.add_users');
+    }
+    public function saveUser(RegisterRequest $request)
+    {
+        $user = $this->userService->create($request);
+        $request->session()->put('message', 'Associate has been added successfully.');
+        $request->session()->put('alert-type', 'alert-success');
+        return redirect()->route('cordinators.users');
+    }
+    public function editUser(Request $request, $id)
+    {
+        try{
+            $user = User::where('id', $id)->where('created_by', Auth::user()->id)->first();
+            if(!$user){
+                throw new BadRequestException('Invalid Request id');
+            }
+            return view('cordinators.edit_users')->with('user', $user);
+        }catch(\Exception $e){
+            $request->session()->put('message', $e->getMessage());
+            $request->session()->put('alert-type', 'alert-warning');
+            return redirect()->route('cordinators.users');
+        }
+    }
+    public function updateUser(Request $request)
+    {
+        try{
+            $user = $this->userService->getUserById($request->id);
+            if(!$user){
+                throw new BadRequestException('Invalid Request id');
+            }
+            $data['name'] = $request->name;
+            $data['email'] = $request->email;
+            $data['address'] = $request->address;
+            $data['canAccessSecure'] = $request->has('secure') ? 1 : 0;
+            $data['canAccessUnSecure'] = $request->has('unsecure') ? 1 : 0;
+            $this->userService->update($user, $data);
+            $request->session()->put('message', 'Associate has been updated successfully.');
+            $request->session()->put('alert-type', 'alert-success');
+            return redirect()->route('cordinators.users');
+        }catch(\Exception $e){
+            $request->session()->put('message', $e->getMessage());
+            $request->session()->put('alert-type', 'alert-warning');
+            return redirect()->route('cordinators.users');
+        }
     }
 }

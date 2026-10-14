@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Services\UploadImageService;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class UserService
 {
@@ -46,6 +47,7 @@ class UserService
             $user->password = Hash::make($lastFourDigits);
             $user->canAccessSecure = $request->has('secure') ? 1 : 0;
             $user->canAccessUnSecure = $request->has('unsecure') ? 1 : 0;
+            $user->created_by = Auth::user()->id;
             $user->status = $request->active;
             $user->save();
             return $user;
