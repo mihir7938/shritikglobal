@@ -86,6 +86,20 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 });
 Route::group(['prefix' => 'telecallers', 'middleware' => 'telecaller'], function () {
     Route::get('/', [TelecallerController::class, 'index'])->name('telecallers.index');
+    Route::get('/customers', [TelecallerController::class, 'getCustomers'])->name('telecallers.customers');
+    Route::get('/customers/export/csv', [TelecallerController::class, 'exportCustomersCsv'])->name('telecallers.customers.export.csv');
+    Route::get('/customers/add', [TelecallerController::class, 'addCustomer'])->name('telecallers.customers.add');
+    Route::post('/customers/save', [TelecallerController::class, 'saveCustomer'])->name('telecallers.customers.add.save');
+    Route::get('/customers/edit/{id}', [TelecallerController::class, 'editCustomer'])->name('telecallers.customers.edit');
+    Route::post('/customers/update', [TelecallerController::class, 'updateCustomer'])->name('telecallers.customers.update.save');
+    Route::get('/customers/delete/{id}', [TelecallerController::class, 'deleteCustomer'])->name('telecallers.customers.delete');
+    Route::get('/customers/print/{id}', [TelecallerController::class, 'printCustomer'])->name('telecallers.customers.print');
+    Route::get('/customer/{id}/details', [TelecallerController::class, 'getCustomerDetails'])
+    ->name('telecallers.customers.details');
+    Route::post('/customer/update-status', [TelecallerController::class, 'updateStatus'])->name('telecallers.customers.update.status');
+    Route::post('/customer/update-bank', [TelecallerController::class, 'updateBank'])->name('telecallers.customers.update.bank');
+    Route::get('/customer/{id}/status-logs', [TelecallerController::class, 'getStatusLogs'])->name('telecallers.customers.status.logs');
+    Route::get('/customer/{id}/bank-logs', [TelecallerController::class, 'getBankLogs'])->name('telecallers.customers.bank.logs');
     Route::get('/calls', [TelecallerController::class, 'getCalls'])->name('telecallers.calls');
     Route::get('/calls/export/csv', [TelecallerController::class, 'exportCallsCsv'])->name('telecallers.calls.export.csv');
     Route::get('/calls/add', [TelecallerController::class, 'addCall'])->name('telecallers.calls.add');

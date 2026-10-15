@@ -83,17 +83,45 @@
                                     <p>Dashboard</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="{{route('telecallers.calls')}}" class="nav-link {{(Route::currentRouteName() == 'telecallers.calls') || (Route::currentRouteName() == 'telecallers.calls.edit') ? 'active' : '' }}">
+                            <li class="nav-item {{(Route::currentRouteName() == 'telecallers.calls') || (Route::currentRouteName() == 'telecallers.calls.add') || (Route::currentRouteName() == 'telecallers.calls.edit') ? 'menu-open' : '' }}">
+                                <a href="#" class="nav-link {{(Route::currentRouteName() == 'telecallers.calls') || (Route::currentRouteName() == 'telecallers.calls.add') || (Route::currentRouteName() == 'telecallers.calls.edit') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-phone-alt"></i>
-                                    <p>All Calls</p>
+                                    <p>Calls<i class="right fas fa-angle-left"></i></p>
                                 </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="{{route('telecallers.calls')}}" class="nav-link {{(Route::currentRouteName() == 'telecallers.calls') ? 'active' : '' }}">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>All Calls</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{route('telecallers.calls.add')}}" class="nav-link {{(Route::currentRouteName() == 'telecallers.calls.add') ? 'active' : '' }}">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Add New Call</p>
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
-                            <li class="nav-item">
-                                <a href="{{route('telecallers.calls.add')}}" class="nav-link {{(Route::currentRouteName() == 'telecallers.calls.add') ? 'active' : '' }}">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Add New Call</p>
+                            <li class="nav-item {{(Route::currentRouteName() == 'telecallers.customers') || (Route::currentRouteName() == 'telecallers.customers.add') || (Route::currentRouteName() == 'telecallers.customers.edit') ? 'menu-open' : '' }}">
+                                <a href="#" class="nav-link {{(Route::currentRouteName() == 'telecallers.customers') || (Route::currentRouteName() == 'telecallers.customers.add') || (Route::currentRouteName() == 'telecallers.customers.edit') ? 'active' : '' }}">
+                                    <i class="nav-icon fas fa-user"></i>
+                                    <p>Customers<i class="right fas fa-angle-left"></i></p>
                                 </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="{{route('telecallers.customers')}}" class="nav-link {{(Route::currentRouteName() == 'telecallers.customers') ? 'active' : '' }}">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>All Customers</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{route('telecallers.customers.add')}}" class="nav-link {{(Route::currentRouteName() == 'telecallers.customers.add') ? 'active' : '' }}">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Add New Customer</p>
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                         @elseif(Auth::check() && Auth::user()->isCordinator())
                             <li class="nav-item">
