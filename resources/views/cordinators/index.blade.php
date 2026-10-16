@@ -90,6 +90,32 @@
             </div>
         </div>
     </div>
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="d-block text-center border border-dark py-1 dashboard-heading mb-2">
+                        <h1 class="m-0">Users</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-primary">
+                        <div class="inner">
+                            <h3>{{ $total_associates }}</h3>
+                            <p>Total Associates</p>
+                        </div>
+                        <a href="{{route('cordinators.users')}}" class="small-box-footer py-3">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('footer')
 @endsection

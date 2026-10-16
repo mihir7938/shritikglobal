@@ -130,29 +130,45 @@
                                     <p>Dashboard</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="{{route('cordinators.customers')}}" class="nav-link {{(Route::currentRouteName() == 'cordinators.customers') || (Route::currentRouteName() == 'cordinators.customers.edit') ? 'active' : '' }}">
+                            <li class="nav-item {{(Route::currentRouteName() == 'cordinators.customers') || (Route::currentRouteName() == 'cordinators.customers.add') || (Route::currentRouteName() == 'cordinators.customers.edit') ? 'menu-open' : '' }}">
+                                <a href="#" class="nav-link {{(Route::currentRouteName() == 'cordinators.customers') || (Route::currentRouteName() == 'cordinators.customers.add') || (Route::currentRouteName() == 'cordinators.customers.edit') ? 'active' : '' }}">
+                                    <i class="nav-icon fas fa-rupee-sign"></i>
+                                    <p>Customers<i class="right fas fa-angle-left"></i></p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="{{route('cordinators.customers')}}" class="nav-link {{(Route::currentRouteName() == 'cordinators.customers') ? 'active' : '' }}">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>All Customers</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{route('cordinators.customers.add')}}" class="nav-link {{(Route::currentRouteName() == 'cordinators.customers.add') ? 'active' : '' }}">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Add New Customer</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item {{(Route::currentRouteName() == 'cordinators.users') || (Route::currentRouteName() == 'cordinators.users.add') || (Route::currentRouteName() == 'cordinators.users.edit') ? 'menu-open' : '' }}">
+                                <a href="#" class="nav-link {{(Route::currentRouteName() == 'cordinators.users') || (Route::currentRouteName() == 'cordinators.users.add') || (Route::currentRouteName() == 'cordinators.users.edit') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-user"></i>
-                                    <p>All Customers</p>
+                                    <p>Associates<i class="right fas fa-angle-left"></i></p>
                                 </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{route('cordinators.customers.add')}}" class="nav-link {{(Route::currentRouteName() == 'cordinators.customers.add') ? 'active' : '' }}">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Add New Customer</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{route('cordinators.users')}}" class="nav-link {{(Route::currentRouteName() == 'cordinators.users') || (Route::currentRouteName() == 'cordinators.users.edit') ? 'active' : '' }}">
-                                    <i class="nav-icon fas fa-user"></i>
-                                    <p>All Associates</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{route('cordinators.users.add')}}" class="nav-link {{(Route::currentRouteName() == 'cordinators.users.add') ? 'active' : '' }}">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Add New Associate</p>
-                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="{{route('cordinators.users')}}" class="nav-link {{(Route::currentRouteName() == 'cordinators.users') ? 'active' : '' }}">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>All Associates</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{route('cordinators.users.add')}}" class="nav-link {{(Route::currentRouteName() == 'cordinators.users.add') ? 'active' : '' }}">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Add New Associate</p>
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                         @elseif(Auth::check() && Auth::user()->isAdmin())
                             <li class="nav-item">

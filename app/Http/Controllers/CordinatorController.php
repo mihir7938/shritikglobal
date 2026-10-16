@@ -86,7 +86,8 @@ class CordinatorController extends Controller
                 'count' => (clone $baseQuery)->where('loanStatus', $status)->count()
             ];
         }
-        return view('cordinators.index')->with('all_customers', $all_customers)->with('secureLoans', $secureLoans)->with('unsecureLoans', $unsecureLoans)->with('statusCounts', $statusCounts);
+        $total_associates = User::where('role_id', Role::ASSOCIATE_ROLE_ID)->where('created_by', $user->id)->count();
+        return view('cordinators.index')->with('all_customers', $all_customers)->with('secureLoans', $secureLoans)->with('unsecureLoans', $unsecureLoans)->with('statusCounts', $statusCounts)->with('total_associates', $total_associates);
     }
     private function customerQuery($request)
     {
