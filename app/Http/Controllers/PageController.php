@@ -26,7 +26,34 @@ class PageController extends Controller
     {
         return view('index');
     }
-
+    public function about(Request $request)
+    {
+        return view('about');
+    }
+    public function services(Request $request)
+    {
+        return view('services');
+    }
+    public function projects(Request $request)
+    {
+        return view('projects');
+    }
+    public function features(Request $request)
+    {
+        return view('features');
+    }
+    public function team(Request $request)
+    {
+        return view('team');
+    }
+    public function testimonial(Request $request)
+    {
+        return view('testimonial');
+    }
+    public function contact(Request $request)
+    {
+        return view('contact');
+    }
     public function checkMobile(Request $request)
     {
         $exists = Customer::where('mobile', $request->mobile)->exists();

@@ -20,6 +20,13 @@ use App\Http\Controllers\CordinatorController;
 */
 
 Route::get('/', [PageController::class, 'index'])->name('index');
+Route::get('/about', [PageController::class, 'about'])->name('about');
+Route::get('/services', [PageController::class, 'services'])->name('services');
+Route::get('/projects', [PageController::class, 'projects'])->name('projects');
+Route::get('/features', [PageController::class, 'features'])->name('features');
+Route::get('/team', [PageController::class, 'team'])->name('team');
+Route::get('/testimonial', [PageController::class, 'testimonial'])->name('testimonial');
+Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 Route::get('/login', [AuthController::class, 'getLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('authenticate');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
