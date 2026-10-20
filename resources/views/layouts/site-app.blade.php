@@ -26,7 +26,7 @@
             <span class="sr-only">Loading...</span>
         </div>
     </div>
-    <div class="container-fluid bg-light px-0 wow fadeIn" data-wow-delay="0.1s">
+    {{--<div class="container-fluid bg-light px-0 wow fadeIn" data-wow-delay="0.1s">
         <div class="row gx-0 align-items-center d-none d-lg-flex">
             <div class="col-lg-6 px-5 text-start">
                 <ol class="breadcrumb mb-0">
@@ -46,13 +46,12 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>--}}
     <div class="container-fluid py-4 px-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="row align-items-center top-bar">
             <div class="col-lg-4 col-md-12 text-center text-lg-start">
                 <a href="" class="navbar-brand m-0 p-0">
-                    <h1 class="fw-bold text-primary m-0"><i class="fa fa-laptop-code me-3"></i>DGcom</h1>
-                    <!-- <img src="img/logo.png" alt="Logo"> -->
+                    <h1 class="fw-bold text-primary m-0"><img src="{{asset('img/logo.png')}}" alt="Logo" class="me-3 align-bottom" width="50"></i>Shritik Global</h1>
                 </a>
             </div>
             <div class="col-lg-8 col-md-7 d-none d-lg-block">
@@ -64,7 +63,7 @@
                             </div>
                             <div class="ps-3">
                                 <p class="mb-2">Opening Hour</p>
-                                <h6 class="mb-0">Mon - Fri, 8:00 - 9:00</h6>
+                                <h6 class="mb-0">Mon - Sat, 10:00 - 7:00</h6>
                             </div>
                         </div>
                     </div>
@@ -75,7 +74,7 @@
                             </div>
                             <div class="ps-3">
                                 <p class="mb-2">Call Us</p>
-                                <h6 class="mb-0">+012 345 6789</h6>
+                                <h6 class="mb-0">9825359413</h6>
                             </div>
                         </div>
                     </div>
@@ -86,7 +85,7 @@
                             </div>
                             <div class="ps-3">
                                 <p class="mb-2">Email Us</p>
-                                <h6 class="mb-0">info@example.com</h6>
+                                <h6 class="mb-0">info@shritikglobal.com</h6>
                             </div>
                         </div>
                     </div>
@@ -104,7 +103,7 @@
                 <a href="{{route('index')}}" class="nav-item nav-link {{ Route::currentRouteName() == 'index' ? 'active' : '' }}">Home</a>
                 <a href="{{route('about')}}" class="nav-item nav-link {{ Route::currentRouteName() == 'about' ? 'active' : '' }}">About Us</a>
                 <a href="{{route('services')}}" class="nav-item nav-link {{ Route::currentRouteName() == 'services' ? 'active' : '' }}">Services</a>
-                <a href="{{route('projects')}}" class="nav-item nav-link {{ Route::currentRouteName() == 'projects' ? 'active' : '' }}">Projects</a>
+                {{--<a href="{{route('projects')}}" class="nav-item nav-link {{ Route::currentRouteName() == 'projects' ? 'active' : '' }}">Projects</a>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle {{(Route::currentRouteName() == 'features' || Route::currentRouteName() == 'team' || Route::currentRouteName() == 'testimonial') ? 'active' : '' }}" data-bs-toggle="dropdown">Pages</a>
                     <div class="dropdown-menu border-0 rounded-0 rounded-bottom m-0">
@@ -112,21 +111,27 @@
                         <a href="{{route('team')}}" class="dropdown-item {{ Route::currentRouteName() == 'team' ? 'active' : '' }}">Our Team</a>
                         <a href="{{route('testimonial')}}" class="dropdown-item {{ Route::currentRouteName() == 'testimonial' ? 'active' : '' }}">Testimonial</a>
                     </div>
-                </div>
+                </div>--}}
+                <a href="{{route('team')}}" class="nav-item nav-link {{ Route::currentRouteName() == 'team' ? 'active' : '' }}">Our Team</a>
+                <a href="{{route('testimonial')}}" class="nav-item nav-link {{ Route::currentRouteName() == 'testimonial' ? 'active' : '' }}">Testimonial</a>
                 <a href="{{route('contact')}}" class="nav-item nav-link {{ Route::currentRouteName() == 'contact' ? 'active' : '' }}">Contact Us</a>
             </div>
-            <a href="#" class="btn btn-sm btn-light rounded-pill py-2 px-4 d-none d-lg-block">Get Started</a>
+            <a href="{{route('contact')}}" class="btn btn-sm btn-light rounded-pill py-2 px-4 d-none d-lg-block">Get Started</a>
         </div>
     </nav>
     @yield('content')
     <div class="container-fluid bg-dark text-body footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="row g-5">
-                <div class="col-lg-3 col-md-6">
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="text-light mb-4">About Us</h5>
+                    <p>At Shritikglobal, we are driven by a passion for excellence, dedicated to providing top-notch [industry/niche] solutions that empower individuals and businesses to thrive in an ever-evolving world.</p>
+                </div>
+                <div class="col-lg-4 col-md-6">
                     <h5 class="text-light mb-4">Address</h5>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Uma Plaza, Dindoli, Surat, 394210</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>9825359413</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@shritikglobal.com</p>
                     <div class="d-flex pt-2">
                         <a class="btn btn-square btn-outline-secondary rounded-circle me-1" href=""><i class="fab fa-twitter"></i></a>
                         <a class="btn btn-square btn-outline-secondary rounded-circle me-1" href=""><i class="fab fa-facebook-f"></i></a>
@@ -134,15 +139,15 @@
                         <a class="btn btn-square btn-outline-secondary rounded-circle me-0" href=""><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
+                <div class="col-lg-4 col-md-6">
                     <h5 class="text-light mb-4">Quick Links</h5>
-                    <a class="btn btn-link" href="">About Us</a>
-                    <a class="btn btn-link" href="">Contact Us</a>
-                    <a class="btn btn-link" href="">Our Services</a>
-                    <a class="btn btn-link" href="">Terms & Condition</a>
-                    <a class="btn btn-link" href="">Support</a>
+                    <a class="btn btn-link" href="{{route('about')}}">About Us</a>
+                    <a class="btn btn-link" href="{{route('services')}}">Our Services</a>
+                    <a class="btn btn-link" href="{{route('team')}}">Our Team</a>
+                    <a class="btn btn-link" href="{{route('contact')}}">Contact Us</a>
+                    <a class="btn btn-link" href="#">Terms & Condition</a>
                 </div>
-                <div class="col-lg-3 col-md-6">
+                {{--<div class="col-lg-3 col-md-6">
                     <h5 class="text-light mb-4">Gallery</h5>
                     <div class="row g-2">
                         <div class="col-4">
@@ -164,27 +169,25 @@
                             <img class="img-fluid rounded" src="img/project-6.jpg" alt="Image">
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
+                </div>--}}
+                {{--<div class="col-lg-3 col-md-6">
                     <h5 class="text-light mb-4">Newsletter</h5>
                     <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
                     <div class="position-relative mx-auto" style="max-width: 400px;">
                         <input class="form-control bg-transparent border-secondary w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
                         <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
                     </div>
-                </div>
+                </div>--}}
             </div>
         </div>
         <div class="container-fluid copyright">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a href="#">Your Site Name</a>, All Right Reserved.
+                        Copyright &copy; 2026 <a href="{{route('index')}}">Skritik Global</a>, All Right Reserved.
                     </div>
                     <div class="col-md-6 text-center text-md-end">
-                        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                        Designed By <a href="https://htmlcodex.com">HTML Codex</a>
-                        <br>Distributed By: <a class="border-bottom" href="https://themewagon.com" target="_blank">ThemeWagon</a>
+                         Powered By <a href="https://strongservices.in/" target="_blank">Strong Services</a>
                     </div>
                 </div>
             </div>

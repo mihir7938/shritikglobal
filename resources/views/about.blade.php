@@ -4,20 +4,20 @@
     <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="container text-center py-5">
             <h1 class="display-4 text-white animated slideInDown mb-3">About Us</h1>
-            <nav aria-label="breadcrumb animated slideInDown">
+            {{--<nav aria-label="breadcrumb animated slideInDown">
                 <ol class="breadcrumb justify-content-center mb-0">
                     <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
                     <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
                     <li class="breadcrumb-item text-primary active" aria-current="page">About</li>
                 </ol>
-            </nav>
+            </nav>--}}
         </div>
     </div>
     <!-- Page Header End -->
 
 
     <!-- Facts Start -->
-    <div class="container-xxl py-5">
+    {{--<div class="container-xxl py-5">
         <div class="container">
             <div class="row g-4">
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
@@ -50,7 +50,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>--}}
     <!-- Facts End -->
 
 
@@ -65,36 +65,25 @@
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="h-100">
-                        <h6 class="section-title bg-white text-start text-primary pe-3">About Us</h6>
-                        <h1 class="display-6 mb-4">#1 Digital Solution With <span class="text-primary">10 Years</span> Of Experience</h1>
-                        <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
-                        <p class="mb-4">Stet no et lorem dolor et diam, amet duo ut dolore vero eos. No stet est diam rebum amet diam ipsum. Clita clita labore, dolor duo nonumy clita sit at, sed sit sanctus dolor eos.</p>
-                        <div class="d-flex align-items-center mb-4 pb-2">
-                            <img class="flex-shrink-0 rounded-circle" src="img/team-1.jpg" alt="" style="width: 50px; height: 50px;">
-                            <div class="ps-4">
-                                <h6>Jhon Doe</h6>
-                                <small>SEO & Founder</small>
-                            </div>
-                        </div>
-                        <a class="btn btn-primary rounded-pill py-3 px-5" href="">Read More</a>
+                        <h2 class="display-6 mb-4">About Modern Business</h2>
+                        <p>At Shritikglobal, we are a dedicated team of financial experts committed to simplifying the lending landscape for individuals and businesses. With a wealth of industry knowledge and a customer-centric approach, we strive to be your trusted partner in navigating the complex world of loans.</p>
+                        <p>Our mission is to provide clear, unbiased, and personalized loan guidance, ensuring you make informed decisions that align with your financial goals. We believe in transparency, ethical lending practices, and empowering you to secure loans that propel your financial success.</p>
+                        <p>With a relentless commitment to excellence, integrity, and customer satisfaction, we are here to support you every step of the way on your financial journey. Discover a brighter financial future with XYZ Loan Consultancy – your path to smart and responsible borrowing.</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- About End -->
-
-
     <!-- Feature Start -->
     <div class="container-xxl py-5">
         <div class="container">
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="h-100">
-                        <h6 class="section-title bg-white text-start text-primary pe-3">Why Choose Us</h6>
-                        <h1 class="display-6 mb-4">Why People Trust Us? Learn About Us!</h1>
-                        <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
-                        <div class="row g-4">
+                        <h2 class="display-6 mb-4">Our Mission</h2>
+                        <p class="mb-4">At Shritikglobal, our mission is to provide comprehensive, ethical, and unbiased loan advisory services to individuals and businesses. We are dedicated to facilitating financial success by offering expert guidance, tailored solutions, and unparalleled customer support. We aim to demystify the loan process, ensuring our clients make informed decisions that align with their unique financial objectives. We are committed to fostering financial literacy, promoting responsible borrowing, and advocating for fair lending practices. Our mission is to empower our clients to secure loans that enhance their financial well-being and contribute to their long-term prosperity, while always adhering to the highest standards of integrity and professionalism.</p>
+                        {{--<div class="row g-4">
                             <div class="col-12">
                                 <div class="skill">
                                     <div class="d-flex justify-content-between">
@@ -128,7 +117,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>--}}
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
@@ -140,7 +129,23 @@
         </div>
     </div>
     <!-- Feature End -->
-
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="img-border">
+                        <img class="img-fluid" src="img/about.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="h-100">
+                        <h2 class="display-6 mb-4">Our Vision</h2>
+                        <p>At Shritikglobal, our vision is to empower individuals and businesses by providing accessible, transparent, and personalized financial solutions. We strive to be the trusted partner that simplifies the complex world of loans, offering expert guidance and innovative tools that help our clients achieve their financial goals. We envision a future where every person can make informed borrowing decisions with confidence, while our platform fosters financial well-being and fosters economic growth. Our commitment to excellence, integrity, and customer-centricity drives us to continuously evolve and revolutionize the lending industry, making it more inclusive and equitable for all.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Team Start -->
     <div class="container-xxl py-5">

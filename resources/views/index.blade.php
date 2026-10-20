@@ -19,8 +19,8 @@
 	                <img class="w-100" src="img/carousel-1.jpg" alt="Image">
 	                <div class="carousel-caption">
 	                    <div class="p-3" style="max-width: 900px;">
-	                        <h4 class="text-white text-uppercase mb-4 animated zoomIn">We Are Leader In</h4>
-	                        <h1 class="display-1 text-white mb-0 animated zoomIn">Creative & Innovative Digital Solution</h1>
+	                        {{--<h4 class="text-white text-uppercase mb-4 animated zoomIn">We Are Leader In</h4>--}}
+	                        <h2 class="display-4 text-white mb-0 animated zoomIn">Specialized in Loan, Real Estate and Automobile</h2>
 	                    </div>
 	                </div>
 	            </div>
@@ -28,8 +28,8 @@
 	                <img class="w-100" src="img/carousel-2.jpg" alt="Image">
 	                <div class="carousel-caption">
 	                    <div class="p-3" style="max-width: 900px;">
-	                        <h4 class="text-white text-uppercase mb-4 animated zoomIn">We Are Leader In</h4>
-	                        <h1 class="display-1 text-white mb-0 animated zoomIn">Creative & Innovative Digital Solution</h1>
+	                        {{--<h4 class="text-white text-uppercase mb-4 animated zoomIn">We Are Leader In</h4>--}}
+	                        <h1 class="display-4 text-white mb-0 animated zoomIn">Empower your financial dreams with our Loan Services</h1>
 	                    </div>
 	                </div>
 	            </div>
@@ -37,8 +37,8 @@
 	                <img class="w-100" src="img/carousel-3.jpg" alt="Image">
 	                <div class="carousel-caption">
 	                    <div class="p-3" style="max-width: 900px;">
-	                        <h4 class="text-white text-uppercase mb-4 animated zoomIn">We Are Leader In</h4>
-	                        <h1 class="display-1 text-white mb-0 animated zoomIn">Creative & Innovative Digital Solution</h1>
+	                        {{--<h4 class="text-white text-uppercase mb-4 animated zoomIn">We Are Leader In</h4>--}}
+	                        <h1 class="display-4 text-white mb-0 animated zoomIn">Ride your dreams with our Auto Mobile Services</h1>
 	                    </div>
 	                </div>
 	            </div>
@@ -108,17 +108,17 @@
 	            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
 	                <div class="h-100">
 	                    <h6 class="section-title bg-white text-start text-primary pe-3">About Us</h6>
-	                    <h1 class="display-6 mb-4">#1 Digital Solution With <span class="text-primary">10 Years</span> Of Experience</h1>
-	                    <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
-	                    <p class="mb-4">Stet no et lorem dolor et diam, amet duo ut dolore vero eos. No stet est diam rebum amet diam ipsum. Clita clita labore, dolor duo nonumy clita sit at, sed sit sanctus dolor eos.</p>
+	                    <h2 class="display-6 mb-4">Welcome to <span class="text-primary">Shritikglobal</span></h2>
+	                    <p>We're delighted to welcome you to Shritikglobal, where your vision meets our expertise. As you explore our website, you're embarking on a journey towards achieving your goals, making informed decisions, and experiencing excellence.</p>
+	                    <p class="mb-4">At Shritikglobal, we're dedicated to delivering top-notch consultancy services tailored to your unique needs. Whether you're an individual seeking career guidance, an organization looking to enhance efficiency, or an entrepreneur with ambitious dreams, we're here to empower you.</p>
 	                    <div class="d-flex align-items-center mb-4 pb-2">
 	                        <img class="flex-shrink-0 rounded-circle" src="img/team-1.jpg" alt="" style="width: 50px; height: 50px;">
 	                        <div class="ps-4">
-	                            <h6>Jhon Doe</h6>
-	                            <small>SEO & Founder</small>
+	                            <h6>HEMANT SRIVASTAV</h6>
+	                            <small>CEO & Founder</small>
 	                        </div>
 	                    </div>
-	                    <a class="btn btn-primary rounded-pill py-3 px-5" href="">Read More</a>
+	                    <a class="btn btn-primary rounded-pill py-3 px-5" href="{{route('about')}}">Read More</a>
 	                </div>
 	            </div>
 	        </div>
@@ -138,22 +138,22 @@
 	            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
 	                <a class="service-item d-block rounded text-center h-100 p-4" href="">
 	                    <img class="img-fluid rounded mb-4" src="img/service-1.jpg" alt="">
-	                    <h4 class="mb-0">Web Design</h4>
+	                    <h4 class="mb-0">Loan</h4>
 	                </a>
 	            </div>
 	            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
 	                <a class="service-item d-block rounded text-center h-100 p-4" href="">
 	                    <img class="img-fluid rounded mb-4" src="img/service-2.jpg" alt="">
-	                    <h4 class="mb-0">App Development</h4>
+	                    <h4 class="mb-0">Automobile</h4>
 	                </a>
 	            </div>
 	            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
 	                <a class="service-item d-block rounded text-center h-100 p-4" href="">
 	                    <img class="img-fluid rounded mb-4" src="img/service-3.jpg" alt="">
-	                    <h4 class="mb-0">SEO Optimization</h4>
+	                    <h4 class="mb-0">Real Estate</h4>
 	                </a>
 	            </div>
-	            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+	            {{--<div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
 	                <a class="service-item d-block rounded text-center h-100 p-4" href="">
 	                    <img class="img-fluid rounded mb-4" src="img/service-4.jpg" alt="">
 	                    <h4 class="mb-0">Social Marketing</h4>
@@ -170,7 +170,7 @@
 	                    <img class="img-fluid rounded mb-4" src="img/service-6.jpg" alt="">
 	                    <h4 class="mb-0">PPC Advertising</h4>
 	                </a>
-	            </div>
+	            </div>--}}
 	        </div>
 	    </div>
 	</div>
@@ -184,9 +184,15 @@
 	            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
 	                <div class="h-100">
 	                    <h6 class="section-title bg-white text-start text-primary pe-3">Why Choose Us</h6>
-	                    <h1 class="display-6 mb-4">Why People Trust Us? Learn About Us!</h1>
-	                    <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
-	                    <div class="row g-4">
+	                    <h2 class="display-6 mb-4">Why People Trust Us? Learn About Us!</h2>
+	                    {{--<p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>--}}
+	                    <ul class="mb-4">
+	                    	<li>Explore a comprehensive range of services designed to address your challenges.</li>
+	                    	<li>Discover how we've overcome obstacles and achieve remarkable outcomes.</li>
+	                    	<li>We understand your needs, and guide you towards success.</li>
+	                    </ul>
+	                    <a class="btn btn-primary rounded-pill py-3 px-5" href="{{route('about')}}">Read More</a>
+	                    {{--<div class="row g-4">
 	                        <div class="col-12">
 	                            <div class="skill">
 	                                <div class="d-flex justify-content-between">
@@ -220,7 +226,7 @@
 	                                </div>
 	                            </div>
 	                        </div>
-	                    </div>
+	                    </div>--}}
 	                </div>
 	            </div>
 	            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
