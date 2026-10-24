@@ -1,6 +1,6 @@
 /********** Template CSS **********/
 :root {
-    --primary: #009CFF;
+    --primary: #FF6600;
     --secondary: #777777;
     --light: #F8F8F8;
     --dark: #252525;
@@ -182,7 +182,7 @@
 }
 
 .page-header {
-    background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url(../img/carousel-1.jpg) center center no-repeat;
+    background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url(../img/page-banner.png) center center no-repeat;
     background-size: cover;
 }
 
@@ -488,4 +488,26 @@
 
 .footer .copyright a:hover {
     color: var(--primary);
+}
+
+/* Custom css changes by developer */
+
+.text-primary {
+    color: #FF6600 !important;
+}
+.bg-primary {
+    background-color: #FF6600 !important;
+}
+.btn-primary {
+    background-color: #FF6600;
+    border-color: #FF6600;
+}
+.btn-primary:hover {
+    background-color: #ffa366;
+    border-color: #ffa366;
+}
+.btn-check:focus + .btn-primary, .btn-primary:focus {
+  background-color: #ffa366;
+  border-color: #ffa366;
+  box-shadow: 0 0 0 .25rem rgba(255,163,102,0.5);
 }

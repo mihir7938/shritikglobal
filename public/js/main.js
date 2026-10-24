@@ -62,8 +62,8 @@
         margin: 25,
         loop: true,
         nav: false,
-        dots: true,
-        dotsData: true,
+        dots: false,
+        dotsData: false,
         responsive: {
             0:{
                 items:1
@@ -75,7 +75,7 @@
                 items:3
             },
             1200:{
-                items:4
+                items:5
             }
         }
     });

@@ -3,7 +3,7 @@
 	<!-- Carousel Start -->
 	<div class="container-fluid p-0 mb-5 wow fadeIn" data-wow-delay="0.1s">
 	    <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
-	        <div class="carousel-indicators">
+	        {{--<div class="carousel-indicators">
 	            <button type="button" data-bs-target="#header-carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1">
 	                <img class="img-fluid" src="img/carousel-1.jpg" alt="Image">
 	            </button>
@@ -13,10 +13,10 @@
 	            <button type="button" data-bs-target="#header-carousel" data-bs-slide-to="2" aria-label="Slide 3">
 	                <img class="img-fluid" src="img/carousel-3.jpg" alt="Image">
 	            </button>
-	        </div>
+	        </div>--}}
 	        <div class="carousel-inner">
 	            <div class="carousel-item active">
-	                <img class="w-100" src="img/carousel-1.jpg" alt="Image">
+	                <img class="w-100" src="img/banner-1.jpeg" alt="Image">
 	                <div class="carousel-caption">
 	                    <div class="p-3" style="max-width: 900px;">
 	                        {{--<h4 class="text-white text-uppercase mb-4 animated zoomIn">We Are Leader In</h4>--}}
@@ -25,7 +25,7 @@
 	                </div>
 	            </div>
 	            <div class="carousel-item">
-	                <img class="w-100" src="img/carousel-2.jpg" alt="Image">
+	                <img class="w-100" src="img/banner-2.png" alt="Image">
 	                <div class="carousel-caption">
 	                    <div class="p-3" style="max-width: 900px;">
 	                        {{--<h4 class="text-white text-uppercase mb-4 animated zoomIn">We Are Leader In</h4>--}}
@@ -34,7 +34,7 @@
 	                </div>
 	            </div>
 	            <div class="carousel-item">
-	                <img class="w-100" src="img/carousel-3.jpg" alt="Image">
+	                <img class="w-100" src="img/banner-3.png" alt="Image">
 	                <div class="carousel-caption">
 	                    <div class="p-3" style="max-width: 900px;">
 	                        {{--<h4 class="text-white text-uppercase mb-4 animated zoomIn">We Are Leader In</h4>--}}
@@ -137,19 +137,19 @@
 	        <div class="row g-4">
 	            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
 	                <a class="service-item d-block rounded text-center h-100 p-4" href="">
-	                    <img class="img-fluid rounded mb-4" src="img/service-1.jpg" alt="">
+	                    <img class="img-fluid rounded mb-4" src="img/service-1.png" alt="">
 	                    <h4 class="mb-0">Loan</h4>
 	                </a>
 	            </div>
 	            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
 	                <a class="service-item d-block rounded text-center h-100 p-4" href="">
-	                    <img class="img-fluid rounded mb-4" src="img/service-2.jpg" alt="">
+	                    <img class="img-fluid rounded mb-4" src="img/service-2.png" alt="">
 	                    <h4 class="mb-0">Automobile</h4>
 	                </a>
 	            </div>
 	            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
 	                <a class="service-item d-block rounded text-center h-100 p-4" href="">
-	                    <img class="img-fluid rounded mb-4" src="img/service-3.jpg" alt="">
+	                    <img class="img-fluid rounded mb-4" src="img/service-3.png" alt="">
 	                    <h4 class="mb-0">Real Estate</h4>
 	                </a>
 	            </div>
@@ -238,102 +238,214 @@
 	    </div>
 	</div>
 	<!-- Feature End -->
-
-
-	<!-- Project Start -->
 	<div class="container-xxl py-5">
 	    <div class="container">
 	        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-	            <h6 class="section-title bg-white text-center text-primary px-3">Our Projects</h6>
-	            <h1 class="display-6 mb-4">Learn More About Our Complete Projects</h1>
+	            <h6 class="section-title bg-white text-center text-primary px-3">Our Financial Partners</h6>
+	            <h1 class="display-6 mb-4">We Associate With</h1>
 	        </div>
 	        <div class="owl-carousel project-carousel wow fadeInUp" data-wow-delay="0.1s">
-	            <div class="project-item border rounded h-100 p-4" data-dot="01">
-	                <div class="position-relative mb-4">
-	                    <img class="img-fluid rounded" src="img/project-1.jpg" alt="">
-	                    <a href="img/project-1.jpg" data-lightbox="project"><i class="fa fa-eye fa-2x"></i></a>
+	            <div class="project-item border rounded h-100 p-3" data-dot="01">
+	                <div class="position-relative">
+	                    <img class="img-fluid rounded" src="{{asset('img/bank1.png')}}" alt="">
 	                </div>
-	                <h6>UI / UX Design</h6>
-	                <span>Digital agency website design and development</span>
 	            </div>
-	            <div class="project-item border rounded h-100 p-4" data-dot="02">
-	                <div class="position-relative mb-4">
-	                    <img class="img-fluid rounded" src="img/project-2.jpg" alt="">
-	                    <a href="img/project-2.jpg" data-lightbox="project"><i class="fa fa-eye fa-2x"></i></a>
+	            <div class="project-item border rounded h-100 p-3" data-dot="02">
+	                <div class="position-relative">
+	                    <img class="img-fluid rounded" src="{{asset('img/bank2.png')}}" alt="">
 	                </div>
-	                <h6>UI / UX Design</h6>
-	                <span>Digital agency website design and development</span>
 	            </div>
-	            <div class="project-item border rounded h-100 p-4" data-dot="03">
-	                <div class="position-relative mb-4">
-	                    <img class="img-fluid rounded" src="img/project-3.jpg" alt="">
-	                    <a href="img/project-2.jpg" data-lightbox="project"><i class="fa fa-eye fa-2x"></i></a>
+	            <div class="project-item border rounded h-100 p-3" data-dot="03">
+	                <div class="position-relative">
+	                    <img class="img-fluid rounded" src="{{asset('img/bank3.png')}}" alt="">
 	                </div>
-	                <h6>UI / UX Design</h6>
-	                <span>Digital agency website design and development</span>
 	            </div>
-	            <div class="project-item border rounded h-100 p-4" data-dot="04">
-	                <div class="position-relative mb-4">
-	                    <img class="img-fluid rounded" src="img/project-4.jpg" alt="">
-	                    <a href="img/project-4.jpg" data-lightbox="project"><i class="fa fa-eye fa-2x"></i></a>
+	            <div class="project-item border rounded h-100 p-3" data-dot="04">
+	                <div class="position-relative">
+	                    <img class="img-fluid rounded" src="{{asset('img/bank4.png')}}" alt="">
 	                </div>
-	                <h6>UI / UX Design</h6>
-	                <span>Digital agency website design and development</span>
 	            </div>
-	            <div class="project-item border rounded h-100 p-4" data-dot="05">
-	                <div class="position-relative mb-4">
-	                    <img class="img-fluid rounded" src="img/project-5.jpg" alt="">
-	                    <a href="img/project-5.jpg" data-lightbox="project"><i class="fa fa-eye fa-2x"></i></a>
+	            <div class="project-item border rounded h-100 p-3" data-dot="05">
+	                <div class="position-relative">
+	                    <img class="img-fluid rounded" src="{{asset('img/bank5.png')}}" alt="">
 	                </div>
-	                <h6>UI / UX Design</h6>
-	                <span>Digital agency website design and development</span>
 	            </div>
-	            <div class="project-item border rounded h-100 p-4" data-dot="06">
-	                <div class="position-relative mb-4">
-	                    <img class="img-fluid rounded" src="img/project-6.jpg" alt="">
-	                    <a href="img/project-6.jpg" data-lightbox="project"><i class="fa fa-eye fa-2x"></i></a>
+	            <div class="project-item border rounded h-100 p-3" data-dot="06">
+	                <div class="position-relative">
+	                    <img class="img-fluid rounded" src="{{asset('img/bank6.png')}}" alt="">
 	                </div>
-	                <h6>UI / UX Design</h6>
-	                <span>Digital agency website design and development</span>
 	            </div>
-	            <div class="project-item border rounded h-100 p-4" data-dot="07">
-	                <div class="position-relative mb-4">
-	                    <img class="img-fluid rounded" src="img/project-7.jpg" alt="">
-	                    <a href="img/project-7.jpg" data-lightbox="project"><i class="fa fa-eye fa-2x"></i></a>
+	            <div class="project-item border rounded h-100 p-3" data-dot="07">
+	                <div class="position-relative">
+	                    <img class="img-fluid rounded" src="{{asset('img/bank7.png')}}" alt="">
 	                </div>
-	                <h6>UI / UX Design</h6>
-	                <span>Digital agency website design and development</span>
 	            </div>
-	            <div class="project-item border rounded h-100 p-4" data-dot="08">
-	                <div class="position-relative mb-4">
-	                    <img class="img-fluid rounded" src="img/project-8.jpg" alt="">
-	                    <a href="img/project-8.jpg" data-lightbox="project"><i class="fa fa-eye fa-2x"></i></a>
+	            <div class="project-item border rounded h-100 p-3" data-dot="08">
+	                <div class="position-relative">
+	                    <img class="img-fluid rounded" src="{{asset('img/bank8.png')}}" alt="">
 	                </div>
-	                <h6>UI / UX Design</h6>
-	                <span>Digital agency website design and development</span>
 	            </div>
-	            <div class="project-item border rounded h-100 p-4" data-dot="09">
-	                <div class="position-relative mb-4">
-	                    <img class="img-fluid rounded" src="img/project-9.jpg" alt="">
-	                    <a href="img/project-9.jpg" data-lightbox="project"><i class="fa fa-eye fa-2x"></i></a>
+	            <div class="project-item border rounded h-100 p-3" data-dot="09">
+	                <div class="position-relative">
+	                    <img class="img-fluid rounded" src="{{asset('img/bank9.png')}}" alt="">
 	                </div>
-	                <h6>UI / UX Design</h6>
-	                <span>Digital agency website design and development</span>
 	            </div>
-	            <div class="project-item border rounded h-100 p-4" data-dot="10">
-	                <div class="position-relative mb-4">
-	                    <img class="img-fluid rounded" src="img/project-10.jpg" alt="">
-	                    <a href="img/project-10.jpg" data-lightbox="project"><i class="fa fa-eye fa-2x"></i></a>
+	            <div class="project-item border rounded h-100 p-3" data-dot="10">
+	                <div class="position-relative">
+	                    <img class="img-fluid rounded" src="{{asset('img/bank10.png')}}" alt="">
 	                </div>
-	                <h6>UI / UX Design</h6>
-	                <span>Digital agency website design and development</span>
 	            </div>
+	            <div class="project-item border rounded h-100 p-3" data-dot="11">
+	                <div class="position-relative">
+	                    <img class="img-fluid rounded" src="{{asset('img/bank11.png')}}" alt="">
+	                </div>
+	            </div>
+	            <div class="project-item border rounded h-100 p-3" data-dot="12">
+	                <div class="position-relative">
+	                    <img class="img-fluid rounded" src="{{asset('img/bank12.png')}}" alt="">
+	                </div>
+	            </div>
+	            <div class="project-item border rounded h-100 p-3" data-dot="13">
+	                <div class="position-relative">
+	                    <img class="img-fluid rounded" src="{{asset('img/bank13.png')}}" alt="">
+	                </div>
+	            </div>
+	            <div class="project-item border rounded h-100 p-3" data-dot="14">
+	                <div class="position-relative">
+	                    <img class="img-fluid rounded" src="{{asset('img/bank14.png')}}" alt="">
+	                </div>
+	            </div>
+	            <div class="project-item border rounded h-100 p-3" data-dot="15">
+	                <div class="position-relative">
+	                    <img class="img-fluid rounded" src="{{asset('img/bank15.png')}}" alt="">
+	                </div>
+	            </div>
+	            <div class="project-item border rounded h-100 p-3" data-dot="16">
+	                <div class="position-relative">
+	                    <img class="img-fluid rounded" src="{{asset('img/bank16.png')}}" alt="">
+	                </div>
+	            </div>
+	            <div class="project-item border rounded h-100 p-3" data-dot="17">
+	                <div class="position-relative">
+	                    <img class="img-fluid rounded" src="{{asset('img/bank17.png')}}" alt="">
+	                </div>
+	            </div>
+	            <div class="project-item border rounded h-100 p-3" data-dot="18">
+	                <div class="position-relative">
+	                    <img class="img-fluid rounded" src="{{asset('img/bank18.png')}}" alt="">
+	                </div>
+	            </div>
+	            <div class="project-item border rounded h-100 p-3" data-dot="19">
+	                <div class="position-relative">
+	                    <img class="img-fluid rounded" src="{{asset('img/bank19.png')}}" alt="">
+	                </div>
+	            </div>
+	            <div class="project-item border rounded h-100 p-3" data-dot="20">
+	                <div class="position-relative">
+	                    <img class="img-fluid rounded" src="{{asset('img/bank20.png')}}" alt="">
+	                </div>
+	            </div>
+	            <div class="project-item border rounded h-100 p-3" data-dot="21">
+	                <div class="position-relative">
+	                    <img class="img-fluid rounded" src="{{asset('img/bank21.png')}}" alt="">
+	                </div>
+	            </div>
+	            <div class="project-item border rounded h-100 p-3" data-dot="22">
+	                <div class="position-relative">
+	                    <img class="img-fluid rounded" src="{{asset('img/bank22.png')}}" alt="">
+	                </div>
+	            </div>
+	            <div class="project-item border rounded h-100 p-3" data-dot="23">
+	                <div class="position-relative">
+	                    <img class="img-fluid rounded" src="{{asset('img/bank23.png')}}" alt="">
+	                </div>
+	            </div>
+	            <div class="project-item border rounded h-100 p-3" data-dot="24">
+	                <div class="position-relative">
+	                    <img class="img-fluid rounded" src="{{asset('img/bank24.png')}}" alt="">
+	                </div>
+	            </div>
+	            <div class="project-item border rounded h-100 p-3" data-dot="25">
+	                <div class="position-relative">
+	                    <img class="img-fluid rounded" src="{{asset('img/bank25.png')}}" alt="">
+	                </div>
+	            </div>
+	            <div class="project-item border rounded h-100 p-3" data-dot="26">
+	                <div class="position-relative">
+	                    <img class="img-fluid rounded" src="{{asset('img/bank26.png')}}" alt="">
+	                </div>
+	            </div>
+	            <div class="project-item border rounded h-100 p-3" data-dot="27">
+	                <div class="position-relative">
+	                    <img class="img-fluid rounded" src="{{asset('img/bank27.png')}}" alt="">
+	                </div>
+	            </div>
+	            <div class="project-item border rounded h-100 p-3" data-dot="28">
+	                <div class="position-relative">
+	                    <img class="img-fluid rounded" src="{{asset('img/bank28.png')}}" alt="">
+	                </div>
+	            </div>
+	            <div class="project-item border rounded h-100 p-3" data-dot="29">
+	                <div class="position-relative">
+	                    <img class="img-fluid rounded" src="{{asset('img/bank29.png')}}" alt="">
+	                </div>
+	            </div>
+	            <div class="project-item border rounded h-100 p-3" data-dot="30">
+	                <div class="position-relative">
+	                    <img class="img-fluid rounded" src="{{asset('img/bank30.png')}}" alt="">
+	                </div>
+	            </div>
+	            <div class="project-item border rounded h-100 p-3" data-dot="31">
+	                <div class="position-relative">
+	                    <img class="img-fluid rounded" src="{{asset('img/bank31.png')}}" alt="">
+	                </div>
+	            </div>
+	            <div class="project-item border rounded h-100 p-3" data-dot="32">
+	                <div class="position-relative">
+	                    <img class="img-fluid rounded" src="{{asset('img/bank32.png')}}" alt="">
+	                </div>
+	            </div>
+	            <div class="project-item border rounded h-100 p-3" data-dot="33">
+	                <div class="position-relative">
+	                    <img class="img-fluid rounded" src="{{asset('img/bank33.png')}}" alt="">
+	                </div>
+	            </div>
+	            <div class="project-item border rounded h-100 p-3" data-dot="34">
+	                <div class="position-relative">
+	                    <img class="img-fluid rounded" src="{{asset('img/bank34.png')}}" alt="">
+	                </div>
+	            </div>
+	            <div class="project-item border rounded h-100 p-3" data-dot="35">
+	                <div class="position-relative">
+	                    <img class="img-fluid rounded" src="{{asset('img/bank35.png')}}" alt="">
+	                </div>
+	            </div>
+	            <div class="project-item border rounded h-100 p-3" data-dot="36">
+	                <div class="position-relative">
+	                    <img class="img-fluid rounded" src="{{asset('img/bank36.png')}}" alt="">
+	                </div>
+	            </div>
+	            <div class="project-item border rounded h-100 p-3" data-dot="37">
+	                <div class="position-relative">
+	                    <img class="img-fluid rounded" src="{{asset('img/bank37.png')}}" alt="">
+	                </div>
+	            </div>
+	            <div class="project-item border rounded h-100 p-3" data-dot="38">
+	                <div class="position-relative">
+	                    <img class="img-fluid rounded" src="{{asset('img/bank38.png')}}" alt="">
+	                </div>
+	            </div>
+	            <div class="project-item border rounded h-100 p-3" data-dot="39">
+	                <div class="position-relative">
+	                    <img class="img-fluid rounded" src="{{asset('img/bank39.png')}}" alt="">
+	                </div>
+	            </div>
+	        </div>
+	        <div class="text-center mx-auto mt-5 wow fadeInUp" data-wow-delay="0.3s">
+	            <a class="btn btn-primary rounded-pill py-3 px-5" href="{{route('partners')}}">More Partners</a>
 	        </div>
 	    </div>
 	</div>
-	<!-- Project End -->
-
-
 	<!-- Team Start -->
 	<div class="container-xxl py-5">
 	    <div class="container">

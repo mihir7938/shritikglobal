@@ -113,10 +113,10 @@
                     </div>
                 </div>--}}
                 <a href="{{route('team')}}" class="nav-item nav-link {{ Route::currentRouteName() == 'team' ? 'active' : '' }}">Our Team</a>
-                <a href="{{route('testimonial')}}" class="nav-item nav-link {{ Route::currentRouteName() == 'testimonial' ? 'active' : '' }}">Testimonial</a>
+                <a href="{{route('documents')}}" class="nav-item nav-link {{ Route::currentRouteName() == 'documents' ? 'active' : '' }}">Loan Documents</a>
                 <a href="{{route('contact')}}" class="nav-item nav-link {{ Route::currentRouteName() == 'contact' ? 'active' : '' }}">Contact Us</a>
             </div>
-            <a href="{{route('contact')}}" class="btn btn-sm btn-light rounded-pill py-2 px-4 d-none d-lg-block">Get Started</a>
+            <a href="{{route('login')}}" class="btn btn-sm btn-light rounded-pill py-2 px-4 d-none d-lg-block">Login</a>
         </div>
     </nav>
     @yield('content')
@@ -202,6 +202,9 @@
     <script src="{{asset('lib/counterup/counterup.min.js')}}"></script>
     <script src="{{asset('lib/owlcarousel/owl.carousel.min.js')}}"></script>
     <script src="{{asset('lib/lightbox/js/lightbox.min.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.20.0/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.20.0/additional-methods.min.js"></script>
+    <script src="{{asset('js/validation-additional.js')}}"></script>
     <script src="{{asset('js/main.js')}}"></script>
     @yield('footer')
 </body>
