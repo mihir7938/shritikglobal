@@ -25,7 +25,7 @@ class PageController extends Controller
 
     public function index(Request $request)
     {
-        return view('under_construction');
+        return view('index');
     }
     public function about(Request $request)
     {
