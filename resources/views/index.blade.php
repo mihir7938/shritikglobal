@@ -1,44 +1,90 @@
 @extends('layouts.site-app')
 @section('content')
-	<!-- Carousel Start -->
-	<div class="container-fluid p-0 mb-5 wow fadeIn" data-wow-delay="0.1s">
-	    <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
-	        {{--<div class="carousel-indicators">
-	            <button type="button" data-bs-target="#header-carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1">
-	                <img class="img-fluid" src="img/carousel-1.jpg" alt="Image">
-	            </button>
-	            <button type="button" data-bs-target="#header-carousel" data-bs-slide-to="1" aria-label="Slide 2">
-	                <img class="img-fluid" src="img/carousel-2.jpg" alt="Image">
-	            </button>
-	            <button type="button" data-bs-target="#header-carousel" data-bs-slide-to="2" aria-label="Slide 3">
-	                <img class="img-fluid" src="img/carousel-3.jpg" alt="Image">
-	            </button>
-	        </div>--}}
+	<!-- Hero Carousel Start -->
+	<div class="container-fluid p-0 mb-5 hero-carousel-wrapper">
+	    <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="6000">
 	        <div class="carousel-inner">
 	            <div class="carousel-item active">
-	                <img class="w-100" src="img/banner-1.jpeg" alt="Image">
+	                <img class="hero-slide-img" src="{{ asset('img/banner-1.jpeg') }}" alt="Financial Solutions">
+	                <div class="hero-overlay"></div>
 	                <div class="carousel-caption">
-	                    <div class="p-3" style="max-width: 900px;">
-	                        {{--<h4 class="text-white text-uppercase mb-4 animated zoomIn">We Are Leader In</h4>--}}
-	                        <h2 class="display-4 text-white mb-0 animated zoomIn">Specialized in Loan, Real Estate and Automobile</h2>
+	                    <div class="container">
+	                        <div class="hero-content">
+	                            <span class="hero-eyebrow animated fadeInDown">
+	                                FINANCIAL SOLUTIONS | RETAIL TO ENTERPRISE
+	                            </span>
+	                            <h1 class="hero-heading animated zoomIn">
+	                                Financial Solutions for Every Need. Funding Opportunities for Every Ambition.
+	                            </h1>
+	                            <h5 class="hero-tagline animated fadeInUp">
+	                                Retail to Enterprise. Secured to Unsecured. One Financial Solutions Partner.
+	                            </h5>
+	                            <div class="hero-buttons animated fadeInUp">
+	                                <a href="#loan-solutions" class="btn btn-primary rounded-pill">
+	                                    Explore Loan Solutions
+	                                    <i class="fa fa-arrow-right ms-2"></i>
+	                                </a>
+	                                <a href="{{ route('contact') }}" class="btn btn-outline-light rounded-pill">
+	                                    Discuss Your Requirement
+	                                </a>
+	                            </div>
+	                        </div>
 	                    </div>
 	                </div>
 	            </div>
 	            <div class="carousel-item">
-	                <img class="w-100" src="img/banner-2.png" alt="Image">
+	                <img class="hero-slide-img" src="{{ asset('img/banner-2.png') }}" alt="Retail and Personal Finance">
+	                <div class="hero-overlay"></div>
 	                <div class="carousel-caption">
-	                    <div class="p-3" style="max-width: 900px;">
-	                        {{--<h4 class="text-white text-uppercase mb-4 animated zoomIn">We Are Leader In</h4>--}}
-	                        <h1 class="display-4 text-white mb-0 animated zoomIn">Empower your financial dreams with our Loan Services</h1>
+	                    <div class="container">
+	                        <div class="hero-content">
+	                            <span class="hero-eyebrow animated fadeInDown">
+	                                PERSONAL FINANCE | HOME & VEHICLE
+	                            </span>
+	                            <h1 class="hero-heading animated zoomIn">
+	                                Move Forward with the Right Financial Support.
+	                            </h1>
+	                            <h5 class="hero-tagline animated fadeInUp">
+	                                Your Goals. Your Requirements. Relevant Financial Possibilities.
+	                            </h5>
+	                            <div class="hero-buttons animated fadeInUp">
+	                                <a href="#loan-solutions" class="btn btn-primary rounded-pill">
+	                                    Explore Loan Solutions
+	                                    <i class="fa fa-arrow-right ms-2"></i>
+	                                </a>
+	                                <a href="{{ route('contact') }}" class="btn btn-outline-light rounded-pill">
+	                                    Discuss Your Requirement
+	                                </a>
+	                            </div>
+	                        </div>
 	                    </div>
 	                </div>
 	            </div>
 	            <div class="carousel-item">
-	                <img class="w-100" src="img/banner-3.png" alt="Image">
+	                <img class="hero-slide-img" src="{{ asset('img/banner-3.png') }}" alt="Business and Enterprise Finance">
+	                <div class="hero-overlay"></div>
 	                <div class="carousel-caption">
-	                    <div class="p-3" style="max-width: 900px;">
-	                        {{--<h4 class="text-white text-uppercase mb-4 animated zoomIn">We Are Leader In</h4>--}}
-	                        <h1 class="display-4 text-white mb-0 animated zoomIn">Ride your dreams with our Auto Mobile Services</h1>
+	                    <div class="container">
+	                        <div class="hero-content">
+	                            <span class="hero-eyebrow animated fadeInDown">
+	                                MSME FUNDING | CORPORATE FINANCE
+	                            </span>
+	                            <h1 class="hero-heading animated zoomIn">
+	                                Supporting Business Growth at Every Scale.
+	                            </h1>
+	                            <h5 class="hero-tagline animated fadeInUp">
+	                                Empowering Businesses. Exploring Growth Opportunities.
+	                            </h5>
+	                            <div class="hero-buttons animated fadeInUp">
+	                                <a href="#loan-solutions" class="btn btn-primary rounded-pill">
+	                                    Explore Loan Solutions
+	                                    <i class="fa fa-arrow-right ms-2"></i>
+	                                </a>
+	                                <a href="{{ route('contact') }}" class="btn btn-outline-light rounded-pill">
+	                                    Discuss Your Requirement
+	                                </a>
+	                            </div>
+	                        </div>
 	                    </div>
 	                </div>
 	            </div>
@@ -55,11 +101,9 @@
 	        </button>
 	    </div>
 	</div>
-	<!-- Carousel End -->
-
-
+	<!-- Hero Carousel End -->
 	<!-- Facts Start -->
-	<div class="container-xxl py-5">
+	{{--<div class="container-xxl py-5">
 	    <div class="container">
 	        <div class="row g-4">
 	            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
@@ -92,10 +136,8 @@
 	            </div>
 	        </div>
 	    </div>
-	</div>
+	</div>--}}
 	<!-- Facts End -->
-
-
 	<!-- About Start -->
 	<div class="container-xxl py-5">
 	    <div class="container">
@@ -107,17 +149,11 @@
 	            </div>
 	            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
 	                <div class="h-100">
-	                    <h6 class="section-title bg-white text-start text-primary pe-3">About Us</h6>
-	                    <h2 class="display-6 mb-4">Welcome to <span class="text-primary">Shritikglobal</span></h2>
-	                    <p>We're delighted to welcome you to Shritikglobal, where your vision meets our expertise. As you explore our website, you're embarking on a journey towards achieving your goals, making informed decisions, and experiencing excellence.</p>
-	                    <p class="mb-4">At Shritikglobal, we're dedicated to delivering top-notch consultancy services tailored to your unique needs. Whether you're an individual seeking career guidance, an organization looking to enhance efficiency, or an entrepreneur with ambitious dreams, we're here to empower you.</p>
-	                    <div class="d-flex align-items-center mb-4 pb-2">
-	                        <img class="flex-shrink-0 rounded-circle" src="img/team-1.jpg" alt="" style="width: 50px; height: 50px;">
-	                        <div class="ps-4">
-	                            <h6>HEMANT SRIVASTAV</h6>
-	                            <small>CEO & Founder</small>
-	                        </div>
-	                    </div>
+	                    <h6 class="section-title bg-white text-start text-primary pe-3">Who we are</h6>
+	                    <h2 class="display-6 mb-4">A Financial Solutions Partner for Different Needs</h2>
+	                    <p>Financial requirements are not the same for everyone. An individual may be planning a home purchase or managing a personal financial need. A professional may be considering a vehicle or balance transfer. A business owner may need working capital, machinery finance or expansion funding. An enterprise may be evaluating a structured or project-related funding requirement.</p>
+						<p class="mb-4">Shritik Global India Private Limited aims to bring these requirements into one organised financial-solutions ecosystem. We listen to the requirement, understand the broad customer profile and help explore relevant financing routes through appropriate institutions and partners, subject to product availability and applicable arrangements.
+						</p>
 	                    <a class="btn btn-primary rounded-pill py-3 px-5" href="{{route('about')}}">Read More</a>
 	                </div>
 	            </div>
@@ -125,52 +161,50 @@
 	    </div>
 	</div>
 	<!-- About End -->
-
-
 	<!-- Service Start -->
 	<div class="container-xxl py-5">
         <div class="container">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                <h6 class="section-title bg-white text-center text-primary px-3">Services</h6>
-                <h1 class="display-6 mb-4">We Focuse On Making The Best In All Sectors</h1>
+                <h6 class="section-title bg-white text-center text-primary px-3">Loan Solutions</h6>
+                <h2 class="display-6 mb-4">Explore Comprehensive Financing Solutions</h2>
             </div>
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="service-item d-block rounded text-center h-100 p-4">
                         <img class="img-fluid rounded mb-4" src="{{asset('img/service-1.png')}}" alt="">
-                        <h4 class="mb-0">Loan</h4>
+                        <h5 class="mb-0">Retail Loans</h5>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="service-item d-block rounded text-center h-100 p-4">
                         <img class="img-fluid rounded mb-4" src="{{asset('img/service-2.png')}}" alt="">
-                        <h4 class="mb-0">Automobile</h4>
+                        <h5 class="mb-0">Business & MSME Loans</h5>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="service-item d-block rounded text-center h-100 p-4">
                         <img class="img-fluid rounded mb-4" src="{{asset('img/service-3.png')}}" alt="">
-                        <h4 class="mb-0">Real Estate</h4>
+                        <h5 class="mb-0">Startup & Entrepreneur</h5>
                     </div>
                 </div>
-                {{--<div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <a class="service-item d-block rounded text-center h-100 p-4" href="">
                         <img class="img-fluid rounded mb-4" src="img/service-4.jpg" alt="">
-                        <h4 class="mb-0">Social Marketing</h4>
+                        <h5 class="mb-0">Corporate & Enterprise</h5>
                     </a>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                     <a class="service-item d-block rounded text-center h-100 p-4" href="">
                         <img class="img-fluid rounded mb-4" src="img/service-5.jpg" alt="">
-                        <h4 class="mb-0">Email Marketing</h4>
+                        <h5 class="mb-0">Secured Loans</h5>
                     </a>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                     <a class="service-item d-block rounded text-center h-100 p-4" href="">
                         <img class="img-fluid rounded mb-4" src="img/service-6.jpg" alt="">
-                        <h4 class="mb-0">PPC Advertising</h4>
+                        <h5 class="mb-0">Unsecured Loans</h5>
                     </a>
-                </div>--}}
+                </div>
             </div>
         </div>
     </div>
@@ -506,8 +540,6 @@
 	    </div>
 	</div>
 	<!-- Team End -->
-
-
 	<!-- Testimonial Start -->
 	<div class="container-xxl py-5">
 	    <div class="container">
@@ -560,4 +592,129 @@
 	    </div>
 	</div>
 	<!-- Testimonial End -->
+	
+	<!-- FAQ Section Start -->
+	<div class="container-xxl faq-section py-5">
+	    <div class="container">
+	    	<div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+	            <h6 class="section-title bg-white text-center text-primary px-3">Frequently Asked Questions</h6>
+	            <h1 class="display-6 mb-4">Have Any Questions?</h1>
+	        </div>
+	        <div class="row justify-content-center">
+	            <div class="col-lg-9">
+	                <div class="accordion faq-accordion" id="faqAccordion">
+	                    <div class="accordion-item wow fadeInUp" data-wow-delay="0.1s">
+	                        <h2 class="accordion-header" id="faqHeadingOne">
+	                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqOne" aria-expanded="true" aria-controls="faqOne">
+	                                Does Shritik Global help with both secured and unsecured loans?
+	                            </button>
+	                        </h2>
+	                        <div id="faqOne" class="accordion-collapse collapse show" aria-labelledby="faqHeadingOne" data-bs-parent="#faqAccordion">
+	                            <div class="accordion-body">
+	                                The company focuses on helping customers explore both secured and unsecured financing options across retail, business and enterprise categories, subject to active product availability and applicable arrangements.
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <div class="accordion-item wow fadeInUp" data-wow-delay="0.2s">
+	                        <h2 class="accordion-header" id="faqHeadingTwo">
+	                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqTwo" aria-expanded="false" aria-controls="faqTwo">
+	                                Can salaried individuals enquire?
+	                            </button>
+	                        </h2>
+	                        <div id="faqTwo" class="accordion-collapse collapse" aria-labelledby="faqHeadingTwo" data-bs-parent="#faqAccordion">
+	                            <div class="accordion-body">
+	                                Yes. Individuals and salaried professionals may submit enquiries for retail loan categories supported by the company's available lender or partner arrangements.
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <div class="accordion-item wow fadeInUp" data-wow-delay="0.3s">
+	                        <h2 class="accordion-header" id="faqHeadingThree">
+	                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqThree" aria-expanded="false" aria-controls="faqThree">
+	                                Can self-employed individuals and business owners enquire?
+	                            </button>
+	                        </h2>
+	                        <div id="faqThree" class="accordion-collapse collapse" aria-labelledby="faqHeadingThree" data-bs-parent="#faqAccordion">
+	                            <div class="accordion-body">
+	                                Yes. They may enquire about relevant personal, business or MSME financing options. Eligibility is determined by the relevant lender.
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <div class="accordion-item wow fadeInUp" data-wow-delay="0.4s">
+	                        <h2 class="accordion-header" id="faqHeadingFour">
+	                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqFour" aria-expanded="false" aria-controls="faqFour">
+	                                Can a customer get a loan without collateral?
+	                            </button>
+	                        </h2>
+	                        <div id="faqFour" class="accordion-collapse collapse" aria-labelledby="faqHeadingFour" data-bs-parent="#faqAccordion">
+	                            <div class="accordion-body">
+	                                Some products may not require conventional collateral. Approval, amount, pricing and terms depend on lender criteria and the applicant's profile.
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <div class="accordion-item wow fadeInUp" data-wow-delay="0.5s">
+	                        <h2 class="accordion-header" id="faqHeadingFive">
+	                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqFive" aria-expanded="false" aria-controls="faqFive">
+	                                Is loan approval guaranteed after submitting the website form?
+	                            </button>
+	                        </h2>
+	                        <div id="faqFive" class="accordion-collapse collapse" aria-labelledby="faqHeadingFive" data-bs-parent="#faqAccordion">
+	                            <div class="accordion-body">
+	                                No. An enquiry is not an approval or commitment to lend. The relevant lender conducts its own assessment and makes the final decision.
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <div class="accordion-item wow fadeInUp" data-wow-delay="0.6s">
+	                        <h2 class="accordion-header" id="faqHeadingSix">
+	                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqSix" aria-expanded="false" aria-controls="faqSix">
+	                                What documents are needed?
+	                            </button>
+	                        </h2>
+	                        <div id="faqSix" class="accordion-collapse collapse" aria-labelledby="faqHeadingSix" data-bs-parent="#faqAccordion">
+	                            <div class="accordion-body">
+	                                Documents vary by loan product and lender. They may include identity and address proof, income or business records, bank statements, tax returns, financial statements and property documents where relevant.
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <div class="accordion-item wow fadeInUp" data-wow-delay="0.7s">
+	                        <h2 class="accordion-header" id="faqHeadingSeven">
+	                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqSeven" aria-expanded="false" aria-controls="faqSeven">
+	                                Will submitting an enquiry affect my credit score?
+	                            </button>
+	                        </h2>
+	                        <div id="faqSeven" class="accordion-collapse collapse" aria-labelledby="faqHeadingSeven" data-bs-parent="#faqAccordion">
+	                            <div class="accordion-body">
+	                                A basic enquiry should not be represented as a credit bureau check. Any credit bureau enquiry or lender application should be explained to the customer and carried out only through the relevant authorised process and consent.
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <div class="accordion-item wow fadeInUp" data-wow-delay="0.8s">
+	                        <h2 class="accordion-header" id="faqHeadingEight">
+	                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqEight" aria-expanded="false" aria-controls="faqEight">
+	                                How long does approval take?
+	                            </button>
+	                        </h2>
+	                        <div id="faqEight" class="accordion-collapse collapse" aria-labelledby="faqHeadingEight" data-bs-parent="#faqAccordion">
+	                            <div class="accordion-body">
+	                                Timelines vary by lender, product, documentation, verification and case complexity. Do not promise a fixed approval or disbursement timeline unless a verified product-specific commitment exists.
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <div class="accordion-item wow fadeInUp" data-wow-delay="0.9s">
+	                        <h2 class="accordion-header" id="faqHeadingNine">
+	                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqNine" aria-expanded="false" aria-controls="faqNine">
+	                                How can I contact the team?
+	                            </button>
+	                        </h2>
+	                        <div id="faqNine" class="accordion-collapse collapse" aria-labelledby="faqHeadingNine" data-bs-parent="#faqAccordion">
+	                            <div class="accordion-body">
+	                                Use the contact details and enquiry form published on the official website. Insert only verified company contact information.
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	<!-- FAQ Section End -->
 @endsection
