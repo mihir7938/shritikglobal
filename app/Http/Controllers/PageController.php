@@ -35,6 +35,30 @@ class PageController extends Controller
     {
         return view('services');
     }
+    public function retailLoans(Request $request)
+    {
+        return view('retail-loans');
+    }
+    public function businessLoans(Request $request)
+    {
+        return view('business-loans');
+    }
+    public function startupLoans(Request $request)
+    {
+        return view('startup-loans');
+    }
+    public function corporateLoans(Request $request)
+    {
+        return view('corporate-loans');
+    }
+    public function securedLoans(Request $request)
+    {
+        return view('secured-loans');
+    }
+    public function unsecuredLoans(Request $request)
+    {
+        return view('unsecured-loans');
+    }
     public function projects(Request $request)
     {
         return view('projects');

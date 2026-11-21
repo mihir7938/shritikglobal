@@ -20,7 +20,7 @@
 	                                Retail to Enterprise. Secured to Unsecured. One Financial Solutions Partner.
 	                            </h5>
 	                            <div class="hero-buttons animated fadeInUp">
-	                                <a href="#loan-solutions" class="btn btn-primary rounded-pill">
+	                                <a href="{{ route('services') }}" class="btn btn-primary rounded-pill">
 	                                    Explore Loan Solutions
 	                                    <i class="fa fa-arrow-right ms-2"></i>
 	                                </a>
@@ -48,7 +48,7 @@
 	                                Your Goals. Your Requirements. Relevant Financial Possibilities.
 	                            </h5>
 	                            <div class="hero-buttons animated fadeInUp">
-	                                <a href="#loan-solutions" class="btn btn-primary rounded-pill">
+	                                <a href="{{ route('services') }}" class="btn btn-primary rounded-pill">
 	                                    Explore Loan Solutions
 	                                    <i class="fa fa-arrow-right ms-2"></i>
 	                                </a>
@@ -76,7 +76,7 @@
 	                                Empowering Businesses. Exploring Growth Opportunities.
 	                            </h5>
 	                            <div class="hero-buttons animated fadeInUp">
-	                                <a href="#loan-solutions" class="btn btn-primary rounded-pill">
+	                                <a href="{{ route('services') }}" class="btn btn-primary rounded-pill">
 	                                    Explore Loan Solutions
 	                                    <i class="fa fa-arrow-right ms-2"></i>
 	                                </a>
@@ -209,58 +209,211 @@
         </div>
     </div>
 	<!-- Service End -->
-
-
-	<!-- Feature Start -->
+	<!-- WHY CUSTOMERS ENGAGE WITH US -->
+	<div class="sg-why-section container-xxl py-5">
+	    <div class="container">
+	    	<div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 750px;">
+	            <h6 class="section-title bg-white text-center text-primary px-3">WHY CHOOSE US</h6>
+	            <h2 class="display-6 mb-4">Why Customers Engage With Us</h2>
+	            <p class="text-muted mb-0">
+	                We focus on understanding customer requirements, providing
+	                structured guidance and making the financing journey easier
+	                to understand.
+	            </p>
+	        </div>
+	        <div class="row g-4">
+	            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+	                <div class="sg-why-card h-100">
+	                    <div class="sg-why-icon">
+	                        <i class="fas fa-comments"></i>
+	                    </div>
+	                    <h5>Requirement-First Conversations</h5>
+	                    <p>
+	                        We understand your purpose, funding amount, timing
+	                        and broad financial context before discussing
+	                        possible financing routes.
+	                    </p>
+	                </div>
+	            </div>
+	            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+	                <div class="sg-why-card h-100">
+	                    <div class="sg-why-icon">
+	                        <i class="fas fa-layer-group"></i>
+	                    </div>
+	                    <h5>Retail-to-Enterprise Coverage</h5>
+	                    <p>
+	                        We work across multiple customer segments and
+	                        financing categories under one company identity.
+	                    </p>
+	                </div>
+	            </div>
+	            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+	                <div class="sg-why-card h-100">
+	                    <div class="sg-why-icon">
+	                        <i class="fas fa-shield-alt"></i>
+	                    </div>
+	                    <h5>Secured &amp; Unsecured Options</h5>
+	                    <p>
+	                        We explore different financing structures where
+	                        suitable products and partner arrangements exist.
+	                    </p>
+	                </div>
+	            </div>
+	            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+	                <div class="sg-why-card h-100">
+	                    <div class="sg-why-icon">
+	                        <i class="fas fa-file-alt"></i>
+	                    </div>
+	                    <h5>Structured Coordination</h5>
+	                    <p>
+	                        We help make information gathering, documentation
+	                        and the next steps easier to understand.
+	                    </p>
+	                </div>
+	            </div>
+	            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+	                <div class="sg-why-card h-100">
+	                    <div class="sg-why-icon">
+	                        <i class="fas fa-handshake"></i>
+	                    </div>
+	                    <h5>Clear Communication</h5>
+	                    <p>
+	                        We explain the process transparently, including
+	                        that product terms and final credit decisions
+	                        belong to the relevant lender.
+	                    </p>
+	                </div>
+	            </div>
+	            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+	                <div class="sg-why-card h-100">
+	                    <div class="sg-why-icon">
+	                        <i class="fas fa-user-tie"></i>
+	                    </div>
+	                    <h5>Relationship-Led Approach</h5>
+	                    <p>
+	                        We value professional conduct, confidentiality
+	                        and consistent communication throughout the
+	                        customer relationship.
+	                    </p>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	<!-- HOW IT WORKS -->
+	<div class="sg-process-section container-xxl py-5">
+	    <div class="container">
+	    	<div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 750px;">
+	            <h6 class="section-title bg-white text-center text-primary px-3">OUR PROCESS</h6>
+	            <h2 class="display-6 mb-4">How It Works</h2>
+	            <p class="text-muted mb-0">
+	                A simple and structured approach to understanding
+	                your financing requirements and exploring possible options.
+	            </p>
+	        </div>
+	        <div class="row g-4">
+	            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+	                <div class="sg-process-card h-100">
+	                    <div class="sg-step-number">01</div>
+	                    <div class="sg-process-icon">
+	                        <i class="fas fa-edit"></i>
+	                    </div>
+	                    <h5>Tell Us What You Need</h5>
+	                    <p>
+	                        Submit a short enquiry with your contact details
+	                        and broad financing requirement.
+	                    </p>
+	                </div>
+	            </div>
+	            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+	                <div class="sg-process-card h-100">
+	                    <div class="sg-step-number">02</div>
+	                    <div class="sg-process-icon">
+	                        <i class="fas fa-comments"></i>
+	                    </div>
+	                    <h5>Initial Conversation</h5>
+	                    <p>
+	                        We clarify your purpose, required amount,
+	                        location and applicant profile.
+	                    </p>
+	                </div>
+	            </div>
+	            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+	                <div class="sg-process-card h-100">
+	                    <div class="sg-step-number">03</div>
+	                    <div class="sg-process-icon">
+	                        <i class="fas fa-search-dollar"></i>
+	                    </div>
+	                    <h5>Option Exploration</h5>
+	                    <p>
+	                        We explore potential financing routes based on
+	                        available products and preliminary information.
+	                    </p>
+	                </div>
+	            </div>
+	            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+	                <div class="sg-process-card h-100">
+	                    <div class="sg-step-number">04</div>
+	                    <div class="sg-process-icon">
+	                        <i class="fas fa-folder-open"></i>
+	                    </div>
+	                    <h5>Documentation Guidance</h5>
+	                    <p>
+	                        We explain the documents requested for the
+	                        relevant financing process.
+	                    </p>
+	                </div>
+	            </div>
+	            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+	                <div class="sg-process-card h-100">
+	                    <div class="sg-step-number">05</div>
+	                    <div class="sg-process-icon">
+	                        <i class="fas fa-university"></i>
+	                    </div>
+	                    <h5>Lender or Partner Assessment</h5>
+	                    <p>
+	                        The relevant institution conducts its own checks
+	                        and makes the final credit decision.
+	                    </p>
+	                </div>
+	            </div>
+	            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+	                <div class="sg-process-card h-100">
+	                    <div class="sg-step-number">06</div>
+	                    <div class="sg-process-icon">
+	                        <i class="fas fa-headset"></i>
+	                    </div>
+	                    <h5>Updates &amp; Next Steps</h5>
+	                    <p>
+	                        We provide communication and coordination
+	                        in line with the agreed process and our role.
+	                    </p>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	<!-- INDUSTRIES -->
 	<div class="container-xxl py-5">
 	    <div class="container">
 	        <div class="row g-5">
 	            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
 	                <div class="h-100">
-	                    <h6 class="section-title bg-white text-start text-primary pe-3">Why Choose Us</h6>
-	                    <h2 class="display-6 mb-4">Why People Trust Us? Learn About Us!</h2>
-	                    {{--<p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>--}}
+	                    <h6 class="section-title bg-white text-start text-primary pe-3">INDUSTRIES WE SERVE</h6>
+	                    <h2 class="display-6 mb-4">Financial Perspectives Across Diverse Industries</h2>
+	                    <p class="mb-2">Understanding industry-specific business models, cash-flow cycles, asset requirements and funding objectives helps us explore relevant financial possibilities.</p>
 	                    <ul class="mb-4">
-	                    	<li>Explore a comprehensive range of services designed to address your challenges.</li>
-	                    	<li>Discover how we've overcome obstacles and achieve remarkable outcomes.</li>
-	                    	<li>We understand your needs, and guide you towards success.</li>
+	                    	<li>Manufacturing & Engineering</li>
+	                    	<li>Textile & Processing</li>
+	                    	<li>Trading & Distribution</li>
+	                    	<li>Retail & Wholesale</li>
+	                    	<li>Logistics & Transportation</li>
+	                    	<li>Healthcare & Professional Services</li>
+	                    	<li>Real Estate & Construction</li>
+	                    	<li>Infrastructure & Projects</li>
+	                    	<li>Emerging Businesses</li>
 	                    </ul>
 	                    <a class="btn btn-primary rounded-pill py-3 px-5" href="{{route('about')}}">Read More</a>
-	                    {{--<div class="row g-4">
-	                        <div class="col-12">
-	                            <div class="skill">
-	                                <div class="d-flex justify-content-between">
-	                                    <p class="mb-2">Digital Marketing</p>
-	                                    <p class="mb-2">85%</p>
-	                                </div>
-	                                <div class="progress">
-	                                    <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-	                                </div>
-	                            </div>
-	                        </div>
-	                        <div class="col-12">
-	                            <div class="skill">
-	                                <div class="d-flex justify-content-between">
-	                                    <p class="mb-2">SEO & Backlinks</p>
-	                                    <p class="mb-2">90%</p>
-	                                </div>
-	                                <div class="progress">
-	                                    <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-	                                </div>
-	                            </div>
-	                        </div>
-	                        <div class="col-12">
-	                            <div class="skill">
-	                                <div class="d-flex justify-content-between">
-	                                    <p class="mb-2">Design & Development</p>
-	                                    <p class="mb-2">95%</p>
-	                                </div>
-	                                <div class="progress">
-	                                    <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
-	                                </div>
-	                            </div>
-	                        </div>
-	                    </div>--}}
 	                </div>
 	            </div>
 	            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
@@ -271,7 +424,6 @@
 	        </div>
 	    </div>
 	</div>
-	<!-- Feature End -->
 	<div class="container-xxl py-5">
 	    <div class="container">
 	        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
@@ -481,7 +633,7 @@
 	    </div>
 	</div>
 	<!-- Team Start -->
-	<div class="container-xxl py-5">
+	{{--<div class="container-xxl py-5">
 	    <div class="container">
 	        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
 	            <h6 class="section-title bg-white text-center text-primary px-3">Our Team</h6>
@@ -538,10 +690,10 @@
 	            </div>
 	        </div>
 	    </div>
-	</div>
+	</div>--}}
 	<!-- Team End -->
 	<!-- Testimonial Start -->
-	<div class="container-xxl py-5">
+	{{--<div class="container-xxl py-5">
 	    <div class="container">
 	        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
 	            <h6 class="section-title bg-white text-center text-primary px-3">Testimonial</h6>
@@ -590,7 +742,7 @@
 	            </div>
 	        </div>
 	    </div>
-	</div>
+	</div>--}}
 	<!-- Testimonial End -->
 	
 	<!-- FAQ Section Start -->
@@ -717,4 +869,26 @@
 	    </div>
 	</div>
 	<!-- FAQ Section End -->
+
+	<!-- Closing CTA Start -->
+	<div class="sg-closing-cta">
+	    <div class="container">
+	        <div class="sg-cta-content text-center">
+	            <div class="sg-cta-icon wow fadeInUp" data-wow-delay="0.1s"><i class="fas fa-handshake"></i></div>
+	            <h2 class="wow fadeInUp" data-wow-delay="0.1s">
+	                Your Next Financial Step Starts
+	                <span>With the Right Conversation.</span>
+	            </h2>
+	            <p class="wow fadeInUp" data-wow-delay="0.1s">
+	                Tell us what you are looking to finance. Connect with
+	                Shritik Global India Private Limited to discuss your
+	                requirement and understand the next steps.
+	            </p>
+	            <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s">
+		            <a class="btn btn-primary rounded-pill py-3 px-5" href="{{route('contact')}}">Submit Your Enquiry</a>
+		        </div>
+	        </div>
+	    </div>
+	</div>
+	<!-- Closing CTA End -->
 @endsection

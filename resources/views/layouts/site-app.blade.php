@@ -102,7 +102,17 @@
             <div class="navbar-nav me-auto p-3 p-lg-0">
                 <a href="{{route('index')}}" class="nav-item nav-link {{ Route::currentRouteName() == 'index' ? 'active' : '' }}">Home</a>
                 <a href="{{route('about')}}" class="nav-item nav-link {{ Route::currentRouteName() == 'about' ? 'active' : '' }}">About Us</a>
-                <a href="{{route('services')}}" class="nav-item nav-link {{ Route::currentRouteName() == 'services' ? 'active' : '' }}">Services</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle {{(Route::currentRouteName() == 'services' || Route::currentRouteName() == 'retail_loans' || Route::currentRouteName() == 'business_loans' || Route::currentRouteName() == 'startup_loans' || Route::currentRouteName() == 'corporate_loans' || Route::currentRouteName() == 'secured_loans' || Route::currentRouteName() == 'unsecured_loans') ? 'active' : '' }}" data-bs-toggle="dropdown">Loan Solutions</a>
+                    <div class="dropdown-menu border-0 rounded-0 rounded-bottom m-0">
+                        <a href="{{route('retail_loans')}}" class="dropdown-item {{ Route::currentRouteName() == 'retail_loans' ? 'active' : '' }}">Retail</a>
+                        <a href="{{route('business_loans')}}" class="dropdown-item {{ Route::currentRouteName() == 'business_loans' ? 'active' : '' }}">Business & MSME</a>
+                        <a href="{{route('startup_loans')}}" class="dropdown-item {{ Route::currentRouteName() == 'startup_loans' ? 'active' : '' }}">Startup & Entrepreneur</a>
+                        <a href="{{route('corporate_loans')}}" class="dropdown-item {{ Route::currentRouteName() == 'corporate_loans' ? 'active' : '' }}">Corporate & Enterprise</a>
+                        <a href="{{route('secured_loans')}}" class="dropdown-item {{ Route::currentRouteName() == 'secured_loans' ? 'active' : '' }}">Secured</a>
+                        <a href="{{route('unsecured_loans')}}" class="dropdown-item {{ Route::currentRouteName() == 'unsecured_loans' ? 'active' : '' }}">Unsecured</a>
+                    </div>
+                </div>
                 {{--<a href="{{route('projects')}}" class="nav-item nav-link {{ Route::currentRouteName() == 'projects' ? 'active' : '' }}">Projects</a>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle {{(Route::currentRouteName() == 'features' || Route::currentRouteName() == 'team' || Route::currentRouteName() == 'testimonial') ? 'active' : '' }}" data-bs-toggle="dropdown">Pages</a>

@@ -21,7 +21,13 @@ use App\Http\Controllers\CordinatorController;
 
 Route::get('/', [PageController::class, 'index'])->name('index');
 Route::get('/about', [PageController::class, 'about'])->name('about');
-Route::get('/services', [PageController::class, 'services'])->name('services');
+Route::get('/loan-solutions', [PageController::class, 'services'])->name('services');
+Route::get('/retail-loans', [PageController::class, 'retailLoans'])->name('retail_loans');
+Route::get('/business-msme-loans', [PageController::class, 'businessLoans'])->name('business_loans');
+Route::get('/startup-entrepreneur-loans', [PageController::class, 'startupLoans'])->name('startup_loans');
+Route::get('/corporate-enterprise-finance', [PageController::class, 'corporateLoans'])->name('corporate_loans');
+Route::get('/secured-loans', [PageController::class, 'securedLoans'])->name('secured_loans');
+Route::get('/unsecured-loans', [PageController::class, 'unsecuredLoans'])->name('unsecured_loans');
 Route::get('/projects', [PageController::class, 'projects'])->name('projects');
 Route::get('/features', [PageController::class, 'features'])->name('features');
 Route::get('/team', [PageController::class, 'team'])->name('team');

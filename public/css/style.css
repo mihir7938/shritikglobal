@@ -673,6 +673,260 @@
 .hero-carousel-wrapper .carousel-control-next {
     width: 6%;
 }
+/* ==========================================
+   WHY CUSTOMERS ENGAGE WITH US
+=========================================== */
+.sg-why-card {
+    position: relative;
+    background: #ffffff;
+    padding: 35px 28px;
+    border-radius: 15px;
+    border: 1px solid #e9eef5;
+    box-shadow: 0 5px 25px rgba(15, 45, 85, 0.045);
+    transition: all 0.35s ease;
+    overflow: hidden;
+}
+.sg-why-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 3px;
+    background: #0d6efd;
+    transition: width 0.35s ease;
+}
+.sg-why-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(15, 45, 85, 0.11);
+    border-color: #dce8f8;
+}
+.sg-why-card:hover::before {
+    width: 100%;
+}
+.sg-why-icon {
+    width: 65px;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eaf2ff;
+    color: #0d6efd;
+    border-radius: 14px;
+    font-size: 26px;
+    margin-bottom: 23px;
+    transition: all 0.35s ease;
+}
+.sg-why-card:hover .sg-why-icon {
+    background: #0d6efd;
+    color: #ffffff;
+    transform: rotateY(180deg);
+}
+.sg-why-card h5 {
+    color: #172b4d;
+    font-size: 19px;
+    font-weight: 700;
+    margin-bottom: 13px;
+}
+.sg-why-card p {
+    color: #6c757d;
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 0;
+}
+/* ==========================================
+   HOW IT WORKS
+=========================================== */
+.sg-process-card {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid #e8edf5;
+    border-radius: 15px;
+    padding: 35px 28px 30px;
+    overflow: hidden;
+    box-shadow: 0 5px 25px rgba(15, 45, 85, 0.045);
+    transition: all 0.35s ease;
+}
+.sg-process-card:hover {
+    transform: translateY(-8px);
+    border-color: #b9d3ff;
+    box-shadow: 0 15px 35px rgba(15, 45, 85, 0.10);
+}
+.sg-step-number {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 42px;
+    line-height: 1;
+    font-weight: 800;
+    color: #edf3fc;
+    transition: all 0.35s ease;
+}
+.sg-process-card:hover .sg-step-number {
+    color: #dce9ff;
+}
+.sg-process-icon {
+    width: 65px;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0d6efd;
+    color: #ffffff;
+    border-radius: 50%;
+    font-size: 24px;
+    margin-bottom: 23px;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 7px 18px rgba(13, 110, 253, 0.22);
+    transition: all 0.35s ease;
+}
+.sg-process-card:hover .sg-process-icon {
+    background: #172b4d;
+    transform: scale(1.08);
+}
+.sg-process-card h5 {
+    color: #172b4d;
+    font-size: 19px;
+    font-weight: 700;
+    margin-bottom: 13px;
+}
+.sg-process-card p {
+    color: #6c757d;
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 0;
+}
+/* ==========================================
+   CLOSING CTA SECTION
+========================================== */
+.sg-closing-cta {
+    position: relative;
+    overflow: hidden;
+    padding: 3rem 0;
+    margin-bottom: -3rem;
+    background: linear-gradient(
+        120deg,
+        #092844 0%,
+        #153d60 55%,
+        #092844 100%
+    );
+}
+.sg-cta-content {
+    position: relative;
+    z-index: 1;
+    max-width: 850px;
+    margin: 0 auto;
+}
+.sg-cta-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 102, 0, 0.15);
+    border: 1px solid rgba(255, 102, 0, 0.5);
+    border-radius: 50%;
+    color: #FF6600;
+    font-size: 29px;
+}
+.sg-cta-content h2 {
+    color: #FFFFFF;
+    font-size: 32px;
+    line-height: 1.35;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+.sg-cta-content h2 span {
+    color: #FF6600;
+    display: block;
+}
+.sg-cta-content p {
+    max-width: 720px;
+    margin: 0 auto 30px;
+    color: #E0E8F0;
+    font-size: 16px;
+    line-height: 1.9;
+}
+.sg-cta-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 32px;
+    background: #FF6600;
+    border: 2px solid #FF6600;
+    border-radius: 50px;
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: 700;
+    transition: all 0.35s ease;
+}
+.sg-cta-button:hover {
+    background: #FFFFFF;
+    border-color: #FFFFFF;
+    color: #FF6600;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.2);
+}
+.retail-intro-image {
+    position: relative;
+    padding: 15px;
+}
+.retail-intro-image::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 75%;
+    height: 85%;
+    border: 5px solid var(--primary);
+    border-radius: 8px;
+}
+.retail-intro-image img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 340px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+.retail-intro-content h2 {
+    color: #252525;
+    font-weight: 800;
+    line-height: 1.3;
+}
+.retail-intro-content p, .retail-intro-content ul {
+    color: #777777;
+    font-size: 15px;
+    line-height: 1.9;
+}
+.retail-loan-item {
+    padding: 22px 0;
+    border-bottom: 1px solid #eeeeee;
+}
+.retail-loan-item:first-child {
+    padding-top: 0;
+}
+.retail-loan-item:last-child {
+    border-bottom: none;
+}
+.retail-loan-item h5 {
+    color: #252525;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
+.retail-loan-item:hover h5 {
+    color: var(--primary);
+}
+.retail-loan-item p {
+    color: #777777;
+    font-size: 15px;
+    line-height: 1.85;
+    margin-bottom: 0;
+}
 @media (max-width: 991px) {
     .hero-carousel-wrapper .carousel-item {
         height: 530px;
@@ -699,6 +953,45 @@
     .faq-section .accordion-body {
         font-size: 14px;
         padding: 5px 16px 18px;
+    }
+    .sg-why-card,
+    .sg-process-card {
+        padding: 28px 23px;
+    }
+    .sg-why-card h5,
+    .sg-process-card h5 {
+        font-size: 18px;
+    }
+    .sg-step-number {
+        font-size: 36px;
+    }
+    .sg-closing-cta {
+        padding: 65px 20px;
+    }
+    .sg-cta-content h2 {
+        font-size: 26px;
+    }
+    .sg-cta-content p {
+        font-size: 14px;
+    }
+    .sg-cta-button {
+        padding: 13px 25px;
+        font-size: 14px;
+    }
+    .sg-cta-note {
+        font-size: 11px;
+    }
+    .retail-intro-image img {
+        height: 280px;
+    }
+    .retail-loan-item {
+        padding: 18px 0;
+    }
+    .retail-loan-item h5 {
+        font-size: 18px;
+    }
+    .retail-loan-item p, .retail-intro-content ul {
+        font-size: 14px;
     }
 }
 @media (max-width: 576px) {
@@ -745,5 +1038,28 @@
     .hero-carousel-wrapper .carousel-control-prev,
     .hero-carousel-wrapper .carousel-control-next {
         width: 8%;
+    }
+}
+@media (max-width: 575px) {
+    .sg-why-section,
+    .sg-process-section {
+        padding-top: 35px !important;
+        padding-bottom: 35px !important;
+    }
+    .sg-why-icon,
+    .sg-process-icon {
+        width: 58px;
+        height: 58px;
+        font-size: 22px;
+    }
+}
+@media (max-width: 480px) {
+    .sg-cta-content h2 {
+        font-size: 21px;
+    }
+    .sg-cta-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
     }
 }
