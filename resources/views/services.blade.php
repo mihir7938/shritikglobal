@@ -8,39 +8,43 @@
     </div>
     <div class="container-xxl py-5">
         <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <h6 class="section-title bg-white text-center text-primary px-3">Loan Solutions</h6>
+                <h2 class="display-6 mb-4">Explore Comprehensive Financing Solutions</h2>
+            </div>
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="service-item d-block rounded text-center h-100 p-4">
+                    <a class="service-item d-block rounded text-center h-100 p-4" href="{{route('retail_loans')}}">
                         <img class="img-fluid rounded mb-4" src="{{asset('img/service-1.png')}}" alt="">
                         <h5 class="mb-0">Retail Loans</h5>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item d-block rounded text-center h-100 p-4">
+                    <a class="service-item d-block rounded text-center h-100 p-4" href="{{route('business_loans')}}">
                         <img class="img-fluid rounded mb-4" src="{{asset('img/service-2.png')}}" alt="">
                         <h5 class="mb-0">Business & MSME Loans</h5>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item d-block rounded text-center h-100 p-4">
+                    <a class="service-item d-block rounded text-center h-100 p-4" href="{{route('startup_loans')}}">
                         <img class="img-fluid rounded mb-4" src="{{asset('img/service-3.png')}}" alt="">
                         <h5 class="mb-0">Startup & Entrepreneur</h5>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <a class="service-item d-block rounded text-center h-100 p-4" href="">
+                    <a class="service-item d-block rounded text-center h-100 p-4" href="{{route('corporate_loans')}}">
                         <img class="img-fluid rounded mb-4" src="img/service-4.jpg" alt="">
                         <h5 class="mb-0">Corporate & Enterprise</h5>
                     </a>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <a class="service-item d-block rounded text-center h-100 p-4" href="">
+                    <a class="service-item d-block rounded text-center h-100 p-4" href="{{route('secured_loans')}}">
                         <img class="img-fluid rounded mb-4" src="img/service-5.jpg" alt="">
                         <h5 class="mb-0">Secured Loans</h5>
                     </a>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <a class="service-item d-block rounded text-center h-100 p-4" href="">
+                    <a class="service-item d-block rounded text-center h-100 p-4" href="{{route('unsecured_loans')}}">
                         <img class="img-fluid rounded mb-4" src="img/service-6.jpg" alt="">
                         <h5 class="mb-0">Unsecured Loans</h5>
                     </a>

@@ -927,6 +927,300 @@
     line-height: 1.85;
     margin-bottom: 0;
 }
+/* ABOUT US PAGE */
+.sg-about-label {
+    display: inline-block;
+    color: var(--primary, #ff6600);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+.sg-about-image,
+.sg-founder-image {
+    position: relative;
+    padding: 15px 25px 25px 0;
+}
+.sg-about-image::before,
+.sg-founder-image::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 85%;
+    border: 4px solid var(--primary, #ff6600);
+    border-radius: 5px;
+}
+.sg-about-image img,
+.sg-founder-image img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 390px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin: 28px 0 0 28px;
+}
+.sg-about-content h2 {
+    color: #202020;
+    font-size: 34px;
+    font-weight: 800;
+    line-height: 1.3;
+    margin-bottom: 22px;
+}
+.sg-about-content p,
+.sg-philosophy p {
+    color: #777;
+    font-size: 15px;
+    line-height: 1.9;
+}
+.sg-about-purpose,
+.sg-about-values,
+.sg-leadership-section {
+    background: #f7f8fa;
+}
+.sg-purpose-card {
+    padding: 40px;
+    background: #fff;
+    border-radius: 8px;
+    border-bottom: 4px solid var(--primary, #ff6600);
+    box-shadow: 0 5px 25px rgba(0,0,0,.04);
+    transition: .3s ease;
+}
+.sg-purpose-card:hover,
+.sg-value-item:hover,
+.sg-leadership-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,.08);
+}
+.sg-purpose-icon {
+    width: 65px;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,102,0,.10);
+    color: var(--primary, #ff6600);
+    border-radius: 8px;
+    font-size: 27px;
+    margin-bottom: 25px;
+}
+.sg-purpose-card h3 {
+    color: #222;
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+.sg-purpose-card p {
+    color: #777;
+    font-size: 15px;
+    line-height: 1.9;
+    margin-bottom: 0;
+}
+.sg-philosophy h2,
+.sg-section-heading h2 {
+    color: #222;
+    font-weight: 800;
+    line-height: 1.3;
+}
+.sg-philosophy-point {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+}
+.sg-philosophy-point:last-child {
+    border-bottom: 0;
+}
+.sg-philosophy-point > i {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,102,0,.10);
+    color: var(--primary, #ff6600);
+    border-radius: 50%;
+    font-size: 19px;
+}
+.sg-philosophy-point h5 {
+    color: #222;
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+.sg-philosophy-point p {
+    color: #777;
+    font-size: 14px;
+    line-height: 1.8;
+    margin: 0;
+}
+.sg-section-heading {
+    max-width: 800px;
+}
+.sg-section-heading h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+.sg-section-heading p {
+    color: #777;
+    font-size: 15px;
+    line-height: 1.8;
+}
+.sg-value-item {
+    height: 100%;
+    padding: 28px 24px;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 7px;
+    transition: .3s ease;
+}
+.sg-value-item:hover {
+    border-color: var(--primary, #ff6600);
+}
+.sg-value-icon {
+    color: var(--primary, #ff6600);
+    font-size: 28px;
+    margin-bottom: 18px;
+}
+.sg-value-item h5 {
+    color: #222;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+.sg-value-item p {
+    color: #777;
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 0;
+}
+.sg-founder-name {
+    color: var(--primary, #ff6600);
+    font-weight: 800;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+.sg-founder-designation {
+    color: #777;
+    font-size: 14px;
+    font-weight: 600;
+}
+.sg-founder-section p {
+    color: #777;
+    font-size: 15px;
+    line-height: 1.9;
+}
+.sg-founder-message {
+    display: flex;
+    gap: 25px;
+    padding: 40px;
+    background: #f7f8fa;
+    border-left: 5px solid var(--primary, #ff6600);
+    border-radius: 7px;
+}
+.sg-founder-quote-icon {
+    flex-shrink: 0;
+    color: var(--primary, #ff6600);
+    font-size: 38px;
+}
+.sg-founder-message h3 {
+    color: #222;
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 18px;
+}
+.sg-founder-message p {
+    color: #666;
+    font-size: 15px;
+    line-height: 1.9;
+}
+.sg-founder-message h6 {
+    color: #222;
+    font-weight: 700;
+}
+.sg-founder-message h6 span {
+    color: #888;
+    font-weight: 400;
+}
+.sg-leadership-card {
+    position: relative;
+    height: 100%;
+    padding: 30px;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 7px;
+    transition: .3s ease;
+}
+.sg-leadership-card:hover {
+    border-color: var(--primary, #ff6600);
+}
+.sg-leadership-number {
+    color: rgba(255,102,0,.3);
+    font-size: 35px;
+    font-weight: 800;
+    margin-bottom: 15px;
+    line-height: 1;
+}
+.sg-leadership-card h5 {
+    color: #222;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+}
+.sg-leadership-card p {
+    color: #777;
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 0;
+}
+.sg-team-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 28px 30px;
+    background: #fff;
+    border-radius: 7px;
+}
+.sg-team-note > i {
+    flex-shrink: 0;
+    color: var(--primary, #ff6600);
+    font-size: 25px;
+    margin-top: 5px;
+}
+.sg-team-note p {
+    color: #777;
+    font-size: 14px;
+    line-height: 1.8;
+}
+.sg-commitment-section {
+    background: #fff;
+}
+.sg-commitment-box {
+    max-width: 900px;
+    margin: auto;
+    padding: 45px 35px;
+    background: #092844;
+    border-radius: 8px;
+}
+.sg-commitment-box h2 {
+    color: #fff;
+    font-size: 30px;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+.sg-commitment-box p {
+    max-width: 750px;
+    margin: auto;
+    color: #e0e8f0;
+    font-size: 15px;
+    line-height: 1.9;
+}
 @media (max-width: 991px) {
     .hero-carousel-wrapper .carousel-item {
         height: 530px;
@@ -939,6 +1233,14 @@
     }
     .hero-description {
         font-size: 15px;
+    }
+    .sg-about-content h2,
+    .sg-section-heading h2 {
+        font-size: 29px;
+    }
+    .sg-about-image img,
+    .sg-founder-image img {
+        height: 330px;
     }
 }
 @media (max-width: 767px) {
@@ -992,6 +1294,36 @@
     }
     .retail-loan-item p, .retail-intro-content ul {
         font-size: 14px;
+    }
+    .sg-about-content h2,
+    .sg-section-heading h2 {
+        font-size: 26px;
+    }
+    .sg-about-image img,
+    .sg-founder-image img {
+        height: 280px;
+    }
+    .sg-purpose-card {
+        padding: 28px;
+    }
+    .sg-founder-message {
+        display: block;
+        padding: 25px;
+    }
+    .sg-founder-quote-icon {
+        margin-bottom: 18px;
+    }
+    .sg-founder-message h3 {
+        font-size: 21px;
+    }
+    .sg-team-note {
+        padding: 22px;
+    }
+    .sg-commitment-box {
+        padding: 35px 22px;
+    }
+    .sg-commitment-box h2 {
+        font-size: 25px;
     }
 }
 @media (max-width: 576px) {
