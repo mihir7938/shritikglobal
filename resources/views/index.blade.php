@@ -413,7 +413,7 @@
 	                    	<li>Infrastructure & Projects</li>
 	                    	<li>Emerging Businesses</li>
 	                    </ul>
-	                    <a class="btn btn-primary rounded-pill py-3 px-5" href="{{route('about')}}">Read More</a>
+	                    <a class="btn btn-primary rounded-pill py-3 px-5" href="{{route('industries')}}">Read More</a>
 	                </div>
 	            </div>
 	            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
@@ -628,7 +628,7 @@
 	            </div>
 	        </div>
 	        <div class="text-center mx-auto mt-5 wow fadeInUp" data-wow-delay="0.3s">
-	            <a class="btn btn-primary rounded-pill py-3 px-5" href="{{route('partners')}}">More Partners</a>
+	            <a class="btn btn-primary rounded-pill py-3 px-5" href="{{route('partner_with_us')}}">More Partners</a>
 	        </div>
 	    </div>
 	</div>
@@ -885,7 +885,7 @@
 	                requirement and understand the next steps.
 	            </p>
 	            <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s">
-		            <a class="btn btn-primary rounded-pill py-3 px-5" href="{{route('contact')}}">Submit Your Enquiry</a>
+		            <a class="btn btn-primary rounded-pill py-3 px-5" href="{{route('enquiry')}}">Submit Your Enquiry</a>
 		        </div>
 	        </div>
 	    </div>

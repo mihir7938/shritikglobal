@@ -7,14 +7,13 @@
         </div>
     </div>
     <!-- Page Header End -->
-
-
     <!-- Contact Start -->
     <div class="container-xxl py-5">
         <div class="container">
-            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 700px;">
                 <h6 class="section-title bg-white text-center text-primary px-3">Contact Us</h6>
-                <h1 class="display-6 mb-4">If You Have Any Query, Please Feel Free Contact Us</h1>
+                <h2 class="display-6 mb-4">Let's Discuss Your Financial Requirement</h2>
+                <p>Whether you are exploring a personal loan, home finance, business funding or a larger enterprise requirement, connect with Shritik Global India Private Limited. Share a few details and the appropriate team will review your enquiry and explain the next step.</p>
             </div>
             <div class="row g-0 justify-content-center">
                 <div class="col-lg-8 wow fadeInUp" data-wow-delay="0.5s">

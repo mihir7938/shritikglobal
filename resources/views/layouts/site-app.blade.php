@@ -50,7 +50,7 @@
     <div class="container-fluid py-4 px-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="row align-items-center top-bar">
             <div class="col-lg-4 col-md-12 text-center text-lg-start">
-                <a href="" class="navbar-brand m-0 p-0">
+                <a href="{{route('index')}}" class="navbar-brand m-0 p-0">
                     <h1 class="fw-bold text-primary m-0"><img src="{{asset('img/logo.png')}}" alt="Logo" class="me-3 align-bottom" width="50"></i>Shritik Global</h1>
                 </a>
             </div>
@@ -122,11 +122,12 @@
                         <a href="{{route('testimonial')}}" class="dropdown-item {{ Route::currentRouteName() == 'testimonial' ? 'active' : '' }}">Testimonial</a>
                     </div>
                 </div>--}}
-                <a href="{{route('team')}}" class="nav-item nav-link {{ Route::currentRouteName() == 'team' ? 'active' : '' }}">Our Team</a>
-                <a href="{{route('documents')}}" class="nav-item nav-link {{ Route::currentRouteName() == 'documents' ? 'active' : '' }}">Loan Documents</a>
+                <a href="{{route('industries')}}" class="nav-item nav-link {{ Route::currentRouteName() == 'industries' ? 'active' : '' }}">Industries</a>
+                <a href="{{route('how_we_work')}}" class="nav-item nav-link {{ Route::currentRouteName() == 'how_we_work' ? 'active' : '' }}">How We Work</a>
+                <a href="{{route('partner_with_us')}}" class="nav-item nav-link {{ Route::currentRouteName() == 'partner_with_us' ? 'active' : '' }}">Partner With Us</a>
                 <a href="{{route('contact')}}" class="nav-item nav-link {{ Route::currentRouteName() == 'contact' ? 'active' : '' }}">Contact Us</a>
             </div>
-            <a href="{{route('login')}}" class="btn btn-sm btn-light rounded-pill py-2 px-4 d-none d-lg-block">Login</a>
+            <a href="{{route('enquiry')}}" class="btn btn-sm btn-light rounded-pill py-2 px-4 d-none d-lg-block">Enquiry</a>
         </div>
     </nav>
     @yield('content')
@@ -135,7 +136,7 @@
             <div class="row g-5">
                 <div class="col-lg-4 col-md-6">
                     <h5 class="text-light mb-4">About Us</h5>
-                    <p>At Shritikglobal, we are driven by a passion for excellence, dedicated to providing top-notch [industry/niche] solutions that empower individuals and businesses to thrive in an ever-evolving world.</p>
+                    <p>Shritik Global India Private Limited facilitates financial solutions for individuals, businesses, MSMEs and enterprises, helping them explore suitable funding opportunities through lending partners.</p>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <h5 class="text-light mb-4">Address</h5>
@@ -152,10 +153,11 @@
                 <div class="col-lg-4 col-md-6">
                     <h5 class="text-light mb-4">Quick Links</h5>
                     <a class="btn btn-link" href="{{route('about')}}">About Us</a>
-                    <a class="btn btn-link" href="{{route('services')}}">Our Services</a>
-                    <a class="btn btn-link" href="{{route('team')}}">Our Team</a>
+                    <a class="btn btn-link" href="{{route('services')}}">Loan Solutions</a>
+                    <a class="btn btn-link" href="{{route('industries')}}">Industries</a>
+                    <a class="btn btn-link" href="{{route('how_we_work')}}">How We Work</a>
+                    <a class="btn btn-link" href="{{route('partner_with_us')}}">Partner With Us</a>
                     <a class="btn btn-link" href="{{route('contact')}}">Contact Us</a>
-                    <a class="btn btn-link" href="#">Terms & Condition</a>
                 </div>
                 {{--<div class="col-lg-3 col-md-6">
                     <h5 class="text-light mb-4">Gallery</h5>
@@ -197,7 +199,7 @@
                         Copyright &copy; 2026 <a href="{{route('index')}}">Skritik Global</a>, All Right Reserved.
                     </div>
                     <div class="col-md-6 text-center text-md-end">
-                         Powered By <a href="https://strongservices.in/" target="_blank">Strong Services</a>
+                         <a href="{{route('privacy_policy')}}">Privacy Policy</a> | Powered By <a href="https://strongservices.in/" target="_blank">Strong Services</a>
                     </div>
                 </div>
             </div>
