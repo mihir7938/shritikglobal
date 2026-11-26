@@ -1,5 +1,7 @@
 @extends('layouts.site-app')
-@section('title', 'Legal, Compliance & Trust | Shritik Global')
+@section('meta_title', 'Privacy Policy | Shritik Global India Private Limited')
+@section('meta_description', 'Read the Shritik Global Privacy Policy to understand how we collect, use, store and protect your personal information submitted through our website.')
+@section('meta_keywords', 'Shritik Global Privacy Policy, Data Privacy, Personal Information, Information Security, Privacy')
 @section('content')
     <!-- Page Header Start -->
     <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">

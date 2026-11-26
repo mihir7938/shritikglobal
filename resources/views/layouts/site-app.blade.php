@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Shritik Global</title>
+    <title>@yield('meta_title', 'Shritik Global India Private Limited | Financial Solutions')</title>
     <meta charset="utf-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
+    <meta name="description" content="@yield('meta_description', 'Shritik Global India Private Limited helps individuals and businesses explore suitable financial and loan solutions.')">
+    <meta name="keywords" content="@yield('meta_keywords', 'Shritik Global, Financial Solutions, Loan Solutions, Business Finance')">
     <link rel="icon" href="{{asset('img/favicon.ico')}}" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

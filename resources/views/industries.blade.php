@@ -1,5 +1,7 @@
 @extends('layouts.site-app')
-@section('title', 'Industries We Serve | Shritik Global')
+@section('meta_title', 'Industry-wise Financial Solutions | Shritik Global India Private Limited')
+@section('meta_description', 'Explore financial solutions for manufacturing, textile, trading, retail, logistics, healthcare, construction, infrastructure and professional service businesses.')
+@section('meta_keywords', 'Industry Finance, Manufacturing Finance, Textile Finance, Trading Finance, Retail Finance, Healthcare Finance, Construction Finance, Business Loans')
 @section('content')
     <!-- Page Header Start -->
     <div class="container-fluid page-header py-5 mb-5 wow fadeIn"

@@ -1,4 +1,7 @@
 @extends('layouts.site-app')
+@section('meta_title', 'About Us | Shritik Global India Private Limited')
+@section('meta_description', 'Learn about Shritik Global India Private Limited, our approach to financial solutions and our commitment to helping individuals and businesses explore funding opportunities.')
+@section('meta_keywords', 'About Shritik Global, Shritik Global India Private Limited, Financial Services, Loan Facilitation, Business Finance')
 @section('content')
     <!-- Page Header Start -->
     <div class="container-fluid page-header py-5 mb-5 wow fadeIn"

@@ -1,4 +1,7 @@
 @extends('layouts.site-app')
+@section('meta_title', 'Contact Us | Shritik Global India Private Limited')
+@section('meta_description', 'Contact Shritik Global India Private Limited to discuss your personal, business, MSME or corporate financial requirements and funding enquiries.')
+@section('meta_keywords', 'Contact Shritik Global, Shritik Global Contact, Loan Enquiry, Business Finance Enquiry, Financial Assistance')
 @section('content')
 	<!-- Page Header Start -->
     <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
@@ -17,7 +20,7 @@
             </div>
             <div class="row g-0 justify-content-center">
                 <div class="col-lg-8 wow fadeInUp" data-wow-delay="0.5s">
-                    <form id="contact-form" name="contact-form" action="{{route('save.contact')}}" method="POST">
+                    <form id="contact-form" name="contact-form" class="sg-enquiry-form" action="{{route('save.contact')}}" method="POST">
                         @csrf
                         @include('shared.alert')
                         @if (count($errors) > 0)
@@ -32,40 +35,28 @@
                         @endif
                         <div class="row g-3">
                             <div class="col-md-6">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name">
-                                    <label for="first_name">First Name</label>
-                                </div>
+                                <label class="form-label">First Name <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name">
                             </div>
                             <div class="col-md-6">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name">
-                                    <label for="last_name">Last Name</label>
-                                </div>
+                                <label class="form-label">Last Name <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name">
                             </div>
                             <div class="col-md-6">
-                                <div class="form-floating">
-                                    <input type="phone" class="form-control" id="phone" name="phone" placeholder="Phone">
-                                    <label for="phone">Your Phone</label>
-                                </div>
+                                <label class="form-label">Your Phone <span class="text-danger">*</span></label>
+                                <input type="phone" class="form-control" id="phone" name="phone" placeholder="Phone">
                             </div>
                             <div class="col-md-6">
-                                <div class="form-floating">
-                                    <input type="email" class="form-control" id="email" name="email" placeholder="Your Email">
-                                    <label for="email">Your Email</label>
-                                </div>
+                                <label class="form-label">Your Email <span class="text-danger">*</span></label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Your Email">
                             </div>
                             <div class="col-12">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject">
-                                    <label for="subject">Subject</label>
-                                </div>
+                                <label class="form-label">Subject <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject">
                             </div>
                             <div class="col-12">
-                                <div class="form-floating">
-                                    <textarea class="form-control" placeholder="Leave a message here" id="message" name="message" style="height: 200px"></textarea>
-                                    <label for="message">Message</label>
-                                </div>
+                                <label class="form-label">Message <span class="text-danger">*</span></label>
+                                <textarea class="form-control" placeholder="Leave a message here" id="message" name="message" style="height: 200px"></textarea>
                             </div>
                             <div class="col-12 text-center">
                                 <button class="btn btn-primary rounded-pill py-3 px-5" type="submit">Send Message</button>
@@ -143,9 +134,6 @@
         message:{
           required: "Please enter your message."
         }
-      },
-      errorPlacement: function(error, element) {
-        error.insertAfter(element.parent());
       }
     });
   })();

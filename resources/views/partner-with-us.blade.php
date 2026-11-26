@@ -1,5 +1,7 @@
 @extends('layouts.site-app')
-@section('title', 'Partner With Us | Shritik Global')
+@section('meta_title', 'Partner With Us | Shritik Global India Private Limited')
+@section('meta_description', 'Connect with Shritik Global for financial partnerships, lender relationships, referral opportunities and professional business collaborations.')
+@section('meta_keywords', 'Partner With Shritik Global, Financial Partners, Lending Partners, NBFC Partners, DSA Partnership, Business Referral Partners')
 @section('content')
     <!-- Page Header Start -->
     <div class="container-fluid page-header py-5 mb-5 wow fadeIn"

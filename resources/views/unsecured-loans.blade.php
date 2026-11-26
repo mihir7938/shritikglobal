@@ -1,4 +1,7 @@
 @extends('layouts.site-app')
+@section('meta_title', 'Unsecured Loan Options | Shritik Global India Private Limited')
+@section('meta_description', 'Explore unsecured loan options including personal loans, business loans, MSME finance and unsecured working capital solutions with Shritik Global.')
+@section('meta_keywords', 'Unsecured Loans, Unsecured Loan Options, Personal Loans, Unsecured Business Loans, MSME Finance, Working Capital Loans, Unsecured Business Finance, Shritik Global')
 @section('content')
     <!-- Page Header Start -->
     <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">

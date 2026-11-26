@@ -1,4 +1,7 @@
 @extends('layouts.site-app')
+@section('meta_title', 'Retail Loan Solutions | Shritik Global India Private Limited')
+@section('meta_description', 'Explore retail loan solutions including personal loans, home loans and vehicle finance with Shritik Global. Discuss your financial requirements with our team.')
+@section('meta_keywords', 'Retail Loan Solutions, Retail Loans, Personal Loan, Home Loan, Vehicle Loan, Loan Against Property, Retail Finance, Shritik Global')
 @section('content')
     <!-- Page Header Start -->
     <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">

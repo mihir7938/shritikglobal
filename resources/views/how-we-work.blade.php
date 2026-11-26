@@ -1,5 +1,7 @@
 @extends('layouts.site-app')
-@section('title', 'How We Work | Shritik Global')
+@section('meta_title', 'How We Work | Shritik Global India Private Limited Loan Process')
+@section('meta_description', 'Understand the Shritik Global financing journey, from initial enquiry and requirement discovery to lender coordination, documentation guidance and follow-up.')
+@section('meta_keywords', 'Shritik Global Process, Loan Process, Loan Enquiry, Loan Documentation, Financing Process, Lender Coordination')
 @section('content')
     <!-- Page Header Start -->
     <div class="container-fluid page-header py-5 mb-5 wow fadeIn"

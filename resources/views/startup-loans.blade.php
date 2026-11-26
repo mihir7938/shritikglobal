@@ -1,4 +1,7 @@
 @extends('layouts.site-app')
+@section('meta_title', 'Startup & Entrepreneur Finance | Shritik Global India Private Limited')
+@section('meta_description', 'Explore funding options for startups and entrepreneurs to support business setup, working capital, equipment purchases and business growth with Shritik Global.')
+@section('meta_keywords', 'Startup Finance, Startup Business Loans, Entrepreneur Finance, Startup Funding, Business Startup Loans, Working Capital for Startups, Entrepreneur Loans, Shritik Global')
 @section('content')
     <!-- Page Header Start -->
     <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">

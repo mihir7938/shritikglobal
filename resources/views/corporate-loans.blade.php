@@ -1,4 +1,7 @@
 @extends('layouts.site-app')
+@section('meta_title', 'Corporate & Enterprise Finance | Shritik Global India Private Limited')
+@section('meta_description', 'Explore corporate and enterprise finance options for working capital, project funding, structured finance, business expansion and large-scale financial requirements.')
+@section('meta_keywords', 'Corporate Finance, Enterprise Finance, Corporate Loans, Enterprise Funding, Project Finance, Structured Finance, Large Business Funding, Shritik Global')
 @section('content')
     <!-- Page Header Start -->
     <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">

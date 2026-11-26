@@ -1,4 +1,7 @@
 @extends('layouts.site-app')
+@section('meta_title', 'Business & MSME Finance | Shritik Global India Private Limited')
+@section('meta_description', 'Explore business and MSME finance options for working capital, machinery, inventory, cash credit, overdraft and business expansion with Shritik Global.')
+@section('meta_keywords', 'Business Finance, Business Loans, MSME Finance, MSME Loans, Working Capital Finance, Cash Credit, Overdraft, Machinery Finance, Business Expansion Finance')
 @section('content')
     <!-- Page Header Start -->
     <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">

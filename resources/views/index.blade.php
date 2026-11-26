@@ -1,4 +1,7 @@
 @extends('layouts.site-app')
+@section('meta_title', 'Shritik Global India Private Limited | Retail to Enterprise Finance')
+@section('meta_description', 'Explore retail, personal, business, MSME and corporate loan solutions with Shritik Global India Private Limited. Discuss your financial requirements with our team.')
+@section('meta_keywords', 'Shritik Global, Financial Solutions, Personal Loan, Business Loan, MSME Finance, Corporate Finance, Retail Loans, Secured Loans, Unsecured Loans')
 @section('content')
 	<!-- Hero Carousel Start -->
 	<div class="container-fluid p-0 mb-5 hero-carousel-wrapper">

@@ -1,4 +1,7 @@
 @extends('layouts.site-app')
+@section('meta_title', 'Secured Loan Options | Shritik Global India Private Limited')
+@section('meta_description', 'Explore secured loan options including home loans, loan against property, property-backed business finance and eligible asset-backed funding solutions.')
+@section('meta_keywords', 'Secured Loans, Secured Loan Options, Loan Against Property, Home Loans, Property-backed Loans, Asset-backed Finance, Secured Business Loans, Shritik Global')
 @section('content')
     <!-- Page Header Start -->
     <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
