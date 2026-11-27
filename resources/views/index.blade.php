@@ -174,37 +174,37 @@
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <a class="service-item d-block rounded text-center h-100 p-4" href="{{route('retail_loans')}}">
-                        <img class="img-fluid rounded mb-4" src="{{asset('img/service-1.png')}}" alt="">
+                        <img class="img-fluid rounded mb-4" src="{{asset('img/service-1.png')}}" alt="Retail Loans">
                         <h5 class="mb-0">Retail Loans</h5>
                     </a>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                     <a class="service-item d-block rounded text-center h-100 p-4" href="{{route('business_loans')}}">
-                        <img class="img-fluid rounded mb-4" src="{{asset('img/service-2.png')}}" alt="">
+                        <img class="img-fluid rounded mb-4" src="{{asset('img/business-MSME-finance.png')}}" alt="Business & MSME Loans">
                         <h5 class="mb-0">Business & MSME Loans</h5>
                     </a>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                     <a class="service-item d-block rounded text-center h-100 p-4" href="{{route('startup_loans')}}">
-                        <img class="img-fluid rounded mb-4" src="{{asset('img/service-3.png')}}" alt="">
+                        <img class="img-fluid rounded mb-4" src="{{asset('img/startup-entrepreneur-finance.png')}}" alt="Startup & Entrepreneur">
                         <h5 class="mb-0">Startup & Entrepreneur</h5>
                     </a>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <a class="service-item d-block rounded text-center h-100 p-4" href="{{route('corporate_loans')}}">
-                        <img class="img-fluid rounded mb-4" src="img/service-4.jpg" alt="">
+                        <img class="img-fluid rounded mb-4" src="img/corporate-enterprise-finance.png" alt="Corporate & Enterprise">
                         <h5 class="mb-0">Corporate & Enterprise</h5>
                     </a>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                     <a class="service-item d-block rounded text-center h-100 p-4" href="{{route('secured_loans')}}">
-                        <img class="img-fluid rounded mb-4" src="img/service-5.jpg" alt="">
+                        <img class="img-fluid rounded mb-4" src="img/secure-loan.png" alt="Secured Loans">
                         <h5 class="mb-0">Secured Loans</h5>
                     </a>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                     <a class="service-item d-block rounded text-center h-100 p-4" href="{{route('unsecured_loans')}}">
-                        <img class="img-fluid rounded mb-4" src="img/service-6.jpg" alt="">
+                        <img class="img-fluid rounded mb-4" src="img/unsecure-loan.png" alt="Unsecured Loans">
                         <h5 class="mb-0">Unsecured Loans</h5>
                     </a>
                 </div>
@@ -421,7 +421,7 @@
 	            </div>
 	            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
 	                <div class="img-border">
-	                    <img class="img-fluid" src="img/feature.jpg" alt="">
+	                    <img class="img-fluid" src="{{asset('img/industries-driving-financial-growth.png')}}" alt="Financial Perspectives Across Diverse Industries">
 	                </div>
 	            </div>
 	        </div>

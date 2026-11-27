@@ -37,7 +37,7 @@
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="retail-intro-image">
-                        <img src="{{ asset('img/unsecure_loan.png') }}" class="img-fluid rounded" alt="Retail Loan Solutions">
+                        <img src="{{ asset('img/unsecure-loan.png') }}" class="img-fluid rounded" alt="Retail Loan Solutions">
                     </div>
                 </div>
             </div>

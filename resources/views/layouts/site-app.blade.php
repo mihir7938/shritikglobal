@@ -47,11 +47,11 @@
             </div>
         </div>
     </div>--}}
-    <div class="container-fluid py-4 px-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container-fluid py-3 px-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="row align-items-center top-bar">
             <div class="col-lg-4 col-md-12 text-center text-lg-start">
                 <a href="{{route('index')}}" class="navbar-brand m-0 p-0">
-                    <h1 class="fw-bold text-primary m-0"><img src="{{asset('img/logo.png')}}" alt="Logo" class="me-3 align-bottom" width="50"></i>Shritik Global</h1>
+                    <h1 class="fw-bold text-primary m-0"><img src="{{asset('img/SGLogo.png')}}" alt="Logo" class="me-3 align-bottom" width="300"></h1>
                 </a>
             </div>
             <div class="col-lg-8 col-md-7 d-none d-lg-block">

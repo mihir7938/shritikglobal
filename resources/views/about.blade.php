@@ -19,7 +19,7 @@
             <div class="row g-5 align-items-center">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="sg-about-image">
-                        <img src="{{ asset('img/about.jpg') }}"
+                        <img src="{{ asset('img/pathway-to-financial-solutions.png') }}"
                              alt="Shritik Global India Private Limited"
                              class="img-fluid">
                     </div>
