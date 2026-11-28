@@ -263,7 +263,7 @@
             <div class="row g-5 align-items-center">
                 <div class="col-lg-5 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="sg-founder-image">
-                        <img src="{{ asset('img/about.jpg') }}" alt="Hemant Shrivastav - Founder and Chairman" class="img-fluid">
+                        <img src="{{ asset('img/about.png') }}" alt="Hemant Shrivastav - Founder and Chairman" class="img-fluid">
                     </div>
                 </div>
                 <div class="col-lg-7 wow fadeInUp" data-wow-delay="0.3s">
