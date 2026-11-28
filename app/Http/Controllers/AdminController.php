@@ -7,6 +7,7 @@ use App\Services\UploadImageService;
 use App\Services\UserService;
 use App\Services\ProductService;
 use App\Services\SubProductService;
+use App\Services\PhotosService;
 use App\Services\CustomerService;
 use App\Services\StatusRemarkService;
 use App\Services\CustomerBankService;
@@ -32,13 +33,14 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller {
 
-	private $imageService, $userService, $productService, $subProductService, $customerService, $statusRemarkService, $customerBankService, $telecallerNewCallService, $telecallerFollowupService, $telecallerCloseCallService, $telecallerCallMasterService, $telecallerFollowupLogService;
+	private $imageService, $userService, $productService, $subProductService, $photosService, $customerService, $statusRemarkService, $customerBankService, $telecallerNewCallService, $telecallerFollowupService, $telecallerCloseCallService, $telecallerCallMasterService, $telecallerFollowupLogService;
 
     public function __construct(
         UploadImageService $imageService,
         UserService $userService,
         ProductService $productService,
         SubProductService $subProductService,
+        PhotosService $photosService,
         CustomerService $customerService,
         StatusRemarkService $statusRemarkService,
         CustomerBankService $customerBankService,
@@ -53,6 +55,7 @@ class AdminController extends Controller {
         $this->userService = $userService;
         $this->productService = $productService;
         $this->subProductService = $subProductService;
+        $this->photosService = $photosService;
         $this->customerService = $customerService;
         $this->statusRemarkService = $statusRemarkService;
         $this->customerBankService = $customerBankService;
@@ -237,6 +240,177 @@ class AdminController extends Controller {
             $request->session()->put('alert-type', 'alert-warning');
             return redirect()->route('admin.subproducts');
         }
+    }
+    public function getPhotoCategories()
+    {
+        $photoCategories = $this->photosService->getAllPhotoCategories();
+        return view('admin.photos.categories')->with('photoCategories', $photoCategories);
+    }
+    public function addPhotoCategory()
+    {
+        return view('admin.photos.add-category');
+    }
+    public function savePhotoCategory(Request $request)
+    {
+        $data = $request->all();
+        $filename = $this->imageService->uploadFile($request->image, "assets/photo_categories");
+        $data['image'] = '/photo_categories/'.$filename;
+        $this->photosService->create_photo_category($data);
+        $request->session()->put('message', 'Album has been added successfully.');
+        $request->session()->put('alert-type', 'alert-success');
+        return redirect()->route('admin.photos.categories');
+    }
+    public function editPhotoCategory(Request $request, $id)
+    {
+        try{
+            $photo_category = $this->photosService->getPhotoCategoryById($id);
+            if(!$photo_category){
+                throw new BadRequestException('Invalid Request id');
+            }
+            return view('admin.photos.edit-category')->with('photo_category', $photo_category);
+        }catch(\Exception $e){
+            $request->session()->put('message', $e->getMessage());
+            $request->session()->put('alert-type', 'alert-warning');
+            return redirect()->route('admin.photos.categories');
+        }
+    }
+    public function updatePhotoCategory(Request $request)
+    {
+        try{
+            $photo_category = $this->photosService->getPhotoCategoryById($request->id);
+            if(!$photo_category){
+                throw new BadRequestException('Invalid Request id');
+            }
+            $data = $request->all();
+            if($request->has('image')){
+                $filepath = public_path('assets/' . $photo_category->image);
+                $this->imageService->deleteFile($filepath);
+                $filename = $this->imageService->uploadFile($request->image, "assets/photo_categories");
+                $data['image'] = '/photo_categories/'.$filename;
+            }
+            $this->photosService->update_photo_category($photo_category, $data);
+            $request->session()->put('message', 'Album has been updated successfully.');
+            $request->session()->put('alert-type', 'alert-success');
+            return redirect()->route('admin.photos.categories');
+        }catch(\Exception $e){
+            $request->session()->put('message', $e->getMessage());
+            $request->session()->put('alert-type', 'alert-warning');
+            return redirect()->route('admin.photos.categories');
+        }
+    }
+    public function deletePhotoCategory(Request $request, $id)
+    {
+        try{
+            $photo_category = $this->photosService->getPhotoCategoryById($id);
+            if(!$photo_category){
+                throw new BadRequestException('Invalid Request id.');
+            }
+            $filepath = public_path('assets/' . $photo_category->image);
+            $this->imageService->deleteFile($filepath);
+            $this->photosService->delete_photo_category($photo_category);
+            $request->session()->put('message', 'Album has been deleted successfully.');
+            $request->session()->put('alert-type', 'alert-success');
+            return redirect()->route('admin.photos.categories');
+        }catch(\Exception $e){
+            $request->session()->put('message', $e->getMessage());
+            $request->session()->put('alert-type', 'alert-warning');
+            return redirect()->route('admin.photos.categories');
+        }
+    }
+    public function getPhotos()
+    {
+        $photos = $this->photosService->getAllPhotos();
+        return view('admin.photos.index')->with('photos', $photos);
+    }
+    public function addPhotos()
+    {
+        $photoCategories = $this->photosService->getAllPhotoCategories();
+        return view('admin.photos.add')->with('photoCategories', $photoCategories);
+    }
+    public function savePhotos(Request $request)
+    {
+        $data['category_id'] = $request->category;
+        $filename = $this->imageService->uploadFile($request->image, "assets/photos");
+        $data['image'] = '/photos/'.$filename;
+        $this->photosService->create($data);
+        $request->session()->put('message', 'Photo has been added successfully.');
+        $request->session()->put('alert-type', 'alert-success');
+        return redirect()->route('admin.photos');
+    }
+    public function editPhotos(Request $request, $id)
+    {
+        try{
+            $photo = $this->photosService->getPhotoById($id);
+            $photoCategories = $this->photosService->getAllPhotoCategories();
+            if(!$photo){
+                throw new BadRequestException('Invalid Request id');
+            }
+            return view('admin.photos.edit')->with('photo', $photo)->with('photoCategories', $photoCategories);
+        }catch(\Exception $e){
+            $request->session()->put('message', $e->getMessage());
+            $request->session()->put('alert-type', 'alert-warning');
+            return redirect()->route('admin.photos');
+        }
+    }
+    public function updatePhotos(Request $request)
+    {
+        try{
+            $photo = $this->photosService->getPhotoById($request->id);
+            if(!$photo){
+                throw new BadRequestException('Invalid Request id');
+            }
+            $data['category_id'] = $request->category;
+            if($request->has('image')){
+                $filepath = public_path('assets/' . $photo->image);
+                $this->imageService->deleteFile($filepath);
+                $filename = $this->imageService->uploadFile($request->image, "assets/photos");
+                $data['image'] = '/photos/'.$filename;
+            }
+            $this->photosService->update($photo, $data);
+            $request->session()->put('message', 'Photo has been updated successfully.');
+            $request->session()->put('alert-type', 'alert-success');
+            return redirect()->route('admin.photos');
+        }catch(\Exception $e){
+            $request->session()->put('message', $e->getMessage());
+            $request->session()->put('alert-type', 'alert-warning');
+            return redirect()->route('admin.photos');
+        }
+    }
+    public function deletePhotos(Request $request, $id)
+    {
+        try{
+            $photo = $this->photosService->getPhotoById($id);
+            if(!$photo){
+                throw new BadRequestException('Invalid Request id.');
+            }
+            $filepath = public_path('assets/' . $photo->image);
+            $this->imageService->deleteFile($filepath);
+            $this->photosService->delete($photo);
+            $request->session()->put('message', 'Photo has been deleted successfully.');
+            $request->session()->put('alert-type', 'alert-success');
+            return redirect()->route('admin.photos');
+        }catch(\Exception $e){
+            $request->session()->put('message', $e->getMessage());
+            $request->session()->put('alert-type', 'alert-warning');
+            return redirect()->route('admin.photos');
+        }
+    }
+    public function addBulkPhotos()
+    {
+        $photoCategories = $this->photosService->getAllPhotoCategories();
+        return view('admin.photos.add-bulk')->with('photoCategories', $photoCategories);
+    }
+    public function saveBulkPhotos(Request $request)
+    {
+        $data['category_id'] = $request->category;
+        foreach($request->image as $img) {
+            $filename = $this->imageService->uploadFile($img, "assets/photos");
+            $data['image'] = '/photos/'.$filename;
+            $this->photosService->create($data);
+        }
+        $request->session()->put('message', 'Photos has been added successfully.');
+        $request->session()->put('alert-type', 'alert-success');
+        return redirect()->route('admin.photos');
     }
     public function getUsers(Request $request)
     {

@@ -177,8 +177,8 @@
                                     <p>Dashboard</p>
                                 </a>
                             </li>
-                            <li class="nav-item {{(Route::currentRouteName() == 'admin.products') || (Route::currentRouteName() == 'admin.products.add') || (Route::currentRouteName() == 'admin.products.edit') || (Route::currentRouteName() == 'admin.subproducts') || (Route::currentRouteName() == 'admin.subproducts.add') || (Route::currentRouteName() == 'admin.subproducts.edit') ? 'menu-open' : '' }}">
-                                <a href="#" class="nav-link {{(Route::currentRouteName() == 'admin.products') || (Route::currentRouteName() == 'admin.products.add') || (Route::currentRouteName() == 'admin.products.edit') || (Route::currentRouteName() == 'admin.subproducts') || (Route::currentRouteName() == 'admin.subproducts.add') || (Route::currentRouteName() == 'admin.subproducts.editsubproducts') ? 'active' : '' }}">
+                            <li class="nav-item {{(Route::currentRouteName() == 'admin.products') || (Route::currentRouteName() == 'admin.products.add') || (Route::currentRouteName() == 'admin.products.edit') || (Route::currentRouteName() == 'admin.subproducts') || (Route::currentRouteName() == 'admin.subproducts.add') || (Route::currentRouteName() == 'admin.subproducts.edit') || (Route::currentRouteName() == 'admin.photos.categories') || (Route::currentRouteName() == 'admin.photos.addcategory') || (Route::currentRouteName() == 'admin.photos.editcategory') || (Route::currentRouteName() == 'admin.photos') || (Route::currentRouteName() == 'admin.photos.add') || (Route::currentRouteName() == 'admin.photos.edit') || (Route::currentRouteName() == 'admin.photos.addbulk') ? 'menu-open' : '' }}">
+                                <a href="#" class="nav-link {{(Route::currentRouteName() == 'admin.products') || (Route::currentRouteName() == 'admin.products.add') || (Route::currentRouteName() == 'admin.products.edit') || (Route::currentRouteName() == 'admin.subproducts') || (Route::currentRouteName() == 'admin.subproducts.add') || (Route::currentRouteName() == 'admin.subproducts.editsubproducts') || (Route::currentRouteName() == 'admin.photos.categories') || (Route::currentRouteName() == 'admin.photos.addcategory') || (Route::currentRouteName() == 'admin.photos.editcategory') || (Route::currentRouteName() == 'admin.photos') || (Route::currentRouteName() == 'admin.photos.add') || (Route::currentRouteName() == 'admin.photos.edit') || (Route::currentRouteName() == 'admin.photos.addbulk') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-layer-group"></i>
                                     <p>Masters<i class="right fas fa-angle-left"></i></p>
                                 </a>
@@ -193,6 +193,18 @@
                                         <a href="{{route('admin.subproducts')}}" class="nav-link {{(Route::currentRouteName() == 'admin.subproducts') || (Route::currentRouteName() == 'admin.subproducts.add') || (Route::currentRouteName() == 'admin.subproducts.edit') ? 'active' : '' }}">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>Sub Products</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{route('admin.photos.categories')}}" class="nav-link {{(Route::currentRouteName() == 'admin.photos.categories') || (Route::currentRouteName() == 'admin.photos.addcategory') || (Route::currentRouteName() == 'admin.photos.editcategory') ? 'active' : '' }}">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Albums</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{route('admin.photos')}}" class="nav-link {{(Route::currentRouteName() == 'admin.photos') || (Route::currentRouteName() == 'admin.photos.add') || (Route::currentRouteName() == 'admin.photos.edit') || (Route::currentRouteName() == 'admin.photos.addbulk') ? 'active' : '' }}">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Photos</p>
                                         </a>
                                     </li>
                                 </ul>
